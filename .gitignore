@@ -1,3 +1,6 @@
 projects/*/Listings/
 projects/*/Objects/
 projects/*/*.uvguix.*
+chapters/embedded_c.html
+chapters/embedded_c.epub
+chapters/all_chapters.md
