@@ -20,6 +20,6 @@ Get-Content .\*.md | Set-Content all_chapters.md
 Write-Output "Generating HTML documentation"
 &pandoc.exe -f markdown -t html -c epub.css -o embedded_c.html --reference-links -s -S all_chapters.md
 Write-Output "Generating EPUB"
-&pandoc.exe -f markdown -t epub -c epub.css -o embedded_c.epub --reference-links -s -S metadata.yaml all_chapters.md
+&pandoc.exe -f markdown -t epub --toc -o embedded_c.epub --reference-links -s -S metadata.yaml all_chapters.md
 Write-Output "Going back to build directory and done!"
 Pop-Location
