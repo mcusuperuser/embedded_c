@@ -3,7 +3,7 @@ title:
 - type: main
   text: Embedded C
 - type: subtitle
-  text: For Arm Coretx-M based microcontrollers
+  text: For Arm Cortex-M based microcontrollers
 creator:
 - role: author
   text: Christopher Seidl
