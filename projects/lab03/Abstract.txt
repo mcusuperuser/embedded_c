@@ -1,0 +1,10 @@
+This lab shows how to declare and use constants and how to use the printf()
+function to print messages on the Debug printf() Viewer window in µVision.
+
+The example runs in simulation on an Arn Cortex-M3 device. It is fully CMSIS
+compliant.
+
+- Build the project
+- Start a debug session (F5)
+- Observe the output on the Debug printf() Viewer window
+- Check the value of the variables in the Watch1 window
