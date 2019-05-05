@@ -1,22 +1,21 @@
 #include <stdio.h>              // Standard I/O - required for printf() function
+#include "ARMCM3.h"                     // Device header
+#include "arm_math.h"                   // ARM::CMSIS:DSP
 
-// Constants
-#define   CONST1 0x42
-const int CONST2 = 0xAB;
 
-// Variables
-int myVar1 = CONST1;
-int myVar2;
-int n = 5, m = 0, res;
+typedef union {
+    uint8_t m;
+    uint16_t n;
+    uint32_t l;
+} myUnion;
+
+myUnion univar;
 
 // main() function
 int main(void) {
-	if (n) {
-		printf("n is TRUE\n");
-	}
-	if (m == 1) {
-		printf("m is FALSE\n");
-	}
+	univar.m = 0xFF;
+	univar.n = 0xFFFF;
+	univar.l = 0xFFFFFFFF;
   // Endless loop
 	while(1);
 }
