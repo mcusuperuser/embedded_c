@@ -1,13 +1,8 @@
 ---
-title:
-- type: main
-  text: Embedded C
-- type: subtitle
-  text: For Arm Cortex-M based microcontrollers
+title: Embedded C for Arm Cortex-M based Microcontrollers
 creator:
 - role: author
   text: Christopher Seidl
 rights:  Creative Commons Non-Commercial Share Alike 3.0
 language: en-US
-stylesheet: epub.css
 ...
