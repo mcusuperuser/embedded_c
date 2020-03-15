@@ -2,12 +2,19 @@
 <package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.6.0">
   <name>embedded_c</name>
   <vendor>mcusuperuser</vendor>
-  <description>This packs contains reference material for the C language used on Arm COrtex-M microcontrollers</description>
+  <description>This packs contains reference material for the C language used on Arm Cortex-M microcontrollers</description>
   <!-- empty until the pack gets published -->
   <url>https://raw.githubusercontent.com/mcusuperuser/embedded_c/master/pack/</url>
   <license>License.txt</license>
+  <repository type="git">https://github.com/mcusuperuser/embedded_c.git</repository>
   <releases>
+    <release version="0.0.3-alpha" date="2020-03-16">
+      Added repository element
+    </release>
     <release version="0.0.2-alpha" date="2020-03-16">
+      Initial Release
+    </release>
+    <release version="0.0.1-alpha" date="2020-03-16">
       Initial Release
     </release>
   </releases>

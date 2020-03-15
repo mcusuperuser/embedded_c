@@ -1,7 +1,6 @@
-# Embedded C
-## For Arm Cortex-M based microcontrollers
+# Embedded C for Arm Cortex-M based microcontrollers
 
-This reference manual outlines basic C language principles, with specifics around the usage in Arm Cortex-M based microcontrollers.
+This reference manual outlines basic C language principles, with specifics around the usage in Arm Cortex-M based microcontrollers. It contains a documentation that can be accessed via a web browser and directly from within Arm Keil MDK (using the **::Utils:embedded_c** component's documentation link). The CMSIS-Pack also contains a couple of example projects that help to understand the concepts outlined in the manual.
 
 ## Directory Structure
 
@@ -9,7 +8,7 @@ This reference manual outlines basic C language principles, with specifics aroun
 |:-------------------|:----------------------------------------------------|
 | chapters           | Embedded C for Arm Cortex-M in Markdown format      |
 | images             | Images used in the documentation                    |
-| projects           | Amr Keil MDK example projects                       |
+| projects           | Arm Keil MDK example projects                       |
 | pack               | Contains the pre-built CMSIS-Pack and PDSC file     |
 
 ## Build
