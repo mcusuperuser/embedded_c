@@ -17,5 +17,5 @@ compliant.
 
 This project uses the following software components:
 - ::CMSIS:Core to give access to the Arm Cortex-M3 core and peripherals
-- :: Compiler:I/O:STDOUT - ITM variant to redirect the `printf()` output to the **Debug printf() Viewer** window
+- ::Compiler:I/O:STDOUT - ITM variant to redirect the `printf()` output to the **Debug printf() Viewer** window
 - ::Device:Startup for system and startup purposes

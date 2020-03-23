@@ -1,0 +1,6 @@
+site_name: My Docs
+site_name: Embedded C for Arm Cortex-M Microcontrollers
+repo_url: https://github.com/mcusuperuser/embedded_c
+nav:
+    - Home: index.md
+theme: readthedocs
