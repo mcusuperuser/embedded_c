@@ -45,8 +45,7 @@ PACK_DIRS=${PACK_DIRS//$PACK_WAREHOUSE/}
 
 # alternative: specify directory names to be added to pack base directory
 PACK_DIRS="
-  docs/
-  images/
+  site/
   projects/
 "
   
@@ -85,14 +84,29 @@ fi
 echo " "
 
 # pandoc check
-PANDOC=pandoc
-type -a $PANDOC
+#PANDOC=pandoc
+#type -a $PANDOC
+#errorlevel=$?
+#if [ $errorlevel != 0 ]
+#  then
+#  echo "Error: pandoc not found"
+#  echo "Action: Add pandoc to your path"
+#  echo "Hint: sudo apt-get install pandoc"
+#  echo " "
+#  exit
+#fi
+#echo " "
+
+# pandoc check
+MKDOCS=mkdocs
+type -a $MKDOCS
 errorlevel=$?
 if [ $errorlevel != 0 ]
   then
-  echo "Error: pandoc not found"
-  echo "Action: Add pandoc to your path"
-  echo "Hint: sudo apt-get install pandoc"
+  echo "Error: mkdocs not found"
+  echo "Action: Add mkdocs to your path"
+  echo "Hint: sudo apt-get install mkdocs or"
+  echo "Hint: pip install mkdocs"
   echo " "
   exit
 fi
@@ -133,23 +147,26 @@ if [ ! -d $PACK_BUILD ]; then
 fi
 
 #if docs directory does not exist, create it.
-if [ ! -d docs ]; then
-  mkdir -p docs
-fi
+#if [ ! -d docs ]; then
+#  mkdir -p docs
+#fi
 
 # Build HTML output of Embedded C reference manual
 # Copy documentation source files to docs directory
-cp -r ./chapters/pandoc.css docs
-cp -r ./chapters/complete.md docs
-cp -r ./chapters/metadata.yaml docs
+#cp -r ./chapters/pandoc.css docs
+#cp -r ./chapters/complete.md docs
+#cp -r ./chapters/metadata.yaml docs
 # Change to docs and run generation
-pushd docs
-pandoc -f markdown -t html --toc --css=pandoc.css -o embedded_c.html --reference-links -s metadata.yaml complete.md
+#pushd docs
+#pandoc -f markdown -t html --toc --css=pandoc.css -o embedded_c.html --reference-links -s metadata.yaml complete.md
 # Remove unnecessary files
-rm -r complete.md
-rm -r metadata.yaml
+#rm -r complete.md
+#rm -r metadata.yaml
 # return for further pack generation
-popd
+#popd
+
+# Build HTML output of Embedded C reference manual
+mkdocs build
 
 # Copy files into build base directory: $PACK_BUILD
 # pdsc file is mandatory in base directory:

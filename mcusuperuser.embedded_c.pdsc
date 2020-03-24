@@ -41,7 +41,7 @@
       <files>
         <!--<file category="sourceC" name="Source/component.c"/>
         <file category="header"  name="Include/component.h"/>-->
-        <file category="doc" name="docs/embedded_c.html"/>
+        <file category="doc" name="site/index.html"/>
       </files>
     </component>
   </components>
