@@ -6,10 +6,15 @@ This reference manual outlines basic C language principles, with specifics aroun
 
 | Directory          | Content                                             |
 |:-------------------|:----------------------------------------------------|
-| chapters           | Embedded C for Arm Cortex-M in Markdown format      |
-| images             | Images used in the documentation                    |
+| docs               | Embedded C for Arm Cortex-M in Markdown format      |
+| docs/img           | Images used in the documentation                    |
 | projects           | Arm Keil MDK example projects                       |
 | pack               | Contains the pre-built CMSIS-Pack and PDSC file     |
+
+## Required Software
+- mkdocs (> Version 1.0)
+- CMSIS Pack
+- xmllint
 
 ## Build
 To build the pack, run the [gen_pack.sh](gen_pack.sh) script.
