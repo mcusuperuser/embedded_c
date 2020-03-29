@@ -22,5 +22,9 @@ nav:
     - 'Unions': 85.md
     - 'Enumerations': 90.md
     - 'Macros': 95.md
+    - 'Further reading': further_reading.md
 theme: readthedocs
 use_directory_urls: false
+markdown_extensions:
+    - toc:
+        permalink: "#"

@@ -3,8 +3,8 @@
  * Auto generated Run-Time-Environment Configuration File
  *      *** Do not modify ! ***
  *
- * Project: 'lab01' 
- * Target:  'Simulation' 
+ * Project: 'ex01' 
+ * Target:  'Finished' 
  */
 
 #ifndef RTE_COMPONENTS_H
