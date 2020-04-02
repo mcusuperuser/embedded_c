@@ -1,11 +1,11 @@
 # Exercise 01
 
-This exercise shows how to declare and use constants and variables and how to
-use the `printf()` function to print messages (with various format specifiers)
-on the **Debug printf() Viewer** window in µVision.
+In this exercise, you will declare and use constants and variables. You will
+also use the `printf()` function to print messages (with various format
+specifiers) on the **Debug printf() Viewer** window in µVision.
 
-The example runs in simulation on an Arm Cortex-M3 device. It is fully CMSIS
-compliant.
+The final exercise runs in simulation on an Arm Cortex-M3 device. It is fully
+[CMSIS](https://github.com/arm-software/CMSIS_5) compliant.
 
 # Instructions
 
@@ -17,7 +17,7 @@ compliant.
 - "sVar" with the value of "CONST2".
 - In `main()`, initialize the variables "iVar", "cVar", and "dVar" with the
 - value of "CONST2".
-- Use the code snippet `printf("\n",   variable, sizeof(char));` to do the
+- Use the code snippet `printf("\n", variable, sizeof(char));` to do the
 - following for each variable. Print the sentence "The content of \<variable\>
 - is \<print the value\> and it requires \<print the size of the variable\>".
 - Test the different format specifiers with `printf`.
@@ -34,8 +34,9 @@ compliant.
 
 *Note*
 
-- If you have difficulties with the exercise, use the project target "Finished"
-  to build and run a fully functional version.
+- If you have difficulties with the exercise, use the
+  [project target](http://www.keil.com/support/man/docs/uv4/uv4_ca_projtargfilegr.htm)
+  "Finished" to build and run a fully functional version.
 
 # Details
 
