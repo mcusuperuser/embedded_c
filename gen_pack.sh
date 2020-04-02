@@ -247,7 +247,6 @@ cp mcusuperuser.embedded_c.pdsc $PACK_WAREHOUSE
 echo "cleaning up ..."
 
 rm -rf $PACK_BUILD
-rm -rf docs/
 echo " "
 
 echo Completed CMSIS-Pack Generation: `date`
