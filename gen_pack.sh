@@ -47,6 +47,7 @@ PACK_DIRS=${PACK_DIRS//$PACK_WAREHOUSE/}
 PACK_DIRS="
   site/
   projects/
+  templates/
 "
   
 # Specify file names to be added to pack base directory

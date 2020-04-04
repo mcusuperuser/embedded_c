@@ -7,6 +7,9 @@
   <license>LICENSE.txt</license>
   <repository type="git">https://github.com/mcusuperuser/embedded_c.git</repository>
   <releases>
+    <release version="0.0.5-alpha" date="2020-04-04">
+      Added main.c template file
+    </release>
     <release version="0.0.4-alpha" date="2020-04-02">
       Added first exercise
     </release>
@@ -42,7 +45,8 @@
     <component Cclass="Utils" Cgroup="embedded_c" Cversion="1.0.0" condition="CM-Core">
       <description>This component is empty and is only used to carry the documentation.</description>
       <files>
-        <file category="doc" name="site/index.html"/>
+        <file category="doc"     name="site/index.html"/>
+        <file category="sourceC" name="templates/main.c" attr="template" select="Empty 'main' template" version="0.0.1"/>
       </files>
     </component>
   </components>
