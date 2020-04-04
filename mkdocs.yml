@@ -3,25 +3,25 @@ site_name: Embedded C for Arm Cortex-M Microcontrollers
 repo_url: https://github.com/mcusuperuser/embedded_c
 nav:
     - Home: index.md
-    - 'Comments': 05.md
-    - 'Variables, identifiers and data types': 10.md
-    - 'Constants and literals': 15.md
-    - 'The printf() C library function': 20.md
-    - 'Operators': 25.md
-    - 'Expressions and statements': 30.md
-    - 'Decision making': 35.md
-    - 'Loops': 40.md
-    - 'Functions': 45.md
-    - 'Storage classes': 50.md
-    - 'Arrays': 55.md
-    - 'Pointers': 60.md
-    - 'Function pointers': 65.md
-    - 'Structures': 70.md
-    - 'Bit fields': 75.md
-    - 'Peripheral access using CMSIS': 80.md
-    - 'Unions': 85.md
-    - 'Enumerations': 90.md
-    - 'Macros': 95.md
+    - 'Comments': comments.md
+    - 'Variables, identifiers and data types': variables.md
+    - 'Constants and literals': constants.md
+    - 'The printf() C library function': printf.md
+    - 'Operators': operators.md
+    - 'Expressions and statements': expressions.md
+    - 'Decision making': making_decisions.md
+    - 'Loops': loops.md
+    - 'Functions': functions.md
+    - 'Storage classes': storage_classes.md
+    - 'Arrays': arrays.md
+    - 'Pointers': pointers.md
+    - 'Function pointers': function_pointers.md
+    - 'Structures': structures.md
+    - 'Bit fields': bit_fields.md
+    - 'Peripheral access using CMSIS': peripheral_access.md
+    - 'Unions': unions.md
+    - 'Enumerations': enums.md
+    - 'Macros': macros.md
     - 'Further reading': further_reading.md
 theme: readthedocs
 use_directory_urls: false
