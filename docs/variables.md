@@ -75,7 +75,7 @@ C provides various data types. Normally, you would use:
 
 ### Size and alignment of basic data types in Arm C/C++
 
-|ANSI C Type        | <stdint.h> C Type  | Size in bits | Natural alignment in bytes | Range of values|
+|ANSI C Type        | stdint.h C Type  | Size in bits | Natural alignment in bytes | Range of values|
 |------------------|------------------------|:------------:|:--------------------------:|:---------------|
 char               | uint8_t                | 8            | 1 (byte-aligned)           | 0 to 255 (unsigned) by default.
 signed char        |  int8_t                | 8            | 1 (byte-aligned)           | -128 to 127
