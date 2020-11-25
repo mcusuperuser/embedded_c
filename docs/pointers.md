@@ -2,7 +2,7 @@
 
 What is a pointer?
 
-Many books will teach you that a pointer points to something, but this is not true:
+Often, you will read that a pointer points to something, but this is not true:
 
 > A pointer is a variable that contains the memory address of another variable.
 
@@ -18,29 +18,30 @@ information into and out of a function (remember that a function can only return
 
 ## Pointer declaration
 
-You declare a pointer just like any other variable:
+You declare a pointer just like any other variable. Adding a `*` make a variable a pointer. The `*` can be anywhere between the `type` and the `name`:
 
 **Syntax**
 ```c
-type *name;
+type*  name; // All these expressions are equivalent.
+type * name; // For better readability, you should stick
+type  *name; // to one version throughout your code.
 ```
 
 *Note*
 
 - `type` can be any C type (such as `char`, `int`, or `float` for example).
 - `name` is the name of the pointer variable.
-- The `*` makes the variable a pointer.
 - Pointers are usually described as "a pointer to `type`"
 
 **Code example**
 ```c
-int *myPointer        // declares a pointer named myPointer as an integer type
+int *myPointer                // Declares a pointer named myPointer as an integer type
 
-float *myOtherPointer // declares a pointer named myOtherPointer as a float type
+float *myOtherPointer         // Declares a pointer named myOtherPointer as a float type
 
-myPointer = &myIntVar;        // assigns the memory address of myIntVar to myPointer
+myPointer = &myIntVar;        // Assigns the memory address of myIntVar to myPointer
 
-myOtherPointer = &myFloatVar; // assigns the memory address of myFloatVar to myOtherPointer
+myOtherPointer = &myFloatVar; // Assigns the memory address of myFloatVar to myOtherPointer
 ```
 
 ### Creating pointer types with typedef
@@ -107,15 +108,15 @@ Consider the following code example. How is this working in an actual design?
 
 **Code example**
 ```c
-int n, m;    // create two integer variables
-int *p;      // create a pointer to an integer variable
+int n, m;    // Create two integer variables
+int *p;      // Create a pointer to an integer variable
 
- n = 0x1234; // assign 0x1234 to n
- m = 0xABCD; // assign 0xABCD to m
- p = &n;     // assign the address of n to p
-*p = 0x4321; // assign 0x4321 to n using *p
- p = &m;     // assign the address of m to p
-*p = 0xDCBA; // assign 0xDCBA to m using *p
+ n = 0x1234; // Assign 0x1234 to n
+ m = 0xABCD; // Assign 0xABCD to m
+ p = &n;     // Assign the address of n to p
+*p = 0x4321; // Assign 0x4321 to n using *p
+ p = &m;     // Assign the address of m to p
+*p = 0xDCBA; // Assign 0xDCBA to m using *p
 ```
 
 Zero-initialized RAM at program start: 
@@ -157,8 +158,8 @@ To initialize the pointer to the array, you can use three different (equal) meth
 
 **Code example**
 ```c
-p = a;     // works only for arrays, as the array name (here: a) is the same as the address of its first element; Arm compiler will not complain
-p = &a;    // works for arrays and variabls alike, but in case of an array, the Arm compiler will issue a warning
+p = a;     // Works only for arrays, as the array name (here: a) is the same as the address of its first element; Arm compiler will not complain
+p = &a;    // Works for arrays and variabls alike, but in case of an array, the Arm compiler will issue a warning
 p = &a[0]; // safe way to point to the first element; compiler will not complain 
 ```
 
@@ -166,8 +167,8 @@ To move to the next element of the array, simply increment the pointer:
 
 **Code example**
 ```c
-p++;     // moves the pointer to the next element of the array
-p--;      // moves the pointer to the previous element of the array
+p++; // Moves the pointer to the next element of the array
+p--; // Moves the pointer to the previous element of the array
 ```
 
 *Note*

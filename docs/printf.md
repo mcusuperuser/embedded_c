@@ -51,7 +51,7 @@ m = 7
 
 Special characters (also called escape sequences) are used to display non-printing or hard-to-print characters. These characters control how text is positioned in the output. We have seen the `\n` example for a *newline*.
 
-A list of escape sequences can be found in the chapter [Constants and literals](15.md#string-literals)
+A list of escape sequences can be found in the chapter [Constants and literals](constants.md#string-literals)
 
 *Note*
 
