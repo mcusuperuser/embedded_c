@@ -4,7 +4,6 @@
  
 #include "RTE_Components.h"     // Component selection
 #include CMSIS_device_header    // Device header file (actually not required in this project)
-#include <stdio.h>              // Required for printf() function
 
 /*----------------------------------------------------------------------------
  * Constants
@@ -17,14 +16,14 @@ const int CONST2 = 0x42;
  * Variables
  *---------------------------------------------------------------------------*/
  
-uint8_t   cVar1 = 48;      // stdint.h type for unsigned char
-uint8_t   cVar2 = 72;      // stdint.h type for unsigned char
-float     fVar1 = 3.14159;
-float     fVar2 = 8.85418;
-int32_t   iVar1 = 200;     // stdint.h type for int
-int32_t   iVar2 = 2000;    // stdint.h type for int
-uint32_t  uVar1 = 4000;    // stdint.h type for unsigned int
-uint32_t  uVar2 = 8000;    // stdint.h type for unsigned int
+volatile uint8_t   cVar1 = 48;      // stdint.h type for unsigned char
+volatile uint8_t   cVar2 = 72;      // stdint.h type for unsigned char
+volatile float     fVar1 = 3.14159;
+volatile float     fVar2 = 8.85418;
+volatile int32_t   iVar1 = 200;     // stdint.h type for int
+volatile int32_t   iVar2 = 2000;    // stdint.h type for int
+volatile uint32_t  uVar1 = 4000;    // stdint.h type for unsigned int
+volatile uint32_t  uVar2 = 8000;    // stdint.h type for unsigned int
 
 /*-----------------------------------------------------------------------------
  *  Function prototypes
@@ -50,6 +49,8 @@ int main(void) {
   // 3. Subtract iVars
 	iVar1 = iVar1 - iVar2;  // Subtraction operator
   
+  iVar1 -= iVar2;         // Compound assignment operator
+  
   // 4. Decrement iVar2
   iVar2 = iVar2 - 1;      // Subtraction operator
 
@@ -72,10 +73,10 @@ int main(void) {
   // 2. Bitwise AND
  	uVar1 &= CONST1;        // Bitwise AND operation
 
-  // 3. Bitwise AND
+  // 3. Bitwise exclusive OR
 	uVar2 ^= CONST2;        // Bitwise exclusive OR operation
 
-  // 4. Bitwise AND
+  // 4. Bitwise inclusive OR
 	uVar2 |= CONST2;        // Bitwise inclusive OR operation
 
   // Making decisions
@@ -85,9 +86,22 @@ int main(void) {
   // 2. Comma operator
 	uVar2 = (cVar1++ , cVar2++);
 
+  // Making decisions using if, else if, else...
+  // 1. Evaluating two conditions
+	if((iVar2 >= iVar1) && (fVar2 >= fVar1)) {
+    uVar1++;              // Increment uVar1
+	}
+  
+  // 2. Continue
+	else if (cVar1 > 42) {
+		uVar2--;              // Decrement uVar2
+	}
+
+  // 3. Continue
+	else {
+		fVar2 = 1.11;         // Set fVar2 equal to 1.11
+	}
+
   // Endless loop
-  while(1) {
-    uVar2++;                       // Increment uVar2
-//    printf("Variable uVar2 is %d\n", uVar2);
-  }
+  while(1);
 }
