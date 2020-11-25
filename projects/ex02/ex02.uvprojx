@@ -16,7 +16,7 @@
         <TargetCommonOption>
           <Device>ARMCM3</Device>
           <Vendor>ARM</Vendor>
-          <PackID>ARM.CMSIS.5.7.0-dev6</PackID>
+          <PackID>ARM.CMSIS.5.7.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x00020000) IROM(0x00000000,0x00040000) CPUTYPE("Cortex-M3") CLOCK(12000000) ESEL ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -457,9 +457,6 @@
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>
-        </Group>
-        <Group>
-          <GroupName>::Compiler</GroupName>
         </Group>
         <Group>
           <GroupName>::Device</GroupName>
@@ -479,7 +476,7 @@
         <TargetCommonOption>
           <Device>ARMCM3</Device>
           <Vendor>ARM</Vendor>
-          <PackID>ARM.CMSIS.5.7.0-dev6</PackID>
+          <PackID>ARM.CMSIS.5.7.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x00020000) IROM(0x00000000,0x00040000) CPUTYPE("Cortex-M3") CLOCK(12000000) ESEL ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -920,9 +917,6 @@
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>
-        </Group>
-        <Group>
-          <GroupName>::Compiler</GroupName>
         </Group>
         <Group>
           <GroupName>::Device</GroupName>
@@ -944,22 +938,15 @@
           <targetInfo name="Finished"/>
         </targetInfos>
       </component>
-      <component Cclass="Device" Cgroup="Startup" Cvariant="C Startup" Cvendor="ARM" Cversion="2.0.2" condition="ARMCM3 CMSIS">
-        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.7.0-dev6"/>
+      <component Cclass="Device" Cgroup="Startup" Cvariant="C Startup" Cvendor="ARM" Cversion="2.0.3" condition="ARMCM3 CMSIS">
+        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.7.0"/>
         <targetInfos>
           <targetInfo name="Empty"/>
           <targetInfo name="Finished"/>
         </targetInfos>
       </component>
-      <component Cbundle="ARM Compiler" Cclass="Compiler" Cgroup="I/O" Csub="STDOUT" Cvariant="ITM" Cvendor="Keil" Cversion="1.2.0" condition="ARMCC Cortex-M with ITM">
-        <package name="ARM_Compiler" schemaVersion="1.4.9" url="http://www.keil.com/pack/" vendor="Keil" version="1.6.2"/>
-        <targetInfos>
-          <targetInfo name="Empty"/>
-          <targetInfo name="Finished"/>
-        </targetInfos>
-      </component>
-      <component Cclass="Utils" Cgroup="embedded_c" Cvendor="mcusuperuser" Cversion="1.0.0" condition="Arm-Core">
-        <package license="License.txt" name="embedded_c" schemaVersion="1.6.0" vendor="mcusuperuser" version="0.0.1-alpha"/>
+      <component Cclass="Utils" Cgroup="embedded_c" Cvendor="mcusuperuser" Cversion="1.0.0" condition="CM-Core">
+        <package license="LICENSE.txt" name="embedded_c" schemaVersion="1.6.0" url="https://raw.githubusercontent.com/mcusuperuser/embedded_c/master/pack/" vendor="mcusuperuser" version="0.0.5-alpha"/>
         <targetInfos>
           <targetInfo name="Empty"/>
           <targetInfo name="Finished"/>
@@ -969,17 +956,17 @@
     <files>
       <file attr="config" category="linkerScript" condition="ARMCC6" name="Device\ARM\ARMCM3\Source\ARM\ARMCM3_ac6.sct" version="1.0.0">
         <instance index="0">RTE\Device\ARMCM3\ARMCM3_ac6.sct</instance>
-        <component Cclass="Device" Cgroup="Startup" Cvariant="C Startup" Cvendor="ARM" Cversion="2.0.2" condition="ARMCM3 CMSIS"/>
-        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.7.0-dev6"/>
+        <component Cclass="Device" Cgroup="Startup" Cvariant="C Startup" Cvendor="ARM" Cversion="2.0.3" condition="ARMCM3 CMSIS"/>
+        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.7.0"/>
         <targetInfos>
           <targetInfo name="Empty"/>
           <targetInfo name="Finished"/>
         </targetInfos>
       </file>
-      <file attr="config" category="sourceC" name="Device\ARM\ARMCM3\Source\startup_ARMCM3.c" version="2.0.2">
+      <file attr="config" category="sourceC" name="Device\ARM\ARMCM3\Source\startup_ARMCM3.c" version="2.0.3">
         <instance index="0">RTE\Device\ARMCM3\startup_ARMCM3.c</instance>
-        <component Cclass="Device" Cgroup="Startup" Cvariant="C Startup" Cvendor="ARM" Cversion="2.0.2" condition="ARMCM3 CMSIS"/>
-        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.7.0-dev6"/>
+        <component Cclass="Device" Cgroup="Startup" Cvariant="C Startup" Cvendor="ARM" Cversion="2.0.3" condition="ARMCM3 CMSIS"/>
+        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.7.0"/>
         <targetInfos>
           <targetInfo name="Empty"/>
           <targetInfo name="Finished"/>
@@ -993,8 +980,8 @@
       </file>
       <file attr="config" category="sourceC" name="Device\ARM\ARMCM3\Source\system_ARMCM3.c" version="1.0.1">
         <instance index="0">RTE\Device\ARMCM3\system_ARMCM3.c</instance>
-        <component Cclass="Device" Cgroup="Startup" Cvariant="C Startup" Cvendor="ARM" Cversion="2.0.2" condition="ARMCM3 CMSIS"/>
-        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.7.0-dev6"/>
+        <component Cclass="Device" Cgroup="Startup" Cvariant="C Startup" Cvendor="ARM" Cversion="2.0.3" condition="ARMCM3 CMSIS"/>
+        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.7.0"/>
         <targetInfos>
           <targetInfo name="Empty"/>
           <targetInfo name="Finished"/>
