@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Storage classes on Embedded C for Arm Cortex-M Microcontrollers</title>
+    <link>https://mcusuperuser.github.io/storage/</link>
+    <description>Recent content in Storage classes on Embedded C for Arm Cortex-M Microcontrollers</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 23 Dec 2020 16:07:26 +0100</lastBuildDate><atom:link href="https://mcusuperuser.github.io/storage/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduction</title>
+      <link>https://mcusuperuser.github.io/storage/introduction/</link>
+      <pubDate>Wed, 23 Dec 2020 22:30:52 +0100</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/storage/introduction/</guid>
+      <description>In C, four storage classes are available:
+ Automatic Static External Register  Syntax
+storage_class type identifier; </description>
+    </item>
+    
+    <item>
+      <title>Auto variables</title>
+      <link>https://mcusuperuser.github.io/storage/auto/</link>
+      <pubDate>Wed, 23 Dec 2020 22:28:32 +0100</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/storage/auto/</guid>
+      <description>The default storage class for all variables declared inside a function or a block is auto. Auto variables can be only accessed within the block/function they have been declared and not outside them. To access them outside their scope, use a pointer to the very exact memory location where the variables resides. They are assigned a garbage value by default whenever they are declared. As auto is the default, the keyword auto is rarely used.</description>
+    </item>
+    
+    <item>
+      <title>Static variables</title>
+      <link>https://mcusuperuser.github.io/storage/static/</link>
+      <pubDate>Wed, 23 Dec 2020 22:28:37 +0100</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/storage/static/</guid>
+      <description>Variables declared as static preserve their value even after they are out of their scope, as they are given a permanent address in memory. They are created/initialized once when the program starts and are only destroyed when the program ends! Their scope is local to the function to which they were defined. Global static variables can be accessed anywhere in the program. By default, they are assigned the value 0 by the compiler.</description>
+    </item>
+    
+    <item>
+      <title>Extern variables</title>
+      <link>https://mcusuperuser.github.io/storage/extern/</link>
+      <pubDate>Wed, 23 Dec 2020 22:28:42 +0100</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/storage/extern/</guid>
+      <description>The extern storage class keyword tells the compiler that the variable is defined elsewhere and will be used in the current scope. Thus, it still needs to be declared within the current scope.
+A variable declared as extern outside of any function is used to indicate that the variable is defined in another source file. Memory is only allocated for it when it&amp;rsquo;s defined.
+Code example main.c
+extern int a; int main (void) { a = 23; .</description>
+    </item>
+    
+    <item>
+      <title>Register variables</title>
+      <link>https://mcusuperuser.github.io/storage/register/</link>
+      <pubDate>Wed, 23 Dec 2020 22:28:48 +0100</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/storage/register/</guid>
+      <description>This storage class declares register variables which have the same functionality as auto variables. The only difference is that the Arm compiler v5 tries to store these variables in a register of the Arm Cortex-M core if a free register is available. This accelerates the access to the register variables. Arm compiler v6 ignores this keyword.</description>
+    </item>
+    
+    <item>
+      <title>Scope of functions</title>
+      <link>https://mcusuperuser.github.io/storage/scope/</link>
+      <pubDate>Wed, 23 Dec 2020 22:28:53 +0100</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/storage/scope/</guid>
+      <description>The scope of a function depends on it storage class, which can be either static or external. The scope of a function is either local to the file where it is defined - in case of a static function - or globally available to any file in a project - in case of an external function.
+By default, functions have a global scope within a project. The extern keyword is not required, but a function prototype in the calling file (or a header file).</description>
+    </item>
+    
+  </channel>
+</rss>

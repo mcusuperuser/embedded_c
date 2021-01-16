@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bitfields on Embedded C for Arm Cortex-M Microcontrollers</title>
+    <link>https://mcusuperuser.github.io/bitfields/</link>
+    <description>Recent content in Bitfields on Embedded C for Arm Cortex-M Microcontrollers</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 23 Dec 2020 16:08:03 +0100</lastBuildDate><atom:link href="https://mcusuperuser.github.io/bitfields/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Using bit fields</title>
+      <link>https://mcusuperuser.github.io/bitfields/using/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/bitfields/using/</guid>
+      <description>Syntax
+struct structName { unsigned int memberName1: bitWidth; ... unsigned int memberNamen: bitWidth; } Code example
+// bit field struct may be celared normally or as a typedef typedef struct { unsigned int x:10; unsigned int y:20; } myBits; Using bit fields Code example
+struct myByteBits { unsigned int volts: 1; unsigned int amps: 1; unsigned int ohm: 1; unsigned int humid: 3; unsigned int temp: 2; } a; int main (void) { a.</description>
+    </item>
+    
+  </channel>
+</rss>

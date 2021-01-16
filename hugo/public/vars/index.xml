@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Variables, identifiers, and data types on Embedded C for Arm Cortex-M Microcontrollers</title>
+    <link>https://mcusuperuser.github.io/vars/</link>
+    <description>Recent content in Variables, identifiers, and data types on Embedded C for Arm Cortex-M Microcontrollers</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 23 Dec 2020 16:05:03 +0100</lastBuildDate><atom:link href="https://mcusuperuser.github.io/vars/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Variables</title>
+      <link>https://mcusuperuser.github.io/vars/variables/</link>
+      <pubDate>Wed, 23 Dec 2020 16:41:49 +0100</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/vars/variables/</guid>
+      <description>A variable is a kind of bucket that you can use to hold program data.
+Variable declarations consist of a data type and a unique identifier (name).
+Code example
+int myVar; myVar = 42; The data type determines the size of the memory location that is used to store the variable and determines how the value of the variable is interpreted.
+Code example
+int myVar; char myLetter; float myFLoat, </description>
+    </item>
+    
+    <item>
+      <title>Identifiers</title>
+      <link>https://mcusuperuser.github.io/vars/identifiers/</link>
+      <pubDate>Wed, 23 Dec 2020 16:41:55 +0100</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/vars/identifiers/</guid>
+      <description> Valid characters in identifiers are &amp;lsquo;_&amp;rsquo;, &amp;lsquo;a&amp;rsquo; to &amp;lsquo;z&amp;rsquo;, &amp;lsquo;A&amp;rsquo; to &amp;lsquo;Z&amp;rsquo;, and &amp;lsquo;0&amp;rsquo; to &amp;lsquo;9&amp;rsquo; (not allowed for the first character). Identifiers are case sensitive, so myVar is not the same as myvar! You must not use keywords of the C language as identifiers. The Arm compiler provides additional keywords that are extensions to the C/C++ standards and must also not be used as identifiers.  ANSI C keywords             auto break case char const   continue default do double else   enum extern float for goto   if int long register return   short signed sizeof static struct   switch typedef union unsigned void   volatile while       Arm compiler 5 keywords and operators           __align __int64 __svc   __ALIGNOF__ __INTADDR__ __svc_indirect   __asm __irq __svc_indirect_r7   __declspec __packed __value_in_regs   __forceinline __pure __weak   __global_reg __softfp __writeonly   __inline __smc     Arm compiler 6 (armclang) keywords and operators            __alignof__ __asm __declspec __inline    </description>
+    </item>
+    
+    <item>
+      <title>Datatypes</title>
+      <link>https://mcusuperuser.github.io/vars/datatypes/</link>
+      <pubDate>Wed, 23 Dec 2020 16:42:03 +0100</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/vars/datatypes/</guid>
+      <description>C provides various data types. Normally, you would use:
+ int for most variables and things that you can count, such as loop counts, events, and apples char for characters and strings float for measurable things that require decimal numbers, such as distance, temperature, or voltage uint32_t for bit manipulations, especially on 32-bit registers The appropriate &amp;lt;stdint.h&amp;gt;/&amp;lt;arm_math.h&amp;gt; types for storing and working with data explicitly meeting your needs (for example if you require that an integer has exactly N bits)  Size and alignment of basic data types in Arm C/C++    ANSI C Type stdint.</description>
+    </item>
+    
+    <item>
+      <title>Declaring variables</title>
+      <link>https://mcusuperuser.github.io/vars/declaring/</link>
+      <pubDate>Wed, 23 Dec 2020 16:49:55 +0100</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/vars/declaring/</guid>
+      <description>Syntax
+type identifier1, identifier2, ..., identifiern;  Variables must be declared before they can be used The type is important! It tells the compiler how much memory space to allocate and how handle the values  char myFirstLetter; int a, b, c; float currentSpeed; double sensorValue; There are multiple ways to declare a variable:
+Declaration on a single line
+type name; Declaration on a single line with an initial value</description>
+    </item>
+    
+  </channel>
+</rss>

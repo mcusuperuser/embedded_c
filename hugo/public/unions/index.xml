@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Unions on Embedded C for Arm Cortex-M Microcontrollers</title>
+    <link>https://mcusuperuser.github.io/unions/</link>
+    <description>Recent content in Unions on Embedded C for Arm Cortex-M Microcontrollers</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://mcusuperuser.github.io/unions/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduction</title>
+      <link>https://mcusuperuser.github.io/unions/introduction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/unions/introduction/</guid>
+      <description>A union allows the same memory location to be used for different data types. The amount of memory that is allocated for the union is determined by its largest member. This saves space, especially for large structures where the programmer can be sure that the same members never occur at the same time.
+Unions:
+ may contain any number of members which may be of any data type. are as large as their largest member.</description>
+    </item>
+    
+    <item>
+      <title>Creating unions with typedefs</title>
+      <link>https://mcusuperuser.github.io/unions/creating/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/unions/creating/</guid>
+      <description>Syntax
+typedef union unionTag { type1 memberName1; ... typen memberNamen; } typeName; Code example
+// Union type to access the Application Program Status Register (APSR). typedef union { struct { uint32_t _reserved0:27; // bit: 0..26 Reserved  uint32_t Q:1; // bit: 27 Saturation condition flag  uint32_t V:1; // bit: 28 Overflow condition code flag  uint32_t C:1; // bit: 29 Carry condition code flag  uint32_t Z:1; // bit: 30 Zero condition code flag  uint32_t N:1; // bit: 31 Negative condition code flag  } b; // Structure used for bit access  uint32_t w; // Type used for word access } APSR_Type; </description>
+    </item>
+    
+    <item>
+      <title>Unions in memory</title>
+      <link>https://mcusuperuser.github.io/unions/inmemory/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/unions/inmemory/</guid>
+      <description>Union variables may be declared exactly like structure variables. The big difference is that only memory is allocated to accommodate the union’s largest member. For a structure, memory is allocated to accommodate for the whole structure.
+Code example
+typedef union { uint8_t m; uint16_t n; uint32_t l; } myUnion; myUnion univar; </description>
+    </item>
+    
+    <item>
+      <title>Unions vs. structures</title>
+      <link>https://mcusuperuser.github.io/unions/vsstructures/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/unions/vsstructures/</guid>
+      <description>Unions allow viewing and manipulating the same memory location using different data types. Structures enable the grouping of multiple data types and while accessing them individually.</description>
+    </item>
+    
+  </channel>
+</rss>

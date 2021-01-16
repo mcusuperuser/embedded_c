@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Operators on Embedded C for Arm Cortex-M Microcontrollers</title>
+    <link>https://mcusuperuser.github.io/operators/</link>
+    <description>Recent content in Operators on Embedded C for Arm Cortex-M Microcontrollers</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 23 Dec 2020 16:06:45 +0100</lastBuildDate><atom:link href="https://mcusuperuser.github.io/operators/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Arithmetic operators</title>
+      <link>https://mcusuperuser.github.io/operators/arithmetic/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/operators/arithmetic/</guid>
+      <description>Arithmetic operators are used to perform arithmetic/mathematical operations on operands. Arithmetic operators are of two distinct types:
+ Binary Operators work on two operands: +, -, *, /, % Unary Operators work on a single operand: +, -, ++, &amp;ndash;     Operator Operation Example Result     * Multiplication a * b Product of a and b   / Division a / b Quotient of a and b   % Modulo a % b Remainder of a divided by b   + Addition a + b Sum of a and b   - Subtraction a - b Difference of a and b   - (unary) Negative -a Negative value of a   + (unary) Positive +a Value of a    Division operator If both operands are of an integer type, the result will be an integer type as well (valid for int and char).</description>
+    </item>
+    
+    <item>
+      <title>Assignment operators</title>
+      <link>https://mcusuperuser.github.io/operators/assignment/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/operators/assignment/</guid>
+      <description>Assignment operators are binary operators that modify the variable to their left using the value to their right, or in other words, they assign a value to a variable.
+There are two types of assignment operators available:
+Simple assignments Syntax
+variable = expression
+The expression is evaluated and the result is assigned to the variable.
+Compound assignments Syntax
+variable = variable operator expression
+The variable is modified using the operator and the expression and the result is assigned to the variable.</description>
+    </item>
+    
+    <item>
+      <title>Relational operators</title>
+      <link>https://mcusuperuser.github.io/operators/relational/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/operators/relational/</guid>
+      <description>Relational operators are binary operators that test a condition and return 1 if that condition is logically true and 0 if that condition is false.
+   Operator Operation Example Result (FALSE = 0, TRUE = 1)     == Equal to a == b 1 if a equal to b, else 0   != Not equal to a != b 1 if a not equal to b, else 0   &amp;gt; Greater than a &amp;gt; b 1 if a greater than b, else 0   &amp;gt;= Greater than or equal to a &amp;gt;= b 1 if a greater than or equal to b, else 0   &amp;lt; Less than a &amp;lt; b 1 if a less than b, else 0   &amp;lt;= Less than or equal to a &amp;lt;= b 1 if a less than or equal to b, else 0    Note</description>
+    </item>
+    
+    <item>
+      <title>Logical operators</title>
+      <link>https://mcusuperuser.github.io/operators/logical/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/operators/logical/</guid>
+      <description>Logical operators apply standard boolean algebra operations to their operands.
+   Operator Operation Example Result     ! Logical NOT !a 1 if a = 0, else 0   &amp;amp;&amp;amp; Logical AND a &amp;amp;&amp;amp; b 1 if both a ≠ 0 and b ≠ 0, else 0   || Logical OR a || b 0 if both a = 0 and b = 0, else 1    </description>
+    </item>
+    
+    <item>
+      <title>Bitwise operators</title>
+      <link>https://mcusuperuser.github.io/operators/bitwise/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/operators/bitwise/</guid>
+      <description>Bitwise operators apply the operation to each bit of the first operand with each corresponding bit of the second operand.
+   Operator Operation Example Result     ~ Bitwise NOT ~a 1, if 0 in a; 0, if 1 in a   &amp;amp; Bitwise AND a &amp;amp; b 1, if 1 in both a and b; 0, if 0 in a or b or both   | Bitwise OR a | b 1, if 1 in a or b or both; 0, if 0 in both a and b   ^ Bitwise XOR a ^ b 1, if 1 in a or b but not both; 0, if 0 or 1 in both a and b    The bitwise NOT is also known as &amp;ldquo;One&amp;rsquo;s complement&amp;rdquo;.</description>
+    </item>
+    
+    <item>
+      <title>Shift operators</title>
+      <link>https://mcusuperuser.github.io/operators/shift/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/operators/shift/</guid>
+      <description>Operator Operation Example Result     &amp;lt;&amp;lt; Bitwise left shift a &amp;lt;&amp;lt; b Shift a by b bits to the left   &amp;gt;&amp;gt; Bitwise right shift a &amp;gt;&amp;gt; b Shift a by b bits to the right    Bits that are shifted out are lost (in both cases).
+For shift left, 0&amp;rsquo;s are shifted in (zero fill).
+Code example
+// Logical shift right (zero fill) // If a is unsigned: unsigned char a; a = 250; // a = 0b11111010 = 250 b = a &amp;gt;&amp;gt; 2; // b = 0b00111110 = 62  // Arithmetic shift right (sign extend) // If a is signed: char a; a = -6; // a = 0b11111010 = -6 b = a &amp;gt;&amp;gt; 2; // b = 0b11111110 = -2 Power of 2 integer divide vs.</description>
+    </item>
+    
+    <item>
+      <title>Memory addressing/member access</title>
+      <link>https://mcusuperuser.github.io/operators/memory/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/operators/memory/</guid>
+      <description>Member access operators allow access to the members of their operands.
+   Operator Operation Example Result     [] Array subscript a[b] access the bth element of array a   * Pointer dereference *a The object or function a points to   &amp;amp; Address of &amp;amp;a Pointer to a   . Member access (struct/union) a.b The member b of struct or union a   -&amp;gt; Member access through pointer a-&amp;gt;b The member b of struct or union pointed to by a    This will become important when talking about arrays, pointers, structs, and unions later.</description>
+    </item>
+    
+    <item>
+      <title>Other operators</title>
+      <link>https://mcusuperuser.github.io/operators/other/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/operators/other/</guid>
+      <description>Operator Operation Example Result     (...) Function call f(...) Calls the function f(), with specified arguments   , Comma operator a, b Evaluates a then b, else result is value of b   (type) Type cast (type)a Casts the type of a to type   ? : Conditional operator a ? b : c The value of b if a is true, else value of c   sizeof Sizeof operator sizeof a The size in bytes of a    The conditional operator Syntax</description>
+    </item>
+    
+    <item>
+      <title>Operator precedence</title>
+      <link>https://mcusuperuser.github.io/operators/precedence/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/operators/precedence/</guid>
+      <description>The following table lists the precedence and associativity of C operators. Operators are listed top to bottom, in descending precedence. Conflicts between operators with the same precedence are handled via the rules of associativity.
+   Precedence Operator Description Associativity     1 ++ -- Suffix/postfix increment and decrement Left-to-right    () Function call     [] Array subscripting     .</description>
+    </item>
+    
+  </channel>
+</rss>

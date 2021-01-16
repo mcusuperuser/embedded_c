@@ -1,0 +1,729 @@
+[
+{
+	"uri": "https://mcusuperuser.github.io/arrays/introduction/",
+	"title": "Introduction",
+	"tags": [],
+	"description": "",
+	"content": "Arrays may contain any number of elements which must be of the same type. The array index is zero based and the size of the array (number of elements) must be specified at the array declaration.\nSyntax\ntype arrayIdentifier[size]; The size refers to the number of elements and must be a constant integer.\nCode example\nint n[100]; // an array that holds 100 integer values  char c[26]; // an array that holds 26 characters Arrays may be initialized when declared using a list:\nSyntax\ntype arrayIdentifier[size] = {item1, ..., itemsize-1}; All items must match the type of the array.\nCode example\nint n[3] = {1, 2, 3}; char c[3] = {\u0026#39;A\u0026#39;, \u0026#39;B\u0026#39;, \u0026#39;C\u0026#39;}; Arrays are accessed just like variables, but with an additional index value:\nSyntax\narrayIdentifier[index];  The index value may be a variable or constant. The first element of an array has an index of 0. C does not provide any bounds checking, so make sure that you do not try to access values that are not available.  Code example\nint i; int n[10]; // an array that can hold 10 integers  for (i = 0; i \u0026lt; 10; i++) { n[i] = 0; // initialize all array elements to 0 } n[2] = 23; // set third element to 23 \rArrays may be used to store a group of related variables of the same type under a common name. Individual elements are accessed by using the array index in conjunction with the array name.\n\r"
+},
+{
+	"uri": "https://mcusuperuser.github.io/storage/introduction/",
+	"title": "Introduction",
+	"tags": [],
+	"description": "",
+	"content": "In C, four storage classes are available:\n Automatic Static External Register  Syntax\nstorage_class type identifier; "
+},
+{
+	"uri": "https://mcusuperuser.github.io/func/functions/",
+	"title": "Introduction",
+	"tags": [],
+	"description": "",
+	"content": "Functions provide a way to modularize code and make it easier to maintain. Also, functions promote code reuse.\nAll C programs have one (at least the main() function is required) or more functions.\nFunctions can accept parameters from the code that calls them.\nFunctions usually return a single value.\nFunctions help to organize a program into logical, manageable segments.\n\rSyntax\ntype identifier (type1 arg1, type2 arg2, ..., typen argn) { declarations // body  statements // body  return expression; // body } Where:\n type is the data type of the return expression. identifier is the name of the function. type1 arg1, type2 arg2, ..., typen argn is the parameter list which is optional. expression is the (optional) return value. the body is also optional.  "
+},
+{
+	"uri": "https://mcusuperuser.github.io/loops/for/",
+	"title": "For loop",
+	"tags": [],
+	"description": "",
+	"content": "A for loop checks the loop condition at the top and automatically executes the iterator at the bottom of the loop.\nSyntax\nfor (expression1; expression2; expression 3) statement The expression1 initializes the loop count variable once (e.g. n= 0). The expression2 is the test condition. The loop will continue while this is true (e.g. n \u0026lt;= 10). The expression3 is executed at the end of each iteration; usually to modify the loop count variable (e.g. n++).\nNote\n Any or all of the three expressions may be left blank (semicolons must remain) If expression1 or expression3 are missing, their actions simply disappear If expression2 is missing, it is assumed to always be true  Code example\nint n; for (n = 0; n \u0026lt; 5; n++ ) { printf(\u0026#34;Loop iteration %d\\n\u0026#34;, n); } Output\nLoop iteration 0 Loop iteration 1 Loop iteration 2 Loop iteration 3 Loop iteration 4 Infinite for loops A for loop without any expressions will execute indefinitely. You can only leave the loop using the break statement.\nCode example\nfor (;;) { // run forever } "
+},
+{
+	"uri": "https://mcusuperuser.github.io/decisions/boolean/",
+	"title": "Boolean expressions",
+	"tags": [],
+	"description": "",
+	"content": "C (unlike C++) does not have a boolean data type. As shown in the table in chapter Data types, you can use _Bool for that. But the usual convention is that any boolean expression returns integer values:\n 0 if an expression evaluates as FALSE non-zero if it evaluates as TRUE (usually 1, but this is not guaranteed)  Code example\nint main (void) { int a = 3, b, c; c = (a \u0026gt; 2); // c = 1 (TRUE)  b = (a \u0026lt; 1); // b = 0 (FALSE) } Express it differently Expressions can be written in different ways which all lead to the same result (are evaluated similarly). Laziness drives programmers to usually use the first method of the following example:\nCode example\n#define BUTTONPRESSED 1  int main (void) { if (BUTTONPRESSED) // do something  if (BUTTONPRESSED != 0) // do something else } "
+},
+{
+	"uri": "https://mcusuperuser.github.io/exprstat/expression/",
+	"title": "Expression statements",
+	"tags": [],
+	"description": "",
+	"content": "An expression statement is an expression followed by a semicolon (;). The execution of the statements causes the expression to be evaluated.\nCode example\na = 0; a++; b = 3 + c; y = (a * x) + b; printf(\u0026#34;Speed = %f\u0026#34;, x); ; // the semicolon itself is an expression "
+},
+{
+	"uri": "https://mcusuperuser.github.io/constlit/constants/",
+	"title": "Constants",
+	"tags": [],
+	"description": "",
+	"content": "Constants, as the name implies, never change their value which makes development changes easy and eliminates the use of \u0026ldquo;magic numbers\u0026rdquo;.\nSyntax\nThere are two ways to declare a constant:\n#define identifierName value  const type identifierName value;  The identifierName is the constant, while the value is the literal. The first way is very efficient for an embedded system, as it does not consume any memory in the microcontroller. Using the #define, you declare a text substitution label, which means that each instance of identifierName will be replaced with value by the preprocessor unless identifierName is inside a string. A #define is never terminated with a ';', unless you want that semicolon to be part of the substitution. The second way allocates a variable in program memory, but it cannot be changed due to the const keyword. While this is inefficient for normal constants, it is a good way to save lookup tables in Flash memory for example.  "
+},
+{
+	"uri": "https://mcusuperuser.github.io/vars/variables/",
+	"title": "Variables",
+	"tags": [],
+	"description": "",
+	"content": "A variable is a kind of bucket that you can use to hold program data.\nVariable declarations consist of a data type and a unique identifier (name).\nCode example\nint myVar; myVar = 42; The data type determines the size of the memory location that is used to store the variable and determines how the value of the variable is interpreted.\nCode example\nint myVar; char myLetter; float myFLoat, "
+},
+{
+	"uri": "https://mcusuperuser.github.io/comments/",
+	"title": "Comments",
+	"tags": [],
+	"description": "",
+	"content": "Chapter 1 Comments Comments are used to document a program\u0026rsquo;s functionality. They explain what a particular block or line of code does. Comments are always ignored by the compiler. There are two kinds of comments: Block and single line.\n"
+},
+{
+	"uri": "https://mcusuperuser.github.io/peripherals/accessing/",
+	"title": "Accessing peripherals",
+	"tags": [],
+	"description": "",
+	"content": "Each peripheral provides a data type definition with a name that is composed of:\n an optional prefix \u0026lt;device abbreviation\u0026gt;_ \u0026lt;peripheral name\u0026gt; postfix _Type or _TypeDef to identify a type definition.  To access the peripheral registers and related function in a device, the files device.h and core_cm#.h define as a minimum:\n The register layout typedef for each peripheral that defines all register names. RESERVED is used to introduce space into the structure for adjusting the addresses of the peripheral registers.  Code example\ntypedef struct { __IM uint32_t CPUID; /*!\u0026lt; Offset: 0x000 (R/ ) CPUID Base Register */ __IOM uint32_t ICSR; /*!\u0026lt; Offset: 0x004 (R/W) Interrupt Control and State Register */ __IOM uint32_t VTOR; /*!\u0026lt; Offset: 0x008 (R/W) Vector Table Offset Register */ __IOM uint32_t AIRCR; /*!\u0026lt; Offset: 0x00C (R/W) Application Interrupt and Reset Control Register */ __IOM uint32_t SCR; /*!\u0026lt; Offset: 0x010 (R/W) System Control Register */ __IOM uint32_t CCR; /*!\u0026lt; Offset: 0x014 (R/W) Configuration Control Register */ __IOM uint8_t SHP[12U]; /*!\u0026lt; Offset: 0x018 (R/W) System Handlers Priority Registers (4-7, 8-11, 12-15) */ __IOM uint32_t SHCSR; /*!\u0026lt; Offset: 0x024 (R/W) System Handler Control and State Register */ __IOM uint32_t CFSR; /*!\u0026lt; Offset: 0x028 (R/W) Configurable Fault Status Register */ __IOM uint32_t HFSR; /*!\u0026lt; Offset: 0x02C (R/W) HardFault Status Register */ __IOM uint32_t DFSR; /*!\u0026lt; Offset: 0x030 (R/W) Debug Fault Status Register */ __IOM uint32_t MMFAR; /*!\u0026lt; Offset: 0x034 (R/W) MemManage Fault Address Register */ __IOM uint32_t BFAR; /*!\u0026lt; Offset: 0x038 (R/W) BusFault Address Register */ __IOM uint32_t AFSR; /*!\u0026lt; Offset: 0x03C (R/W) Auxiliary Fault Status Register */ __IM uint32_t PFR[2U]; /*!\u0026lt; Offset: 0x040 (R/ ) Processor Feature Register */ __IM uint32_t DFR; /*!\u0026lt; Offset: 0x048 (R/ ) Debug Feature Register */ __IM uint32_t ADR; /*!\u0026lt; Offset: 0x04C (R/ ) Auxiliary Feature Register */ __IM uint32_t MMFR[4U]; /*!\u0026lt; Offset: 0x050 (R/ ) Memory Model Feature Register */ __IM uint32_t ISAR[5U]; /*!\u0026lt; Offset: 0x060 (R/ ) Instruction Set Attributes Register */ uint32_t RESERVED0[5U]; __IOM uint32_t CPACR; /*!\u0026lt; Offset: 0x088 (R/W) Coprocessor Access Control Register */ } SCB_Type; \rIO Type Qualifiers are used to specify the access to peripheral variables:\n\r   IO Type Qualifier Type Description     __IM Struct member Defines \u0026lsquo;read only\u0026rsquo; permissions   __OM Struct member Defines \u0026lsquo;write only\u0026rsquo; permissions   __IOM Struct member Defines \u0026lsquo;read / write\u0026rsquo; permissions   __I Scalar variable Defines \u0026lsquo;read only\u0026rsquo; permissions   __O Scalar variable Defines \u0026lsquo;write only\u0026rsquo; permissions   __IO Scalar variable Defines \u0026lsquo;read / write\u0026rsquo; permissions    The base address for each peripheral (in case of multiple peripherals that use the same register layout typedef multiple base addresses are defined).  Code example\n#define SCS_BASE (0xE000E000UL) // System Control Space Base Address Access definitions for each peripheral. In case of multiple peripherals that are using the same register layout typedef, multiple access definitions exist (UART0, UART2).  Code example\n#define SCB ((SCB_Type *) SCB_BASE) // SCB configuration struct These definitions allow accessing peripheral registers with simple assignments.\nCode example\nSCB-\u0026gt;SCR = 0; For core registers, macros define the position and the mask value for a bit field. Such definitions are often also created for other peripheral registers.  Code example\n/* SCB Interrupt Control State Register Definitions */ #define SCB_ICSR_NMIPENDSET_Pos 31U // SCB ICSR: NMIPENDSET Position #define SCB_ICSR_NMIPENDSET_Msk (1UL \u0026lt;\u0026lt; SCB_ICSR_NMIPENDSET_Pos) // SCB ICSR: NMIPENDSET Mask #define SCB_ICSR_PENDSVSET_Pos 28U // SCB ICSR: PENDSVSET Position #define SCB_ICSR_PENDSVSET_Msk (1UL \u0026lt;\u0026lt; SCB_ICSR_PENDSVSET_Pos) // SCB ICSR: PENDSVSET Mask #define SCB_ICSR_PENDSVCLR_Pos 27U // SCB ICSR: PENDSVCLR Position #define SCB_ICSR_PENDSVCLR_Msk (1UL \u0026lt;\u0026lt; SCB_ICSR_PENDSVCLR_Pos) // SCB ICSR: PENDSVCLR Mask #define SCB_ICSR_PENDSTSET_Pos 26U // SCB ICSR: PENDSTSET Position #define SCB_ICSR_PENDSTSET_Msk (1UL \u0026lt;\u0026lt; SCB_ICSR_PENDSTSET_Pos) // SCB ICSR: PENDSTSET Mask #define SCB_ICSR_PENDSTCLR_Pos 25U // SCB ICSR: PENDSTCLR Position #define SCB_ICSR_PENDSTCLR_Msk (1UL \u0026lt;\u0026lt; SCB_ICSR_PENDSTCLR_Pos) // SCB ICSR: PENDSTCLR Mask #define SCB_ICSR_ISRPREEMPT_Pos 23U // SCB ICSR: ISRPREEMPT Position #define SCB_ICSR_ISRPREEMPT_Msk (1UL \u0026lt;\u0026lt; SCB_ICSR_ISRPREEMPT_Pos) // SCB ICSR: ISRPREEMPT Mask #define SCB_ICSR_ISRPENDING_Pos 22U // SCB ICSR: ISRPENDING Position #define SCB_ICSR_ISRPENDING_Msk (1UL \u0026lt;\u0026lt; SCB_ICSR_ISRPENDING_Pos) // SCB ICSR: ISRPENDING Mask #define SCB_ICSR_VECTPENDING_Pos 12U // SCB ICSR: VECTPENDING Position #define SCB_ICSR_VECTPENDING_Msk (0x1FFUL \u0026lt;\u0026lt; SCB_ICSR_VECTPENDING_Pos) // SCB ICSR: VECTPENDING Mask #define SCB_ICSR_RETTOBASE_Pos 11U // SCB ICSR: RETTOBASE Position #define SCB_ICSR_RETTOBASE_Msk (1UL \u0026lt;\u0026lt; SCB_ICSR_RETTOBASE_Pos) // SCB ICSR: RETTOBASE Mask #define SCB_ICSR_VECTACTIVE_Pos 0U // SCB ICSR: VECTACTIVE Position #define SCB_ICSR_VECTACTIVE_Msk (0x1FFUL \u0026lt;\u0026lt; SCB_ICSR_VECTACTIVE_Pos) // SCB ICSR: VECTACTIVE Mask "
+},
+{
+	"uri": "https://mcusuperuser.github.io/operators/arithmetic/",
+	"title": "Arithmetic operators",
+	"tags": [],
+	"description": "",
+	"content": "Arithmetic operators are used to perform arithmetic/mathematical operations on operands. Arithmetic operators are of two distinct types:\n Binary Operators work on two operands: +, -, *, /, % Unary Operators work on a single operand: +, -, ++, \u0026ndash;     Operator Operation Example Result     * Multiplication a * b Product of a and b   / Division a / b Quotient of a and b   % Modulo a % b Remainder of a divided by b   + Addition a + b Sum of a and b   - Subtraction a - b Difference of a and b   - (unary) Negative -a Negative value of a   + (unary) Positive +a Value of a    Division operator If both operands are of an integer type, the result will be an integer type as well (valid for int and char).\nIf one or both of the operands is a floating point type, the result will be a floating point type (float, double).\nImplicit type conversion When an expression is used in the context where a value of a different type is expected, conversion may occur. In such cases, the type of one operand will be temporarily \u0026ldquo;promoted\u0026rdquo; to the larger type of the other operand. This means that during an operation, the smaller data type will be promoted to the largest one in the expression.\nCode examples\nshort n = -5; -n // promotion to int; result is 5 n * -3L // promotion to long, because -3L is a long; result is 15 7 / n // promotion to int; result is -1 9 % n // promotion to int; result is 4 8.0 / n // promotion to double, because 8.0 is a double; result is -1.6 Increment and decrement Increment/decrement operators are unary operators that increment/decrement the value of a given variable by 1.\n   Operator Operation Example Result     ++ Increment a++ Postfix form: use a and then add 1     ++a Prefix form: add 1 to a and then use a   \u0026ndash; Decrement a-- Postfix form: use a and then subtract 1     --a Prefix form: subtract 1 from a and then use a    Code example\nint n, m; n = 3; // Postfix example m = (n++) + 8; // Result: n = 4, m = 11  // Prefix example m = (++n) + 8; // Result: n = 4, m = 12 "
+},
+{
+	"uri": "https://mcusuperuser.github.io/enums/declaration/",
+	"title": "Enumeration declaration",
+	"tags": [],
+	"description": "",
+	"content": "Enumerations:\n Are unique integer data types May only contain a specified list of values Values are specified as symbolic constants  Syntax\nenum typeName { label0, label1, ..., labeln } \rThe compiler sets label0 = 0, label1 = 1, labeln = n.\n\rCode example\nenum month {JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC}; \rYou can assign a specific value to any label.\nSubsequent labels will increment from that value.\n\rCode example\nenum group {Peter, Paul = 5, Mary}; // label values: Peter = 0, Paul = 5, Mary = 6 "
+},
+{
+	"uri": "https://mcusuperuser.github.io/printf/use/",
+	"title": "How to use printf()",
+	"tags": [],
+	"description": "",
+	"content": "Syntax\nprintf(ControlString, arg1, ..., argn); Everything within the ControlString is printed verbatim except %d\u0026rsquo;s which are replaced by the argument values from the list.\nCode example\nint n = 1, m = 7; printf(\u0026#34;n = %d\\nm = %d\\n\u0026#34;, n, m); The output is:\nn = 1 m = 7 \r%d is the conversion character.\n\\n is a special character.\n\rSee next section for a list of conversion characters.\n"
+},
+{
+	"uri": "https://mcusuperuser.github.io/funcpointers/introduction/",
+	"title": "Introduction",
+	"tags": [],
+	"description": "",
+	"content": "A function pointer is declared much like a function prototype:\nSyntax\nint (*fp) (int a); \rThis is the declaration of a function pointer called fp.\nThe function it points to must take one int parameter and must return an int.\n\rInitialization Initialize a function pointer by setting the pointer name equal to the function name:\nCode example\nint (*fp) (int a); // Function pointer int foo (int a); // Function prototype  // Initialization: fp = foo; // fp points to foo "
+},
+{
+	"uri": "https://mcusuperuser.github.io/unions/introduction/",
+	"title": "Introduction",
+	"tags": [],
+	"description": "",
+	"content": "A union allows the same memory location to be used for different data types. The amount of memory that is allocated for the union is determined by its largest member. This saves space, especially for large structures where the programmer can be sure that the same members never occur at the same time.\nUnions:\n may contain any number of members which may be of any data type. are as large as their largest member. use exactly the same syntax as structures except struct is replaced with union.  Syntax\nunion unionName { type1 memberName1; ... typen memberNamen; } Code example\nunion mixedPickles { char c; int i; float f; } "
+},
+{
+	"uri": "https://mcusuperuser.github.io/pointers/declaration/",
+	"title": "Pointer declaration",
+	"tags": [],
+	"description": "",
+	"content": "As any other variable, you need to declare a pointer. Furthermore, you have to initialize a pointer before you can use it.\nYou declare a pointer just like any other variable:\nSyntax\ntype *name; \rtype can be any C type (such as char, int, or float for example).\nname is the name of the pointer variable.\nThe * makes the variable a pointer.\nPointers are usually described as \u0026ldquo;a pointer to type\u0026rdquo;\n\rCode example\nint *myPointer // declares a pointer named myPointer as an integer type  float *myOtherPointer // declares a pointer named myOtherPointer as a float type  myPointer = \u0026amp;myIntVar; // assigns the memory address of myIntVar to myPointer  myOtherPointer = \u0026amp;myFloatVar; // assigns the memory address of myFloatVar to myOtherPointer Creating pointer types with typedef Syntax\ntypedef type *typeName; Note\n A pointer variable can now be declared as type typeName which is a synonym for type. The * is no longer needed since typeName explicitly identifies the variable as a pointer to type.  Code example\ntypedef int *intPointer; // Create a pointer to int type  intPointer p; // Create pointer to int (without *)  // Equivalent to int *p; Initialization To set a pointer to point to another variable, we use the \u0026amp; operator (address of), and the pointer variable is used without the dereference operator *:\np = \u0026amp;n;\nThis assigns the address of the variable n to the pointer p (p now points to n).\nNote\n p must be declared to point to the type of n (e.g. int n; int *p;).  Usage When accessing the variable pointed to by a pointer, we use the pointer with the dereference operator *:\nm = *p;\nThis assigns to the variable m, the value of what p is pointing to (n from the last example). Using *p, is the same as using the variable it points to (e.g. n).\nIn other words Code example\nint n, *p; // Create an integer variable and a pointer to an integer variable  p = \u0026amp;n; // Assign the address of n to p *p = 3; // Equals to n = 3; In the pointer world:\n \u0026amp;n is a constant pointer which represents the address of n. This address of n will never change. p is a variable pointer to int which can be assigned the address of any int any time. *p represents the data pointed to by p and may be used anywhere you would use n. * is the dereference operator, also called the indirection operator. When declaring a pointer, * is used to indicate that the variable is a pointer rather than an ordinary variable.  Pointers at work Consider the following code example. How is this working in an actual design?\nCode example\nint n, m; // create two integer variables int *p; // create a pointer to an integer variable  n = 0x1234; // assign 0x1234 to n  m = 0xABCD; // assign 0xABCD to m  p = \u0026amp;n; // assign the address of n to p *p = 0x4321; // assign 0x4321 to n using *p  p = \u0026amp;m; // assign the address of m to p *p = 0xDCBA; // assign 0xDCBA to m using *p Zero-initialized RAM at program start: Assign 0x1234 to n: Assign 0xABCD to m: Assign the address of n to p: Assign 0x4321 to n using *p: Assign the address of m to p: Assign 0xDCBA to m using *p: "
+},
+{
+	"uri": "https://mcusuperuser.github.io/macros/simple/",
+	"title": "Simple macros",
+	"tags": [],
+	"description": "",
+	"content": "Macros:\n Are evaluated by the preprocessor Cannot be executed by themselves Are used to control the generation of code before the compilation process Provide valuable shortcuts  Syntax\n#define label text \rEvery instance of label in the current file will be replaced by text.\ntext can be anything you can type into your editor.\nArithmetic expressions are evaluated at compile time.\n\rCode example (system_ARMCM3.c)\n/*---------------------------------------------------------------------------- Define clocks *----------------------------------------------------------------------------*/ #define XTAL (50000000UL) /* Oscillator frequency */#define SYSTEM_CLOCK (XTAL / 2U)  /*---------------------------------------------------------------------------- System Core Clock Variable *----------------------------------------------------------------------------*/ uint32_t SystemCoreClock = SYSTEM_CLOCK; /* System Core Clock Frequency */ "
+},
+{
+	"uri": "https://mcusuperuser.github.io/structs/definition/",
+	"title": "Structure definition",
+	"tags": [],
+	"description": "",
+	"content": "Syntax\nstruct structName { type1 memberName1; // Members are declared just  ... // like odinary variables  typen memberNamen; } "
+},
+{
+	"uri": "https://mcusuperuser.github.io/bitfields/using/",
+	"title": "Using bit fields",
+	"tags": [],
+	"description": "",
+	"content": "Syntax\nstruct structName { unsigned int memberName1: bitWidth; ... unsigned int memberNamen: bitWidth; } Code example\n// bit field struct may be celared normally or as a typedef typedef struct { unsigned int x:10; unsigned int y:20; } myBits; Using bit fields Code example\nstruct myByteBits { unsigned int volts: 1; unsigned int amps: 1; unsigned int ohm: 1; unsigned int humid: 3; unsigned int temp: 2; } a; int main (void) { a.volts = 1; //may contain values from 0 to 1  a.amps = 0; //may contain values from 0 to 1  a.ohm = 0; //may contain values from 0 to 1  a.humid = 0b10; //may contain values from 0 to 7  a.temp = 0x0; //may contain values from 0 to 3 } \rBit fields:\n are ordinary members of a structure. have a specified bit width. are often used in conjunction with unions to provide bit access to a variable without masking operations.  \r"
+},
+{
+	"uri": "https://mcusuperuser.github.io/arrays/multidim/",
+	"title": "Multidimensional arrays",
+	"tags": [],
+	"description": "",
+	"content": "Arrays may have any number of dimensions that are added in the declaration:\nSyntax\ntype arrayIdentifier[size0]...[sizen]; Code example\nint n[3][3]; // 3 x 3 array for 9 integers  float c[10][10][10]; // 10 x 10 x 10 array for 1000 floats Multidimensional arrays are initialized with lists within a list:\nSyntax\ntype arrayIdentifier[size0]...[sizen] = {{item, ..., item}, ... {item, ..., item}}; Code example\nchar c[3][3] = {{\u0026#39;o\u0026#39;,\u0026#39;x\u0026#39;,\u0026#39;o\u0026#39;}, {\u0026#39;x\u0026#39;,\u0026#39;x\u0026#39;,\u0026#39;x\u0026#39;}, {\u0026#39;o\u0026#39;,\u0026#39;x\u0026#39;,\u0026#39;o\u0026#39;}}; int n[2][3][4] = {{{0, 1, 2, 3},{4, 5, 6, 7},{8, 9, 10, 11}}, {{12, 13, 14, 15},{16, 17, 18, 19},{20,21, 22, 23}}}; Visualizing 2-dimensional arrays Visualizing 3-dimensional arrays "
+},
+{
+	"uri": "https://mcusuperuser.github.io/storage/auto/",
+	"title": "Auto variables",
+	"tags": [],
+	"description": "",
+	"content": "The default storage class for all variables declared inside a function or a block is auto. Auto variables can be only accessed within the block/function they have been declared and not outside them. To access them outside their scope, use a pointer to the very exact memory location where the variables resides. They are assigned a garbage value by default whenever they are declared. As auto is the default, the keyword auto is rarely used. Typically, auto variables are created on the stack.\nCode example\nint foo (char n, float m) { // n, m are auto variables  int j, k; // j, k are auto variables } "
+},
+{
+	"uri": "https://mcusuperuser.github.io/func/return/",
+	"title": "Return data type",
+	"tags": [],
+	"description": "",
+	"content": " A function\u0026rsquo;s type must match the type of data in the return expression. A function may have multiple return statements (of the same type), but only one will be executed. The function type is void if the return statement has no expression or is not present at all. This is also known as a procedure function, since nothing is returned. Functions can return any type except arrays and functions. We can get around this limitation by returning a pointer to an array or a pointer to a function.  "
+},
+{
+	"uri": "https://mcusuperuser.github.io/loops/while/",
+	"title": "While loop",
+	"tags": [],
+	"description": "",
+	"content": "A while loop checks the loop condition at the top; you must create the iterator if needed.\nSyntax\nwhile (expression) statement If the expression is true, the statement will be executed. Afterwards, the expression will be reevaluated to determine whether or not to execute the statement again. It is possible that the statement will never be executed if the expression is false when it is evaluated for the first time.\nThe expression must always be there, unlike with a for loop.\nwhile is used more often than for when implementing an infinite loop, though it is only a matter of personal taste (mainly less coding effort).\nFrequently used for the main loop of a program.\n\rCode example\nint n = 0; while (n \u0026lt; 5) { printf(\u0026#34;Loop iteration %d\\n\u0026#34;, n++); } Output\nLoop iteration 0 Loop iteration 1 Loop iteration 2 Loop iteration 3 Loop iteration 4 Infinite while loops A while loop with the expression = 1 will execute indefinitely. You can only leave the loop using the break statement.\nCode example\nwhile (1) { // run forever } "
+},
+{
+	"uri": "https://mcusuperuser.github.io/decisions/if/",
+	"title": "if statement",
+	"tags": [],
+	"description": "",
+	"content": "Syntax\nif (expression) statement The expression is evaluated in a boolean fashion. If it is true, the statement is executed.\nThe statement can also be a compound/block statement.\n\rCode example\n#define BUTTONPRESSED 1  int main (void) { if (BUTTONPRESSED) { printf(\u0026#34;Button is pressed\\n\u0026#34;); } } if (a) vs. if (a == 1) Not only laziness commands the usage of if (a). This C code will also lead to reduced assembly code size, as it only has to test for not being equal to 0:\n0x00001170 4807 LDR r0,[pc,#28] ; @0x00001190 0x00001172 6800 LDR r0,[r0,#0x00] 0x00001174 B110 CBZ r0,0x0000117C if (a == 1) creates more assembly code, as it has to explicitly check the equality with 1:\n0x0000117C 4808 LDR r0,[pc,#32] ; @0x000011A0 0x0000117E 6800 LDR r0,[r0,#0x00] 0x00001180 2801 CMP r0,#0x01 0x00001182 D102 BNE 0x0000118A \rCBZ is the \u0026ldquo;compare and branch on zero\u0026rdquo; instruction that will only branch if the comparison with 0 is TRUE.\nThere is no \u0026ldquo;compare and branch on one\u0026rdquo; instruction, so you have to compare first (CMP) and then branch (BNE) if the result is not equal one.\n\rNesting if statements You can nest if statements easily.\nCode example\n#define BUTTONPRESSED 1 float adc_input; int main (void) { if (BUTTONPRESSED) { printf(\u0026#34;Button is pressed\\n\u0026#34;); } if (adc_input \u0026gt;= 2.3) { printf(\u0026#34;Input is larger than 2.3\\n\u0026#34;); } } if else statement Syntax\nif (expression) statement1 else statement2 The expression is evaluated in a boolean fashion. If it is true, statement1 is executed, if false, statement2 is executed.\nCode example\n#define BUTTONPRESSED 1  int main (void) { if (BUTTONPRESSED) { printf(\u0026#34;Button is pressed\\n\u0026#34;); } else { printf(\u0026#34;Button is not pressed!\\n\u0026#34;); } } if else if statement Syntax\nif (expression1) statement1 else if (expression2) statement2 else statement3 The expression1 is evaluated in a boolean fashion. If it is true, statement1 is executed, if false, expression2 is evaluated. If it is true, statement2 is executed, if false, statement3 is executed.\nCode example\nfloat adc_input; int main (void) { if ((adc_input \u0026gt; 0) \u0026amp;\u0026amp; (adc_input \u0026lt;= 1.0)) { printf(\u0026#34;Input below 1 V!\\n\u0026#34;); } else if { ((adc_input \u0026gt; 1.0) \u0026amp;\u0026amp; (adc_input \u0026lt;= 2.0)) printf(\u0026#34;Input above 1 V and below 2 V!\\n\u0026#34;); } else if { ((adc_input \u0026gt; 2.0) \u0026amp;\u0026amp; (adc_input \u0026lt;= 3.0)) printf(\u0026#34;Input above 2 V and below 3 V!\\n\u0026#34;); } else { printf(\u0026#34;Incorrect input voltage!\u0026#34;); } } "
+},
+{
+	"uri": "https://mcusuperuser.github.io/exprstat/compound/",
+	"title": "Compound or block statements",
+	"tags": [],
+	"description": "",
+	"content": "A compound statement is a group of statements enclosed within a pair of curly braces ({ }) and is often also called a block statement. The statements within the block may be of any statement type (including (again) compound statements). This allows statements to be embedded or nested within other statements. A compound statement does not end with a semicolon after the closing }.\nCode example\n{ a = 0; a++; b = 3 + c; y = (a * x) + b; printf(\u0026#34;Speed = %f\u0026#34;, x); } "
+},
+{
+	"uri": "https://mcusuperuser.github.io/vars/identifiers/",
+	"title": "Identifiers",
+	"tags": [],
+	"description": "",
+	"content": " Valid characters in identifiers are \u0026lsquo;_\u0026rsquo;, \u0026lsquo;a\u0026rsquo; to \u0026lsquo;z\u0026rsquo;, \u0026lsquo;A\u0026rsquo; to \u0026lsquo;Z\u0026rsquo;, and \u0026lsquo;0\u0026rsquo; to \u0026lsquo;9\u0026rsquo; (not allowed for the first character). Identifiers are case sensitive, so myVar is not the same as myvar! You must not use keywords of the C language as identifiers. The Arm compiler provides additional keywords that are extensions to the C/C++ standards and must also not be used as identifiers.  ANSI C keywords             auto break case char const   continue default do double else   enum extern float for goto   if int long register return   short signed sizeof static struct   switch typedef union unsigned void   volatile while       Arm compiler 5 keywords and operators           __align __int64 __svc   __ALIGNOF__ __INTADDR__ __svc_indirect   __asm __irq __svc_indirect_r7   __declspec __packed __value_in_regs   __forceinline __pure __weak   __global_reg __softfp __writeonly   __inline __smc     Arm compiler 6 (armclang) keywords and operators            __alignof__ __asm __declspec __inline    "
+},
+{
+	"uri": "https://mcusuperuser.github.io/comments/block/",
+	"title": "Block comment",
+	"tags": [],
+	"description": "",
+	"content": "Syntax\n/* This is a block comment. */  Block comments begin with /* and end with */. They can span multiple lines.  Code example\n/*----------------------------------------------- * CMSIS-RTOS \u0026#39;main\u0026#39; function template *---------------------------------------------*/ #include \u0026#34;cmsis_os2.h\u0026#34; /* * main: initialize and start the system */ int main (void) { osKernelInitialize (); /* initialize RTOS */ LED_Initialize(); /* initialize LEDs */ /* create \u0026#39;thread\u0026#39; functions that start executing. Example: tid_name=osThreadCreate (osThread(name), NULL); */ osKernelStart (); /* start thread execution */ } "
+},
+{
+	"uri": "https://mcusuperuser.github.io/vars/",
+	"title": "Variables, identifiers, and data types",
+	"tags": [],
+	"description": "",
+	"content": "Chapter 2 Variables, identifiers, and data types A variable is a name that represents one or more memory locations used to hold program data.\nIdentifiers are names that are given to program elements, such as variables, functions, arrays, or any other named element.\n"
+},
+{
+	"uri": "https://mcusuperuser.github.io/macros/argument/",
+	"title": "Argument macros",
+	"tags": [],
+	"description": "",
+	"content": "Argument macros create function-like macros:\nSyntax\n#define label(arg1, ..., argn) code \rThe code must fit on a single line. For multi-line macros use \u0026lsquo;\\\u0026rsquo; to split lines Arguments are inserted into code as text substitutions Each instance of label() will be expanded into code\n\rCode example (arm_math.h)\n#define __SIMD32(addr) (*(__SIMD32_TYPE **) \u0026amp; (addr)) #define __SIMD32_CONST(addr) ( (__SIMD32_TYPE * ) (addr)) #define _SIMD32_OFFSET(addr) (*(__SIMD32_TYPE * ) (addr)) #define __SIMD64(addr) (*( int64_t **) \u0026amp; (addr)) "
+},
+{
+	"uri": "https://mcusuperuser.github.io/operators/assignment/",
+	"title": "Assignment operators",
+	"tags": [],
+	"description": "",
+	"content": "Assignment operators are binary operators that modify the variable to their left using the value to their right, or in other words, they assign a value to a variable.\nThere are two types of assignment operators available:\nSimple assignments Syntax\nvariable = expression\nThe expression is evaluated and the result is assigned to the variable.\nCompound assignments Syntax\nvariable = variable operator expression\nThe variable is modified using the operator and the expression and the result is assigned to the variable.\n   Operator Example Equivalent     = a = b Assign the value of b to a   += a += b a = a + b   -= a -= b a = a - b   *= a *= b a = a * b   /= a /= b a = a / b   %= a %= b a = a % b   \u0026amp;= a \u0026amp;= b a = a \u0026amp; b   \\|= a \\|= b a = a \\| b   ^= a ^= b a = a ^ b   \u0026lt;\u0026lt;= a \u0026lt;\u0026lt;= b a = a \u0026lt;\u0026lt; b   \u0026gt;\u0026gt;= a \u0026gt;\u0026gt;= b a = a \u0026gt;\u0026gt; b    "
+},
+{
+	"uri": "https://mcusuperuser.github.io/funcpointers/calling/",
+	"title": "Calling a function via a function pointer",
+	"tags": [],
+	"description": "",
+	"content": "The following two calls to the function are equivalent:\nCode example\nm = fp(a); // call via function pointer m = foo(a); // direct call to foo "
+},
+{
+	"uri": "https://mcusuperuser.github.io/printf/conversion/",
+	"title": "Conversion characters",
+	"tags": [],
+	"description": "",
+	"content": "The following table lists all conversion characters of the printf() function:\n   Conversion character Description     %c Single character   %s String (all characters until \\0)   %d Signed decimal number   %# A 0x should precede a hexadecimal number   %u Unsigned decimal number   %o Unsigned octal number   %x Unsigned hexadecimal number with lowercase digits (1a4e)   %X As x, but with uppercase digits (1A4E)   %f Signed decimal value (floating point)   %e Signed decimal with exponent (1.13e-4)   %E As e, but uses E for exponent (1.13E-4)   %g As e or f, but depends on size and precision of value   %G As g, but uses E for exponent    The optional characters l or L may immediately precede the type character to respectively specify long versions of the integer types d, i, u, o, x, and X.\n\rSpecial characters Special characters (also called escape sequences) are used to display non-printing or hard-to-print characters. These characters control how text is positioned in the output. We have seen the \\n example for a newline.\nA list of escape sequences can be found in the chapter Constants and literals\nEscape sequences and words are often joined together in the ControlString (see the example above: \\nm). This looks a bit strange, but follows a general logic. If you\u0026rsquo;d add a space between the two, you would start the newline with a space as well.\n\r"
+},
+{
+	"uri": "https://mcusuperuser.github.io/unions/creating/",
+	"title": "Creating unions with typedefs",
+	"tags": [],
+	"description": "",
+	"content": "Syntax\ntypedef union unionTag { type1 memberName1; ... typen memberNamen; } typeName; Code example\n// Union type to access the Application Program Status Register (APSR). typedef union { struct { uint32_t _reserved0:27; // bit: 0..26 Reserved  uint32_t Q:1; // bit: 27 Saturation condition flag  uint32_t V:1; // bit: 28 Overflow condition code flag  uint32_t C:1; // bit: 29 Carry condition code flag  uint32_t Z:1; // bit: 30 Zero condition code flag  uint32_t N:1; // bit: 31 Negative condition code flag  } b; // Structure used for bit access  uint32_t w; // Type used for word access } APSR_Type; "
+},
+{
+	"uri": "https://mcusuperuser.github.io/enums/declarationtypevar/",
+	"title": "Declaration of enumeration type variable",
+	"tags": [],
+	"description": "",
+	"content": "Declared along with type\nenum typeName { list_of_constants } variable_name1, ...; Declared independently\nenum typeName variable_name1, ...; Code example\nenum month {JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC} current_month; enum month current_month; "
+},
+{
+	"uri": "https://mcusuperuser.github.io/constlit/literals/",
+	"title": "Literals",
+	"tags": [],
+	"description": "",
+	"content": "A literal is the actual value (such as a number or character for example), that is assigned to a variable or constant. You can also use literals directly as a function parameter or as an operand in an expression. While both terms are often used interchangeably, they are not the same. A literal is a constant, but a constant is not a literal.\nTypes of literals The Arm assembler user\u0026rsquo;s guide states that \u0026ldquo;source code can contain numeric, string, Boolean, and single character literals\u0026rdquo;.\nLiterals can be expressed as:\n Decimal numbers, for example 123. Hexadecimal numbers, for example 0x7B. Numbers in any base from 2 to 9, for example 5_204 is a number in base 5. Floating point numbers, for example 123.4. Boolean values {TRUE} or {FALSE}. Single character values enclosed by single quotes, for example 'w'. Strings enclosed in double quotes, for example \u0026quot;This is a string\u0026quot;.  String literals C does not have a string type. One way to store strings in C is to use arrays of characters. Later, we will learn how to use pointers to define strings.\nWhen strings are declared as character arrays, they are stored like other types of arrays in C. If you declare the string without a dimension, the null character is automatically appended to the end of the string:\nCode example\nchar name[] = \u0026#34;Cortex\u0026#34;; This is stored as:\nname[0] = \u0026#39;C\u0026#39; name[1] = \u0026#39;o\u0026#39; name[2] = \u0026#39;r\u0026#39; name[3] = \u0026#39;t\u0026#39; name[4] = \u0026#39;e\u0026#39; name[5] = \u0026#39;x\u0026#39; name[6] = \u0026#39;\\0\u0026#39; Special characters in strings\nUse escape sequences to include special characters in strings, just like any other ordinary character. The backslash '\\' plus the following character is considered as a single character with a single ASCII value.\n   Escape sequence Meaning     \\a alert (beep)   \\\\ backslash   \\b backspace   \\r carriage return   \u0026quot; double quote   \\f formfeed   \\t horizontal tab   \\n newline   \\0 null character   ' single quote   \\v vertical tab   ? question mark    Code example\nchar salutation[] = \u0026#34;Dear Paul,\\n\u0026#34;; In order to nest strings, you need to escape the double quotes:\n\u0026#34;printf (\\\u0026#34;hello world!\\n\\\u0026#34;)\u0026#34; "
+},
+{
+	"uri": "https://mcusuperuser.github.io/pointers/andarrays/",
+	"title": "Pointers and arrays",
+	"tags": [],
+	"description": "",
+	"content": "In general, array elements occupy consecutive locations in memory. Using this knowledge, we can use pointers to access array elements.\nInitializing a pointer to an array Code example\nint a[5] = {0, 1, 2, 3, 4}; // integer array int *p; // Create a pointer to an integer variable To initialize the pointer to the array, you can use three different (equal) methods:\nCode example\np = a; // works only for arrays, as the array name (here: a) is the same as the address of its first element; Arm compiler will not complain p = \u0026amp;a; // works for arrays and variabls alike, but in case of an array, the Arm compiler will issue a warning p = \u0026amp;a[0]; // safe way to point to the first element; compiler will not complain To move to the next element of the array, simply increment the pointer:\nCode example\np++; // moves the pointer to the next element of the array p--; // moves the pointer to the previous element of the array \rAdding or subtracting a number to/from the pointer will change it by a multiple of the number of bytes of its type.\n\rCode example\nIncrement/decrement syntax rules Use parentheses to determine what gets incremented or decremented.\nModify the pointer itself\n// Pre-increment: *(++p); *++p; ++p; // usage example: n = *(++p); // is equivalent to: p = p + 1; n = *p; // Post-increment: *(p++); *p++; p++; // usage example: n = *p++; // is equivalent to: n = *p; p = p + 1; Modify the value pointed to by the pointer\n// Pre-increment: ++(*p); // usage example: n = ++(*p); // is equivalent to: *p = *p + 1; n = *p; // Post-increment: (*p)++; // usage example: n = (*p)++; // is equivalent to: n = *p; *p = *p + 1; Post-increment code example\nRemember that *(p++) is the same as *p++!\n\rPre-increment code example\nRemember that *(++p) is the same as *++p!\n\r"
+},
+{
+	"uri": "https://mcusuperuser.github.io/peripherals/readmodifywrite/",
+	"title": "Reading, modifying, and writing bit fields in registers",
+	"tags": [],
+	"description": "",
+	"content": "How do we find the current value of the ICSR ISRPREEMPT bit? We read the register SCB, AND it (using \u0026amp;) with the mask, and then shift it right (using \u0026raquo;) by the shift value:\nCode example\nid = (SCB-\u0026gt;ICSR \u0026amp; SCB_ICSR_ISRPREEMPT_Msk) \u0026gt;\u0026gt; SCB_ICSR_ISRPREEMPT_Pos; How do we set fields NMIPENDSET and PENDSVSET in that register, leaving everything else as zero? We use the = assignment operator:\nCode example\nSCB-\u0026gt;ICSR = SCB_ICSR_NMIPENDSET_Msk | SCB_ICSR_PENDSVSET_Msk; How do we set fields NMIPENDSET and PENDSVSET in that register without modifying anything else? We need to perform a read/modify/write operation with the OR read/modify/write operator |=:\nCode example\nSCB-\u0026gt;ICSR |= SCB_ICSR_NMIPENDSET_Msk | SCB_ICSR_PENDSVSET_Msk; How do we clear field NMIPENDSET in that register without modifying anything else? We need to perform a read/modify/write operation, while zeroing out the bit for NMIPENDSET. We do this by first complementing the mask for NMIPENDSET using the ~ operator. This flips all of its ones to zeros and zeros to ones. Using the AND read/modify/write operator \u0026amp;= will zero out the control register’s bits for NMIPENDSET’s field:\nCode example\nSCB-\u0026gt;ICSR \u0026amp;= SCB_ICSR_NMIPENDSET_Msk; "
+},
+{
+	"uri": "https://mcusuperuser.github.io/structs/declaration/",
+	"title": "Variable declaration",
+	"tags": [],
+	"description": "",
+	"content": "There are two ways to declare a structure variable:\n At structure definition:  Syntax\nstruct structName { type1 memberName1; // Members are declared just  ... // like odinary variables  typen memberNamen; } variableName1, ..., variableNamen; Code example\n// structure to handle color values struct rgb { int red; int green; int blue; } color; // declare color of type rgb If the structure has already been defined:  Syntax\nstruct structName variableName1, ..., variableNamen; Code example\n// structure to handle color values struct rgb { int red; int green; int blue; } ... struct rgb color; // declare color of type rgb "
+},
+{
+	"uri": "https://mcusuperuser.github.io/arrays/strings/",
+	"title": "Strings",
+	"tags": [],
+	"description": "",
+	"content": "Strings are arrays of char whose last element is a null character \\0 with an ASCII value of 0. As C has no native string data type, strings must always be treated as character arrays.\nStrings:\n are enclosed in double quotes: \u0026ldquo;string\u0026rdquo; are terminated by a null character \\0 must be manipulated as arrays of characters (treated element by element) may be initialized with a string literal  Creating a string character array Syntax\nchar arrayName[length]; \rlength must be one larger than the length of the string to accommodate the terminating null character \\0.\nA char array with n elements holds strings with n-1 char.\n\rCode example\nchar string1[9]; // holds eight characters plus \\0  char string2[255] // holds 254 characters plus \\0 Initialization at string declaration Syntax\nchar arrayName[] = \u0026#34;Programmer\u0026#34;; \rThe array size is not required.\nThe size automatically determined by the length of the string.\nA NULL character \\0 is automatically appended to the array.\n\rCode example\nchar string1[] = \u0026#34;Programmer\u0026#34;; // 11 characters \u0026#34;Programmer\\0\u0026#34;  char stingr2[6] = \u0026#34;World\u0026#34;; //6 characters \u0026#34;World\\0\u0026#34;  // Alternative string declaration that requires the size to be declared: char string3[4] = {\u0026#39;A\u0026#39;, \u0026#39;r\u0026#39;, \u0026#39;m\u0026#39;, \u0026#39;\\0\u0026#39;}; String initialization in code In program code, strings need to be initialized element-by-element. The NULL character needs to be appended manually:\nSyntax\nchar arrayName[0] = char1; char arrayName[1] = char2; char arrayName[2] = char3; ... char arrayName[n] = \u0026#39;\\0\u0026#39;; Code example\narrayName[0] = \u0026#39;A\u0026#39;; arrayName[1] = \u0026#39;r\u0026#39;; arrayName[2] = \u0026#39;m\u0026#39;; arrayName[3] = \u0026#39;\\0\u0026#39;; "
+},
+{
+	"uri": "https://mcusuperuser.github.io/storage/static/",
+	"title": "Static variables",
+	"tags": [],
+	"description": "",
+	"content": "Variables declared as static preserve their value even after they are out of their scope, as they are given a permanent address in memory. They are created/initialized once when the program starts and are only destroyed when the program ends! Their scope is local to the function to which they were defined. Global static variables can be accessed anywhere in the program. By default, they are assigned the value 0 by the compiler.\nCode example\nint a; // global variable is static  int main (void) { a = 23; .. } Code example main.c\nfloat foo (float f) { static float a = 3.141; .. a -= f; return a; } \rA variable declared as static inside a function retains its value between consecutive function calls.\nIf given an initial value, a static variable is only initialized when first created – not during each function call.\n\r"
+},
+{
+	"uri": "https://mcusuperuser.github.io/func/parameters/",
+	"title": "Parameters",
+	"tags": [],
+	"description": "",
+	"content": " A function\u0026rsquo;s parameters are declared just like ordinary variables, but in a comma separated list inside the parentheses. The parameter names are only valid inside the function (local to the function). The list may mix different data types. Parameters of the same type must be declared separately (as separation using commas will not work here). If no parameters are required, use the keyword void in place of the parameter list when defining the function.  "
+},
+{
+	"uri": "https://mcusuperuser.github.io/loops/do-while/",
+	"title": "do while loop",
+	"tags": [],
+	"description": "",
+	"content": "A do .. while loop checks the loop condition at the bottom; you must create the iterator if needed.\nSyntax\ndo statement while (expression); The statement is executed and then the expression is evaluated to determine whether or not to execute the statement again. The statement will always execute at least once, even if the expression is false when the loop starts.\nCode example\nint n = 0; do { printf(\u0026#34;Loop iteration %d\\n\u0026#34;, n); } while (n \u0026lt; 5); Output\nLoop iteration 0 Loop iteration 1 Loop iteration 2 Loop iteration 3 Loop iteration 4 "
+},
+{
+	"uri": "https://mcusuperuser.github.io/decisions/switch/",
+	"title": "switch statement",
+	"tags": [],
+	"description": "",
+	"content": "Syntax\nswitch (expression) { case const-expr1: statements1 : case const-exprn: statementsn default: statementsn+1 } The expression is evaluated and tested for a match with the const-expr in each case clause. The statement(s) in the matching case clause is/are executed.\nEach statement falls through to the next statement. This is the default behavior of the switch statement.\nAdding a break statement to each statement block will eliminate fall through, allowing only one case clause\u0026rsquo;s statement block to be executed.\n\rCode example\nswitch (number) { case 0: printf(\u0026#34;Zero selected\\n\u0026#34;); break; case 1: printf(\u0026#34;One selected\\n\u0026#34;); break; case 2: printf(\u0026#34;Two selected\\n\u0026#34;); break; case 3: printf(\u0026#34;Three selected\\n\u0026#34;); break; case 4: printf(\u0026#34;Four selected\\n\u0026#34;); break; case 5: printf(\u0026#34;Five selected\\n\u0026#34;); break; case 6: printf(\u0026#34;Six selected\\n\u0026#34;); break; case 7: printf(\u0026#34;Seven selected\\n\u0026#34;); break; case 8: printf(\u0026#34;Eight selected\\n\u0026#34;); break; case 9: printf(\u0026#34;Nine selected\\n\u0026#34;); break; default: printf(\u0026#34;No number selected\\n\u0026#34;); } "
+},
+{
+	"uri": "https://mcusuperuser.github.io/exprstat/control/",
+	"title": "Control statements",
+	"tags": [],
+	"description": "",
+	"content": "Control statements are used for loops, branches and logical tests and often require other statements to be embedded within them. We will take a closer look at them in the chapter Decision making.\nCode example\nwhile (1) { // do something here } "
+},
+{
+	"uri": "https://mcusuperuser.github.io/vars/datatypes/",
+	"title": "Datatypes",
+	"tags": [],
+	"description": "",
+	"content": "C provides various data types. Normally, you would use:\n int for most variables and things that you can count, such as loop counts, events, and apples char for characters and strings float for measurable things that require decimal numbers, such as distance, temperature, or voltage uint32_t for bit manipulations, especially on 32-bit registers The appropriate \u0026lt;stdint.h\u0026gt;/\u0026lt;arm_math.h\u0026gt; types for storing and working with data explicitly meeting your needs (for example if you require that an integer has exactly N bits)  Size and alignment of basic data types in Arm C/C++    ANSI C Type stdint.h C Type Size in bits Natural alignment in bytes Range of values     char uint8_t 8 1 (byte-aligned) 0 to 255 (unsigned) by default.   signed char int8_t 8 1 (byte-aligned) -128 to 127   unsigned char uint8_t 8 1 (byte-aligned) 0 to 255   signed short int16_t 16 2 (halfword-aligned) -32,768 to 32,767   unsigned short uint16_t 16 2 (halfword-aligned) 0 to 65,535   signed int int32_t 32 4 (word-aligned) -2,147,483,648 to 2,147,483,647   unsigned int uint32_t 32 4 (word-aligned) 0 to 4,294,967,295   signed long  32 4 (word-aligned) -2,147,483,648 to 2,147,483,647   unsigned long  32 4 (word-aligned) 0 to 4,294,967,295   signed long long int64_t 64 8 (doubleword-aligned) -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807   unsigned long long uint64_t 64 8 (doubleword-aligned) 0 to 18,446,744,073,709,551,615   float float32_t \u0026lt;arm_math.h\u0026gt; 32 4 (word-aligned) 1.175494351e-38 to 3.40282347e+38 (normalized values)   double float64_t \u0026lt;arm_math.h\u0026gt; 64 8 (doubleword-aligned) 2.22507385850720138e-308 to 1.79769313486231571e+308 (normalized values)   long double float64_t \u0026lt;arm_math.h\u0026gt; 64 8 (doubleword-aligned) 2.22507385850720138e-308 to 1.79769313486231571e+308 (normalized values)   All pointers  32 4 (word-aligned) Not applicable.   bool (C++ only)  8 1 (byte-aligned) false or true   _Bool (C only)  8 1 (byte-aligned) false or true    Integers are represented in two\u0026rsquo;s complement form.\nFloating-point quantities are stored in IEEE format.\n\r"
+},
+{
+	"uri": "https://mcusuperuser.github.io/comments/single/",
+	"title": "Single line comment",
+	"tags": [],
+	"description": "",
+	"content": "Syntax\n// This is a single line comment.  Single line comments begin with // and run until the end of the current line. They can not span multiple lines.  Code example\n//----------------------------------------------- // CMSIS-RTOS \u0026#39;main\u0026#39; function template //-----------------------------------------------  #include \u0026#34;cmsis_os2.h\u0026#34; // main: initialize and start the system  int main (void) { osKernelInitialize (); // initialize RTOS  LED_Initialize(); // initialize LEDs  // create \u0026#39;thread\u0026#39; functions that start executing  // Example:  // tid_name=osThreadCreate (osThread(name), NULL);  osKernelStart (); // start thread execution } "
+},
+{
+	"uri": "https://mcusuperuser.github.io/constlit/",
+	"title": "Constants and literals",
+	"tags": [],
+	"description": "",
+	"content": "Chapter 3 Constants and literals A constant is a value that cannot be altered by the program during normal execution.\nA literal is a notation for representing a fixed value in source code.\n"
+},
+{
+	"uri": "https://mcusuperuser.github.io/peripherals/alternative/",
+	"title": "Alternative mechanism",
+	"tags": [],
+	"description": "",
+	"content": "Using the CMSIS macros _VAL2FLD(field, value) and _FLD2VAL(field, value) you can access bit fields more easily.\nCode example\nid = _FLD2VAL(SCB_CPUID_REVISION, SCB-\u0026gt;CPUID); // uses the #define\u0026#39;s _Pos and _Msk of the related bit field to extract the value of a bit field from a register.  SCB-\u0026gt;CPUID = _VAL2FLD(SCB_CPUID_REVISION, 0x3) | _VAL2FLD(SCB_CPUID_VARIANT, 0x3); // uses the #define\u0026#39;s _Pos and _Msk of the related bit field to shift bit-field values for assigning to a register. "
+},
+{
+	"uri": "https://mcusuperuser.github.io/funcpointers/passing/",
+	"title": "Passing a function to a function",
+	"tags": [],
+	"description": "",
+	"content": "The following example shows the basic concept:\nCode example\nint a, b; int add(int n, int m); // Function prototype int sub(int n, int m); // Function prototype  //Function definition with function pointer parameter int foobar(int n, int n, int (*fp)(int, int)) { return fp(n, m); // Call function passed by pointer } void main(void) { a = foobar (2, 72, \u0026amp;add); // Pass address of add  b = foobar (31, 2, \u0026amp;sub); // Pass address of sub } "
+},
+{
+	"uri": "https://mcusuperuser.github.io/pointers/andfunctions/",
+	"title": "Pointers and functions",
+	"tags": [],
+	"description": "",
+	"content": "In general, functions operate on copies of the data that is passed to them. This is called pass by value. The value of the variable that is passed to a function is copied into the local variable of the function. The original variable is not changed.\nPassing pointers to functions Using a pointer, a function can operate on the original value instead of a copy. This is called pass by reference.\nCode example\nint n = 3; void square (int *a) { *a *= *a; } int main (void) { square(\u0026amp;n); } \rIn the example above, the address of the variable is passed to the function and stored in the local pointer variable a. After the function call, n = 9. It was changed by the function.\n\rFunctions with pointer parameters:\nint foo (*n) must be called in one of the following two ways.\n foo(\u0026amp;a) which passes an address to the function so that the address may be assigned to the pointer parameter: n = \u0026amp;a. foo(p) which passes a pointer to the function so that the pointer may be assigned to the pointer parameter n = p.  As addresses of parameters are copied to local pointer variables, functions can now modify the original variables via pointers, as shown in the next example.\nCode example\nvoid swap_values (int *v1, int *v2) { int temp; temp = *v1; *v1 = *v2; *v2 = temp; } // main() function int main(void) { int n = 5, m = 10; int *p = \u0026amp;m; swap_values (\u0026amp;n, p); // Endless loop \twhile(1); } Pointers enable the programmer to pass a variable by reference to a function. This allows the function to modify the original variable and not just a copy of its contents.\n"
+},
+{
+	"uri": "https://mcusuperuser.github.io/operators/relational/",
+	"title": "Relational operators",
+	"tags": [],
+	"description": "",
+	"content": "Relational operators are binary operators that test a condition and return 1 if that condition is logically true and 0 if that condition is false.\n   Operator Operation Example Result (FALSE = 0, TRUE = 1)     == Equal to a == b 1 if a equal to b, else 0   != Not equal to a != b 1 if a not equal to b, else 0   \u0026gt; Greater than a \u0026gt; b 1 if a greater than b, else 0   \u0026gt;= Greater than or equal to a \u0026gt;= b 1 if a greater than or equal to b, else 0   \u0026lt; Less than a \u0026lt; b 1 if a less than b, else 0   \u0026lt;= Less than or equal to a \u0026lt;= b 1 if a less than or equal to b, else 0    Note\n Do not interchange = with ==. = is the assignment operator, while == is the \u0026ldquo;equals to\u0026rdquo; relational operator.  Code example\nint n, m; n = 3; // assign the value 3 to a  if (m == 45) { // check if m equals to 45  // do something here } "
+},
+{
+	"uri": "https://mcusuperuser.github.io/enums/tagless/",
+	"title": "Tagless enumeration variable",
+	"tags": [],
+	"description": "",
+	"content": "If you omit the tape name, you can only have variables of that type that are specified as part of the enum declaration. Later, you cannot specify any additional variable of the enum type.\nCode example\nenum {JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC} current_month; "
+},
+{
+	"uri": "https://mcusuperuser.github.io/unions/inmemory/",
+	"title": "Unions in memory",
+	"tags": [],
+	"description": "",
+	"content": "Union variables may be declared exactly like structure variables. The big difference is that only memory is allocated to accommodate the union’s largest member. For a structure, memory is allocated to accommodate for the whole structure.\nCode example\ntypedef union { uint8_t m; uint16_t n; uint32_t l; } myUnion; myUnion univar; "
+},
+{
+	"uri": "https://mcusuperuser.github.io/unions/vsstructures/",
+	"title": "Unions vs. structures",
+	"tags": [],
+	"description": "",
+	"content": "Unions allow viewing and manipulating the same memory location using different data types. Structures enable the grouping of multiple data types and while accessing them individually.\n"
+},
+{
+	"uri": "https://mcusuperuser.github.io/structs/using/",
+	"title": "Using structure variables",
+	"tags": [],
+	"description": "",
+	"content": "Syntax\nstructVariableName.memberName; Code example\n// structure to handle color values struct rgb { int red; int green; int blue; } color; int main (void){ color.red = 0; // set red portion of color  color.green = 145; // set green portion of color  blue = 189; // set blue portion of color } "
+},
+{
+	"uri": "https://mcusuperuser.github.io/storage/extern/",
+	"title": "Extern variables",
+	"tags": [],
+	"description": "",
+	"content": "The extern storage class keyword tells the compiler that the variable is defined elsewhere and will be used in the current scope. Thus, it still needs to be declared within the current scope.\nA variable declared as extern outside of any function is used to indicate that the variable is defined in another source file. Memory is only allocated for it when it\u0026rsquo;s defined.\nCode example main.c\nextern int a; int main (void) { a = 23; .. } Code example someOtherProjectFile.c\nint a; int foo (void) { .. } "
+},
+{
+	"uri": "https://mcusuperuser.github.io/func/callfunc/",
+	"title": "How to call a function",
+	"tags": [],
+	"description": "",
+	"content": "Code example\nfoo (); // no parameters, no return value x = foo (); // no parameters, but with a return value foo (n, m); // with parameters, but no return value x = foo (n, m); // with parameters and with a return value "
+},
+{
+	"uri": "https://mcusuperuser.github.io/loops/break/",
+	"title": "break statement",
+	"tags": [],
+	"description": "",
+	"content": "Syntax\nbreak; The break statement causes immediate termination of a loop, even if the exit condition has not been met. Also, it exits from a switch statement so that execution doesn\u0026rsquo;t fall through to next case clause.\nCode example\nint n = 0; while (n \u0026lt; 10) { if (n == 5) break; printf(\u0026#34;Loop iteration %d\\n\u0026#34;, n++); } Output\nLoop iteration 0 Loop iteration 1 Loop iteration 2 Loop iteration 3 Loop iteration 4 "
+},
+{
+	"uri": "https://mcusuperuser.github.io/vars/declaring/",
+	"title": "Declaring variables",
+	"tags": [],
+	"description": "",
+	"content": "Syntax\ntype identifier1, identifier2, ..., identifiern;  Variables must be declared before they can be used The type is important! It tells the compiler how much memory space to allocate and how handle the values  char myFirstLetter; int a, b, c; float currentSpeed; double sensorValue; There are multiple ways to declare a variable:\nDeclaration on a single line\ntype name; Declaration on a single line with an initial value\ntype name = initialValue; Multiple declarations of the same type on a single line\ntype name1, name2, name3; Multiple declarations of the same type on a single line with initial values\ntype name1 = value1, name2 = value2, name3; Code example\nunsigned int myVar; signed int answer = 42; char myFirstLetter = \u0026#39;a\u0026#39;, mySecondLetter, myLastLetter = \u0026#39;z\u0026#39;; float hugeNumber = 5.12e+21 Using typedefs Syntax\ntypedef type typeName;  Typedefs are an alternative way to name types and create an alias name for the type. The typeName is now the same as the type  Code example\ntypedef unsigned int uint32_t; uint32_t a, b; // alias for unsigned int a, b; Declaring variables separately Header files are used to declare variables and other program elements in a separate file. Usually, header files have the filename extension .h. To use a header file in your C code, associate it with the #include directive.\nThe #include directive can be used in three different ways. You can:\n Look for a header file in the compiler include path, which contains the compiler\u0026rsquo;s directory and all of its sub-directories:  #include \u0026lt;stdio.h\u0026gt;Look for a file in the project directory:  #include \u0026#34;myHeader.h\u0026#34;Look for a file using an absolute or relative path:  #include \u0026#34;..\\..\\myHeader2.h\u0026#34;#include \u0026#34;C:\\projects\\myProject\\inc\\myHeader3.h\u0026#34;Code example\nmain.h header file:\nint n, m, p; float myFloat; main.c source file:\n#include \u0026#34;main.h\u0026#34; int main (void) { n = 3; m = 1; p = n - m; myFLoat = 1 / p; } Using the #include directive, the contents of the main.h header file are pasted into the main.c source file, starting at the #include directive’s line.\nAfter the preprocessor runs, the compiler sees the main.c source file as follows:\nint n, m, p; float myFloat; int main (void) { n = 3; m = 1; p = n - m; myFloat = 1 / p; } "
+},
+{
+	"uri": "https://mcusuperuser.github.io/comments/nesting/",
+	"title": "Nesting comments",
+	"tags": [],
+	"description": "",
+	"content": " Block comments must not be nested within other comments. Single line comments may be nested.  Code example\n/*----------------------------------------------- * CMSIS-RTOS \u0026#39;main\u0026#39; function template * // comment within a comment *---------------------------------------------*/ #include \u0026#34;cmsis_os2.h\u0026#34; /* * main: initialize and start the system */ int main (void) { osKernelInitialize (); /* initialize RTOS */ LED_Initialize(); /* initialize LEDs */ /* create \u0026#39;thread\u0026#39; functions that start executing, /* another comment which doesn\u0026#39;t work */ example: tid_name=osThreadCreate (osThread(name), NULL); */ osKernelStart (); /* start thread execution */ } "
+},
+{
+	"uri": "https://mcusuperuser.github.io/printf/",
+	"title": "The printf() C library function",
+	"tags": [],
+	"description": "",
+	"content": "Chapter 4 The printf() C library function One of the most commonly used C library function is the printf() function which allows to write text to the \u0026ldquo;standard output\u0026rdquo; (normally a monitor or line printer). In embedded systems, often a UART is used. In Arm Cortex-M based systems you can redirect the standard output to the ITM debug channel which saves resources (the UART) and is much faster. In µVision, you can use the \u0026ldquo;Debug printf() Viewer\u0026rdquo; window to observe printf() messages delivered via ITM.\n"
+},
+{
+	"uri": "https://mcusuperuser.github.io/enums/typedef/",
+	"title": "Declare an enumeration type with `typedef`",
+	"tags": [],
+	"description": "",
+	"content": "As always, variables can be declared as type typeName without requiring the keyword enum:\nSyntax\ntypedef enum {list_of_constants} typeName; The enumeration can now be used as an ordinary data type, such as int or float.\nCode example\ntypedef enum {JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC} month; month current_month; // Variable of type month "
+},
+{
+	"uri": "https://mcusuperuser.github.io/operators/logical/",
+	"title": "Logical operators",
+	"tags": [],
+	"description": "",
+	"content": "Logical operators apply standard boolean algebra operations to their operands.\n   Operator Operation Example Result     ! Logical NOT !a 1 if a = 0, else 0   \u0026amp;\u0026amp; Logical AND a \u0026amp;\u0026amp; b 1 if both a ≠ 0 and b ≠ 0, else 0   || Logical OR a || b 0 if both a = 0 and b = 0, else 1    "
+},
+{
+	"uri": "https://mcusuperuser.github.io/pointers/andstrings/",
+	"title": "Pointers and strings",
+	"tags": [],
+	"description": "",
+	"content": "Until now, we have used arrays of char to work with strings. Using pointers, strings can be created and used in a more efficient way.\nSyntax\nchar *name = \u0026#34;string_content\u0026#34;; Note\n Initializing a character string when it is declared is essentially the same for both a pointer and an array The NULL character \\0 is automatically appended to strings in both cases  Code example\nchar *str = \u0026#34;Cortex\u0026#34;; At initialization, a pointer to a string points to the first character. To access subsequent characters, add an offset to the pointer.\nPointers versus arrays An entire string may be assigned to a pointer in a single step, while a character array must be assigned character by character. Also, you must explicitly add the NULL character \\0 to an array.\nCode example\n// Pointer variable char *str; str = \u0026#34;Cortex\u0026#34;; // Array variable char str[7]; str[0] = \u0026#39;C\u0026#39;; str[1] = \u0026#39;o\u0026#39;; str[2] = \u0026#39;r\u0026#39;; str[3] = \u0026#39;t\u0026#39;; str[4] = \u0026#39;e\u0026#39;; str[5] = \u0026#39;x\u0026#39;; str[6] = \u0026#39;\\0\u0026#39;; "
+},
+{
+	"uri": "https://mcusuperuser.github.io/structs/types/",
+	"title": "Structure types",
+	"tags": [],
+	"description": "",
+	"content": "Structure types can be created using a typedef.\nSyntax\ntypedef struct structTag { type1 memberName1; ... typen memberNamen; } typeName; Note\n The structTag is optional  Code example\n// structure type to handle color values typedef struct { int red; int green; int blue; } rgb; Declare a structure type variable If the typeName has already been defined, you can declare a variable of that type without the struct keyword:\nSyntax\ntypeName variableName1, ..., variableNamen; Code example\n// structure type to handle color values typedef struct { int red; int green; int blue; } rgb; ... rgb color; "
+},
+{
+	"uri": "https://mcusuperuser.github.io/storage/register/",
+	"title": "Register variables",
+	"tags": [],
+	"description": "",
+	"content": "This storage class declares register variables which have the same functionality as auto variables. The only difference is that the Arm compiler v5 tries to store these variables in a register of the Arm Cortex-M core if a free register is available. This accelerates the access to the register variables. Arm compiler v6 ignores this keyword.\n"
+},
+{
+	"uri": "https://mcusuperuser.github.io/func/prototypes/",
+	"title": "Function prototypes",
+	"tags": [],
+	"description": "",
+	"content": "Just like a variable, a function must be declared before it may be used. This declaration must occur before main() or any other function that uses it. The declaration may have two forms:\n The entire function definition. Just a function prototype – the function definition itself may then be placed anywhere in the program.  Code example 1\nIn this example, the function is declared and defined before it is used in main().\nint n = 5, m = 10, res; int minimum (int a, int b) { return ((a \u0026lt;= b) ? a : b); } int main (void) { res = minimum (n, m); printf(\u0026#34;The minimum is %d\\n\u0026#34;, res); } Code example 2\nIn this example, the function is declared before it is used in main(), but only defined after it is used in main().\nint n = 5, m = 10, res; int minimum (int a, int b); int main (void) { res = minimum (n, m); printf(\u0026#34;The minimum is %d\\n\u0026#34;, res); } int minimum (int a, int b) { return ((a \u0026lt;= b) ? a : b); } Function prototype formats Code example\n// Function prototype 1: int minimum (int x, int y); // exact copy of the function header  // Function prototype 2: int minimum (int, int); // contains only the parameter data types "
+},
+{
+	"uri": "https://mcusuperuser.github.io/loops/continue/",
+	"title": "continue statement",
+	"tags": [],
+	"description": "",
+	"content": "Syntax\ncontinue; The continue statement causes a program to jump back to the beginning of a loop without completing the current iteration.\nCode example\nint n = 0; while (n \u0026lt; 5) { if (n == 3) continue; printf(\u0026#34;Loop iteration %d\\n\u0026#34;, n++); } Output\nLoop iteration 0 Loop iteration 1 Loop iteration 2 Loop iteration 4 "
+},
+{
+	"uri": "https://mcusuperuser.github.io/operators/",
+	"title": "Operators",
+	"tags": [],
+	"description": "",
+	"content": "Chapter 5 Operators An arithmetic expression contains one or more operands and arithmetic operators.\nOperands may be variables, constants or functions that return a value.\n"
+},
+{
+	"uri": "https://mcusuperuser.github.io/pointers/arraysof/",
+	"title": "Arrays of pointers",
+	"tags": [],
+	"description": "",
+	"content": "An array of pointers is an array variable whose elements are all be pointers.\nCode example\nchar *str[3]; // creates an array of three pointers to char  str[0] = \u0026#34;IN\u0026#34;; str[1] = \u0026#34;OUT\u0026#34;; str[2] = \u0026#34;TRISTATE\u0026#34;; The array str[] itself is like any other array. Each element, such as str[1], is a pointers to char.\nStrings will not “pack” this nicely! There will be empty locations between strings as the compiler aligns the strings in memory.\n\rInitialization A pointer array element may be initialized just like its ordinary variable counterpart.\nCode example\nstr[0] = \u0026amp;n; When using strings:\nCode example\nstr[0] = \u0026#34;String\u0026#34;; Dereferencing To use the value pointed to by a pointer array element, just dereference it like you would an ordinary variable\nCode example\nm = *str[0]; Using *str[0] is the same as using the object it points to, such as n or the string literal \u0026quot;String\u0026quot;.\nArrays are frequently treated like pointers. An array name alone represents the address of its first element.\n"
+},
+{
+	"uri": "https://mcusuperuser.github.io/operators/bitwise/",
+	"title": "Bitwise operators",
+	"tags": [],
+	"description": "",
+	"content": "Bitwise operators apply the operation to each bit of the first operand with each corresponding bit of the second operand.\n   Operator Operation Example Result     ~ Bitwise NOT ~a 1, if 0 in a; 0, if 1 in a   \u0026amp; Bitwise AND a \u0026amp; b 1, if 1 in both a and b; 0, if 0 in a or b or both   | Bitwise OR a | b 1, if 1 in a or b or both; 0, if 0 in both a and b   ^ Bitwise XOR a ^ b 1, if 1 in a or b but not both; 0, if 0 or 1 in both a and b    The bitwise NOT is also known as \u0026ldquo;One\u0026rsquo;s complement\u0026rdquo;.\nDo not interchange \u0026amp; with \u0026amp;\u0026amp;. \u0026amp; is the bitwise AND operator, while \u0026amp;\u0026amp; is the logical AND operator.\n\rCode example\nint n, m; if (n \u0026amp;\u0026amp; m) { // check if both values are true (non-zero)  // do something here } "
+},
+{
+	"uri": "https://mcusuperuser.github.io/structs/initialization/",
+	"title": "Initialization of structure variables",
+	"tags": [],
+	"description": "",
+	"content": "If typeName or structName have already been defined:\nSyntax\ntypeName variableName = {const1, ..., constn}; // or struct structName variableName = {const1, ...,constn}; Code example\n// structure type to handle color values typedef struct { int red; int green; int blue; } rgb; ... rgb color = {0, 145, 189}; "
+},
+{
+	"uri": "https://mcusuperuser.github.io/enums/using/",
+	"title": "Using an enumeration type variable",
+	"tags": [],
+	"description": "",
+	"content": "If the enumeration and the variable have already been defined:\nSyntax\nvarName = labeln; \rUse the labels just like any other symbolic constant.\nEnumeration type variables must only use the type’s labels or equivalent integer.\n\rCode example\nenum color {red, green, blue}; enum color myCar; myCar = red; myCar = 3; if (myCar == 2) { // do something } "
+},
+{
+	"uri": "https://mcusuperuser.github.io/func/passingparams/",
+	"title": "Passing parameters by value",
+	"tags": [],
+	"description": "",
+	"content": "Parameters are passed to a function by value. These values are copied into the local parameter variables. This means, that the original variable that is passed to a function cannot be modified by the function, since only a copy of its value was passed.\nCode example\nint n = 5, m = 10, res; int minimum (int a, int b); int main (void) { res = minimum (n, m); // the value of n is copied into a  // the value of m is copied into b  printf(\u0026#34;The minimum is %d\\n\u0026#34;, res); } int minimum (int a, int b) { return ((a \u0026lt;= b) ? a : b); } "
+},
+{
+	"uri": "https://mcusuperuser.github.io/exprstat/",
+	"title": "Expressions and statements",
+	"tags": [],
+	"description": "",
+	"content": "Chapter 6 Expressions and statements Every C program is made using statements. The program is executed statement by statement. Every statement is made using one or more expressions. An expression is a sequence of operators and their operands that specifies a computation.\nIn other words, an expression is an instruction that is executed and returns a value (even when this value is void). A statement is used to form the sequence of a program.\n"
+},
+{
+	"uri": "https://mcusuperuser.github.io/structs/nested/",
+	"title": "Nested structures",
+	"tags": [],
+	"description": "",
+	"content": "Using the typedef structure declaration, you can nest one structure within another structure.\nCode example\n// declare struct type for a single point typedef struct { float x; float y; } point; // declare a struct type for a line with a start and end point typedef struct { point start; point end; } line; int main(void) { line l; l.start.x = 3.5; l.start.y = 8.4; l.end.x = 12.7; l.end.y = 18.5; ... } "
+},
+{
+	"uri": "https://mcusuperuser.github.io/operators/shift/",
+	"title": "Shift operators",
+	"tags": [],
+	"description": "",
+	"content": "   Operator Operation Example Result     \u0026lt;\u0026lt; Bitwise left shift a \u0026lt;\u0026lt; b Shift a by b bits to the left   \u0026gt;\u0026gt; Bitwise right shift a \u0026gt;\u0026gt; b Shift a by b bits to the right    Bits that are shifted out are lost (in both cases).\nFor shift left, 0\u0026rsquo;s are shifted in (zero fill).\n\rCode example\n// Logical shift right (zero fill) // If a is unsigned: unsigned char a; a = 250; // a = 0b11111010 = 250 b = a \u0026gt;\u0026gt; 2; // b = 0b00111110 = 62  // Arithmetic shift right (sign extend) // If a is signed: char a; a = -6; // a = 0b11111010 = -6 b = a \u0026gt;\u0026gt; 2; // b = 0b11111110 = -2 Power of 2 integer divide vs. shift right\nGenerally, it is more efficient to use a shift right instead of dividing by a power of 2. This means that b = a / 2^n is equal to b = a \u0026gt;\u0026gt; n. This trick works for integer and fixed point values.\n\r"
+},
+{
+	"uri": "https://mcusuperuser.github.io/storage/scope/",
+	"title": "Scope of functions",
+	"tags": [],
+	"description": "",
+	"content": "The scope of a function depends on it storage class, which can be either static or external. The scope of a function is either local to the file where it is defined - in case of a static function - or globally available to any file in a project - in case of an external function.\nBy default, functions have a global scope within a project. The extern keyword is not required, but a function prototype in the calling file (or a header file).\nCode example main.c\nint foo (void); int main (void) { .. a = foo(); .. } Code example someOtherProjectFile.c\nint foo (void) { .. } Library and header files Include a header file of you library in a source file. The header file contains the variable and function declarations, while the related source file contains the variable and function definitions.\nCode example main.c\n#include someOtherProjectFile.h // include the library header file int a; int main (void) { .. a = foo(); // using the function from the library  myVar = a; // using the variable from the library  .. } Code example someOtherProjectFile.h\nextern int myVar; int foo (void); Code example someOtherProjectFile.c\nint myVar; int foo (void) { .. } "
+},
+{
+	"uri": "https://mcusuperuser.github.io/func/scope/",
+	"title": "Functions and scope",
+	"tags": [],
+	"description": "",
+	"content": "Scope of parameters A function\u0026rsquo;s parameters are local to the function and have no meaning outside the function itself. Parameter names may have the same identifier as a variable declared outside the function, but the parameter names will take precedence inside the function.\nCode example\n// The following n\u0026#39;s are not the same: int n; int absolute (int n); Scope of variables inside a function Variables that are declared inside a function are local to the function itself.\nCode example\nvoid my_func (int n) { int m; .. m -= n; // n refers to the function paramter  // while me refers to the locally declared variable } \rVariables that are declared within a function block are not accessible outside the function.\nAny access to a local variable outside the function will generate an error.\n\rGlobal versus local variables Global variables can be seen by everybody, while local variables can only be seen locally.\nCode example\nint n = 5; // can be seen by everybody  int foo (int m); // foo\u0026#39;s local paramter is m  int foo (int m) { // foo cannot see main\u0026#39;s local variable i  int p = 3; // foo\u0026#39;s local variable is p  return (n - m * p); // foo can see gloabal variable n } int main (void) { // main cannot see foo\u0026#39;s paramter m nor local variable p  int i = 2; // main\u0026#39;s local variable is i  n = foo (i); // main can see global variable n  i = foo (n); } Overloading variable names A locally declared identifier takes precedence over a globally defined one. This enables the usage of the same parameter name in different functions. Each function will only use its own parameter.\nCode example\nint n = 5; // global variable n  int foo (int n) { // foo\u0026#39;s function parameter  int p = 3; // foo\u0026#39;s local variable is p  return (n(1 - p)); // foo can not see glonbal variable n  // function parameter n is used instead } void bar (int n) { // bar\u0026#39;s function parameter  // do some computation here } #define within a function Use #define\u0026rsquo;s within a function with care. Defining already defined identifiers again can lead to unexpected behavior.\nCode example\n#define a 5  void func_define (void) { #define a 7  printf (\u0026#34;%d\\n\u0026#34;, a); } void main (void) { printf (\u0026#34;%d\\n\u0026#34;, a); func_define(); } Running the code above will lead to the following output:\n7 7 \rRemember that a #define is used by the preprocessor to do text substitution before the code is compiled. Situations like the above will lead to unexpected behavior. You can not rely on the order in which the #define\u0026rsquo;s are processed.\n\r"
+},
+{
+	"uri": "https://mcusuperuser.github.io/decisions/",
+	"title": "Decision making",
+	"tags": [],
+	"description": "",
+	"content": "Chapter 7 Decision making Every now and then you have to make decisions. There are multiple ways to do that in C.\n"
+},
+{
+	"uri": "https://mcusuperuser.github.io/operators/memory/",
+	"title": "Memory addressing/member access",
+	"tags": [],
+	"description": "",
+	"content": "Member access operators allow access to the members of their operands.\n   Operator Operation Example Result     [] Array subscript a[b] access the bth element of array a   * Pointer dereference *a The object or function a points to   \u0026amp; Address of \u0026amp;a Pointer to a   . Member access (struct/union) a.b The member b of struct or union a   -\u0026gt; Member access through pointer a-\u0026gt;b The member b of struct or union pointed to by a    This will become important when talking about arrays, pointers, structs, and unions later.\n\r"
+},
+{
+	"uri": "https://mcusuperuser.github.io/structs/pointersto/",
+	"title": "Pointers to structures",
+	"tags": [],
+	"description": "",
+	"content": "There are two ways to declare a pointer to a structure. If the typeName or the structName have already been defined:\nSyntax\ntypeName *pointerName; // or struct structName *pointerName; Code example\n// structure type to handle color values typedef struct { int red; int green; int blue; } rgb; ... rgb *pColor; Code example\n// structure type to handle color values struct rgb { int red; int green; int blue; } ... struct rgb *pColor; Accessing structure members using a pointer If a pointerName has already been defined:\nSyntax\npointerName -\u0026gt; memberName; \rFirst, the pointer must be initialized to point to the address of the structure itself: pointerName = \u0026amp;structVariable;\n\rCode example\n// structure type to handle color values typedef struct { int red; int green; int blue; } rgb; ... rgb color; // rgb variable rgb *pColor; // pointer to color  int main (void) { pColor = color; pColor-\u0026gt;red = 0; // Set red using pColor  pColor-\u0026gt;green = 145; // Set green using pColor  pColor-\u0026gt;blue = 189; // Set blue using pColor } \rWe will later see in an example how CMSIS uses this to access core peripherals of a Cortex-M based device.\n\r"
+},
+{
+	"uri": "https://mcusuperuser.github.io/loops/",
+	"title": "Loops",
+	"tags": [],
+	"description": "",
+	"content": "Chapter 8 Loops The C language provides three basic looping structures.\n"
+},
+{
+	"uri": "https://mcusuperuser.github.io/structs/arraysof/",
+	"title": "Creating arrays of structures",
+	"tags": [],
+	"description": "",
+	"content": "There are two ways to create arrays of structures. If the typeName or the structName have already been defined:\nSyntax\ntypeName arrayName[n]; // or struct structName arrayName[n]; Code example\n// structure type to handle color values typedef struct { int red; int green; int blue; } rgb; ... rgb aColor[2]; "
+},
+{
+	"uri": "https://mcusuperuser.github.io/operators/other/",
+	"title": "Other operators",
+	"tags": [],
+	"description": "",
+	"content": "   Operator Operation Example Result     (...) Function call f(...) Calls the function f(), with specified arguments   , Comma operator a, b Evaluates a then b, else result is value of b   (type) Type cast (type)a Casts the type of a to type   ? : Conditional operator a ? b : c The value of b if a is true, else value of c   sizeof Sizeof operator sizeof a The size in bytes of a    The conditional operator Syntax\n(test_expression) ? do_if_true : do_if_false; Code example\nint a = 3, b = 4, c; (a % 2 != 0) ? printf(\u0026#34;%d is odd\\n\u0026#34;, a) : printf(\u0026#34;%d is even\\n\u0026#34;, a); c = (a % 2 != 0) ? a : b; // conditionally assigns a value to c Explicit type cast operator You can use the cast operator (type) to cast a variable:\nCode example\nint a = 10; float b; b = (float)a / 4; // b is 2.5, because float/int = float "
+},
+{
+	"uri": "https://mcusuperuser.github.io/func/",
+	"title": "Functions",
+	"tags": [],
+	"description": "",
+	"content": "Chapter 9 Functions Functions are self contained program segments designed to perform a specific task. They take inputs, do some computation, and produce output.\n"
+},
+{
+	"uri": "https://mcusuperuser.github.io/structs/initarraysof/",
+	"title": "Initializing arrays of structures at declaration",
+	"tags": [],
+	"description": "",
+	"content": "If the typeName or the structName have already been defined:\nSyntax\ntypeName arrayName[n] = {{list1}, ..., {listn}}; // or struct structName arrayName[n] = {{list1}, ..., {listn}}; Code example\n// structure type to handle color values typedef struct { int red; int green; int blue; } rgb; ... rgb aColor[2] = {{0, 0, 0}, {255, 255, 255}}; "
+},
+{
+	"uri": "https://mcusuperuser.github.io/operators/precedence/",
+	"title": "Operator precedence",
+	"tags": [],
+	"description": "",
+	"content": "The following table lists the precedence and associativity of C operators. Operators are listed top to bottom, in descending precedence. Conflicts between operators with the same precedence are handled via the rules of associativity.\n   Precedence Operator Description Associativity     1 ++ -- Suffix/postfix increment and decrement Left-to-right    () Function call     [] Array subscripting     . Structure and union member     -\u0026gt; Structure and union member access through pointer     (type){list} Compound literal(C99)    2 ++ -- Prefix increment and decrement Right-to-left    + - Unary plus and minus     ! ~ Logical NOT and bitwise NOT     (type) Type cast     * Indirection (dereference)     \u0026amp; Address-of     sizeof Size-of    3 * / % Multiplication, division, and remainder Left-to-right   4 + - Addition and subtraction    5 \u0026lt;\u0026lt; \u0026gt;\u0026gt; Bitwise left shift and right shift    6 \u0026lt; \u0026lt;= For relational operators \u0026lt; and ≤ respectively     \u0026gt; \u0026gt;= For relational operators \u0026gt; and ≥ respectively    7 == != For relational = and ≠ respectively    8 \u0026amp; Bitwise AND    9 ^ Bitwise XOR (exclusive or)    10 | Bitwise OR (inclusive or)    11 \u0026amp;\u0026amp; Logical AND    12 || Logical OR    13 ?: Ternary conditional Right-to-Left   14 = Simple assignment     += -= Assignment by sum and difference     *= /= %= Assignment by product, quotient, and remainder     \u0026lt;\u0026lt;= \u0026gt;\u0026gt;= Assignment by bitwise left shift and right shift     \u0026amp;= ^= |= Assignment by bitwise AND, XOR, and OR    15 , Comma Left-to-right    Precedence When expressions contain multiple operators, their precedence determines the order of evaluation.\n   Expression Expression with precedence     a – b * c a – (b * c)   a + ++b a + (++b)   a + ++b * c a + ((++b) * c)    If functions are part of an expression, there is no way to tell which function is evaluated first.\n\rAssociativity For two operators with the same precedence, the associativity determines the order of the evaluation of the expression.\n   Expression Associativity Expression with precedence     x / y % z Left-to-Right (x / y) % z   x = y = z Right-to-Left x = (y = z)   ~++x Right-to-Left ~(++x)    Although these rules are always applied, it is good practice to explicitly group the elements of an expression using ().\n"
+},
+{
+	"uri": "https://mcusuperuser.github.io/storage/",
+	"title": "Storage classes",
+	"tags": [],
+	"description": "",
+	"content": "Chapter 10 Storage classes Storage classes describe the features of a variable/function. These features basically include the scope, visibility and lifetime. They are used to trace the existence of a certain variable during the runtime of a program.\nScope refers to where in a program a variable may be accessed. Lifetime refers to how long a variable will exist or retain its value.\n"
+},
+{
+	"uri": "https://mcusuperuser.github.io/structs/usingarraysof/",
+	"title": "Using arrays of structures",
+	"tags": [],
+	"description": "",
+	"content": "If the arrayName has already been defined:\nSyntax\narrayName[n].memberName Code example\n// structure type to handle color values typedef struct { int red; int green; int blue; } rgb; ... rgb aColor[2] = {{0, 0, 0}, {255, 255, 255}}; int main (void) { aColor[0].red = 0; aColor[0].green = 145; aColor[0].blue = 189; ... } "
+},
+{
+	"uri": "https://mcusuperuser.github.io/arrays/",
+	"title": "Arrays",
+	"tags": [],
+	"description": "",
+	"content": "Chapter 11 Arrays Arrays are variables that can store many items of the same type stored at continuous memory locations. The items are known as elements and are identified by the array index.\n"
+},
+{
+	"uri": "https://mcusuperuser.github.io/structs/passingtofuncs/",
+	"title": "Passing structures to functions",
+	"tags": [],
+	"description": "",
+	"content": "Code example\n// structure type to handle color values typedef struct { int red; int green; int blue; } rgb; void show_rgb (rgb n) { printf(\u0026#34;(%d, %d, %d)\\n\u0026#34;, n.reg, n.green, n.blue); } int main (void) { rgb a = {0, 145, 198}; rgb b = {0, 255, 255}; show_rgb (a); show_rgb (b); } "
+},
+{
+	"uri": "https://mcusuperuser.github.io/pointers/",
+	"title": "Pointers",
+	"tags": [],
+	"description": "",
+	"content": "Chapter 12 Pointers Many books will teach you that a pointer points to something, but this is not true:\nA pointer is a variable that contains the memory address of another variable.\nWhere are pointers used? Pointers provide a method to pass more than one piece of information into and out of a function (remember that a function can only return one value). They also provide means to pass arguments by reference to functions, rather than by value. And finally, pointers are more efficient when accessing arrays and dealing with strings.\n"
+},
+{
+	"uri": "https://mcusuperuser.github.io/funcpointers/",
+	"title": "Function pointers",
+	"tags": [],
+	"description": "",
+	"content": "Chapter 13 Function pointers You can use pointers to point to functions. This provides a more flexible way to call a function, as it gives a choice of which function to call and finally makes it possible to pass functions to other functions.\n"
+},
+{
+	"uri": "https://mcusuperuser.github.io/structs/",
+	"title": "Structures",
+	"tags": [],
+	"description": "",
+	"content": "Chapter 14 Structures Arrays are named collections of identical objects. Structures are named collections of different objects. Variables within a structure are referred to as members, and may be accessed individually as needed.\nStructures:\n may contain any number of members. These members may be of any data type. allow a group of related variables to be treated as a single unit, even if different types are contained. organize complicated data more easily.  "
+},
+{
+	"uri": "https://mcusuperuser.github.io/bitfields/",
+	"title": "Bitfields",
+	"tags": [],
+	"description": "",
+	"content": "Chapter 15 Bitfields Bit fields are unsigned int members of structures that occupy a specified number of adjacent bits from one to sizeof (int). They may be used as an ordinary int variable in arithmetic and logical operations.\n"
+},
+{
+	"uri": "https://mcusuperuser.github.io/peripherals/",
+	"title": "Peripheral access using CMSIS",
+	"tags": [],
+	"description": "",
+	"content": "Chapter 16 Peripheral access using CMSIS CMSIS defines naming conventions, requirements, and optional features for accessing device specific peripherals (including core peripherals). Typically, the device header file \u0026lt;device.h\u0026gt; contains these definitions and also includes the core specific header files.\n"
+},
+{
+	"uri": "https://mcusuperuser.github.io/unions/",
+	"title": "Unions",
+	"tags": [],
+	"description": "",
+	"content": "Chapter 17 Unions Unions are similar to structures but a union’s members all share the same memory location. In essence a union is a variable that is capable of holding different types of data at different times.\n"
+},
+{
+	"uri": "https://mcusuperuser.github.io/enums/",
+	"title": "Enumerations",
+	"tags": [],
+	"description": "",
+	"content": "Chapter 18 Enumerations Enumerations are user defined data types (with a limited range of values).\n"
+},
+{
+	"uri": "https://mcusuperuser.github.io/macros/",
+	"title": "Macros",
+	"tags": [],
+	"description": "",
+	"content": "Chapter 19 Macros Macros allow for complex text replacements created with #define that insert code into your program. While macros may take parameters like a function, the macro code and parameters are always inserted into code by text substitution (this means that data types are not taken care of).\n"
+},
+{
+	"uri": "https://mcusuperuser.github.io/links/",
+	"title": "Links",
+	"tags": [],
+	"description": "",
+	"content": "Chapter 20 Links This chapter provides links for further reading.\n"
+},
+{
+	"uri": "https://mcusuperuser.github.io/",
+	"title": "",
+	"tags": [],
+	"description": "",
+	"content": "Embedded C for Arm Cortex-M Microcontrollers This reference manual is intended to help programmers of Arm Cortex-M based microcontrollers to master their devices. It is a reference for the C language, the most widely used language for embedded microcontrollers.\nThis reference manual explains the underlying concepts of the C language and shows the Arm related specifics. For example, being a 32-bit architecture, access to memory is different than for the good old 8051.\nThe labs are using Arm Keil MDK, the integrated development environment (IDE) from Arm for microcontrollers. The free MDK-Lite edition is sufficient to follow the examples that are part of this manual. To download and install the tool, just follow the instructions on keil.com. For most labs, no access to hardware is required, as the labs run in the µVision simulator. For working with real hardware, there is plenty of third party material available, just take a look at the link list at the end of the manual.\nI hope that you find this reference manual useful in your daily work. Happy coding!\n"
+},
+{
+	"uri": "https://mcusuperuser.github.io/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://mcusuperuser.github.io/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Function pointers on Embedded C for Arm Cortex-M Microcontrollers</title>
+    <link>https://mcusuperuser.github.io/funcpointers/</link>
+    <description>Recent content in Function pointers on Embedded C for Arm Cortex-M Microcontrollers</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://mcusuperuser.github.io/funcpointers/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduction</title>
+      <link>https://mcusuperuser.github.io/funcpointers/introduction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/funcpointers/introduction/</guid>
+      <description>A function pointer is declared much like a function prototype:
+Syntax
+int (*fp) (int a); This is the declaration of a function pointer called fp.
+The function it points to must take one int parameter and must return an int.
+Initialization Initialize a function pointer by setting the pointer name equal to the function name:
+Code example
+int (*fp) (int a); // Function pointer int foo (int a); // Function prototype  // Initialization: fp = foo; // fp points to foo </description>
+    </item>
+    
+    <item>
+      <title>Calling a function via a function pointer</title>
+      <link>https://mcusuperuser.github.io/funcpointers/calling/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/funcpointers/calling/</guid>
+      <description>The following two calls to the function are equivalent:
+Code example
+m = fp(a); // call via function pointer m = foo(a); // direct call to foo </description>
+    </item>
+    
+    <item>
+      <title>Passing a function to a function</title>
+      <link>https://mcusuperuser.github.io/funcpointers/passing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/funcpointers/passing/</guid>
+      <description>The following example shows the basic concept:
+Code example
+int a, b; int add(int n, int m); // Function prototype int sub(int n, int m); // Function prototype  //Function definition with function pointer parameter int foobar(int n, int n, int (*fp)(int, int)) { return fp(n, m); // Call function passed by pointer } void main(void) { a = foobar (2, 72, &amp;amp;add); // Pass address of add  b = foobar (31, 2, &amp;amp;sub); // Pass address of sub } </description>
+    </item>
+    
+  </channel>
+</rss>

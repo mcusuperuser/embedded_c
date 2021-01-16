@@ -1,0 +1,4354 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.79.0" />
+    <meta name="description" content="Embedded C for Arm Cortex-M Microcontrollers">
+<meta name="author" content="Christopher Seidl">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>Accessing peripherals - Embedded C for Arm Cortex-M Microcontrollers</title>
+
+    
+    <link href="/css/nucleus.css?1610804803" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1610804803" rel="stylesheet">
+    <link href="/css/hybrid.css?1610804803" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1610804803" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1610804803" rel="stylesheet">
+    <link href="/css/auto-complete.css?1610804803" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1610804803" rel="stylesheet">
+    <link href="/css/theme.css?1610804803" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1610804803" rel="stylesheet">
+    
+    <link href="/css/theme-red.css?1610804803" rel="stylesheet">
+    
+    <link href="/css/foo.css?1610804803" rel="stylesheet"><link href="/css/bar.css?1610804803" rel="stylesheet">
+
+    <script src="/js/jquery-3.3.1.min.js?1610804803"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/peripherals/accessing/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <p>Embedded C</p>
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1610804803"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1610804803"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/mcusuperuser.github.io";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1610804803"></script>
+
+    
+  </div>
+  
+    <section id="homelinks">
+      <ul>
+        <li>
+            <a class="padding" href='/'><i class='fas fa-home'></i> Home</a>
+        </li>
+      </ul>
+    </section>
+  
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/comments/" title="Comments" class="dd-item
+        
+        
+        
+        ">
+      <a href="/comments/">
+          <b>1. </b>Comments
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/comments/block/" title="Block comment" class="dd-item ">
+        <a href="/comments/block/">
+        Block comment
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/comments/single/" title="Single line comment" class="dd-item ">
+        <a href="/comments/single/">
+        Single line comment
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/comments/nesting/" title="Nesting comments" class="dd-item ">
+        <a href="/comments/nesting/">
+        Nesting comments
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vars/" title="Variables, identifiers, and data types" class="dd-item
+        
+        
+        
+        ">
+      <a href="/vars/">
+          <b>2. </b>Variables, identifiers, and data types
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/vars/variables/" title="Variables" class="dd-item ">
+        <a href="/vars/variables/">
+        Variables
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/vars/identifiers/" title="Identifiers" class="dd-item ">
+        <a href="/vars/identifiers/">
+        Identifiers
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/vars/datatypes/" title="Datatypes" class="dd-item ">
+        <a href="/vars/datatypes/">
+        Datatypes
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/vars/declaring/" title="Declaring variables" class="dd-item ">
+        <a href="/vars/declaring/">
+        Declaring variables
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/constlit/" title="Constants and literals" class="dd-item
+        
+        
+        
+        ">
+      <a href="/constlit/">
+          <b>3. </b>Constants and literals
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/constlit/constants/" title="Constants" class="dd-item ">
+        <a href="/constlit/constants/">
+        Constants
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/constlit/literals/" title="Literals" class="dd-item ">
+        <a href="/constlit/literals/">
+        Literals
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/printf/" title="The printf() C library function" class="dd-item
+        
+        
+        
+        ">
+      <a href="/printf/">
+          <b>4. </b>The printf() C library function
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/printf/use/" title="How to use printf()" class="dd-item ">
+        <a href="/printf/use/">
+        How to use printf()
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/printf/conversion/" title="Conversion characters" class="dd-item ">
+        <a href="/printf/conversion/">
+        Conversion characters
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/operators/" title="Operators" class="dd-item
+        
+        
+        
+        ">
+      <a href="/operators/">
+          <b>5. </b>Operators
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/operators/arithmetic/" title="Arithmetic operators" class="dd-item ">
+        <a href="/operators/arithmetic/">
+        Arithmetic operators
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/operators/assignment/" title="Assignment operators" class="dd-item ">
+        <a href="/operators/assignment/">
+        Assignment operators
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/operators/relational/" title="Relational operators" class="dd-item ">
+        <a href="/operators/relational/">
+        Relational operators
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/operators/logical/" title="Logical operators" class="dd-item ">
+        <a href="/operators/logical/">
+        Logical operators
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/operators/bitwise/" title="Bitwise operators" class="dd-item ">
+        <a href="/operators/bitwise/">
+        Bitwise operators
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/operators/shift/" title="Shift operators" class="dd-item ">
+        <a href="/operators/shift/">
+        Shift operators
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/operators/memory/" title="Memory addressing/member access" class="dd-item ">
+        <a href="/operators/memory/">
+        Memory addressing/member access
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/operators/other/" title="Other operators" class="dd-item ">
+        <a href="/operators/other/">
+        Other operators
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/operators/precedence/" title="Operator precedence" class="dd-item ">
+        <a href="/operators/precedence/">
+        Operator precedence
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/exprstat/" title="Expressions and statements" class="dd-item
+        
+        
+        
+        ">
+      <a href="/exprstat/">
+          <b>6. </b>Expressions and statements
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/exprstat/expression/" title="Expression statements" class="dd-item ">
+        <a href="/exprstat/expression/">
+        Expression statements
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/exprstat/compound/" title="Compound or block statements" class="dd-item ">
+        <a href="/exprstat/compound/">
+        Compound or block statements
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/exprstat/control/" title="Control statements" class="dd-item ">
+        <a href="/exprstat/control/">
+        Control statements
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/decisions/" title="Decision making" class="dd-item
+        
+        
+        
+        ">
+      <a href="/decisions/">
+          <b>7. </b>Decision making
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/decisions/boolean/" title="Boolean expressions" class="dd-item ">
+        <a href="/decisions/boolean/">
+        Boolean expressions
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/decisions/if/" title="if statement" class="dd-item ">
+        <a href="/decisions/if/">
+        if statement
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/decisions/switch/" title="switch statement" class="dd-item ">
+        <a href="/decisions/switch/">
+        switch statement
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/loops/" title="Loops" class="dd-item
+        
+        
+        
+        ">
+      <a href="/loops/">
+          <b>8. </b>Loops
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/loops/for/" title="For loop" class="dd-item ">
+        <a href="/loops/for/">
+        For loop
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/loops/while/" title="While loop" class="dd-item ">
+        <a href="/loops/while/">
+        While loop
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/loops/do-while/" title="do while loop" class="dd-item ">
+        <a href="/loops/do-while/">
+        do while loop
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/loops/break/" title="break statement" class="dd-item ">
+        <a href="/loops/break/">
+        break statement
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/loops/continue/" title="continue statement" class="dd-item ">
+        <a href="/loops/continue/">
+        continue statement
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/func/" title="Functions" class="dd-item
+        
+        
+        
+        ">
+      <a href="/func/">
+          <b>9. </b>Functions
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/func/functions/" title="Introduction" class="dd-item ">
+        <a href="/func/functions/">
+        Introduction
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/func/return/" title="Return data type" class="dd-item ">
+        <a href="/func/return/">
+        Return data type
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/func/parameters/" title="Parameters" class="dd-item ">
+        <a href="/func/parameters/">
+        Parameters
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/func/callfunc/" title="How to call a function" class="dd-item ">
+        <a href="/func/callfunc/">
+        How to call a function
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/func/prototypes/" title="Function prototypes" class="dd-item ">
+        <a href="/func/prototypes/">
+        Function prototypes
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/func/passingparams/" title="Passing parameters by value" class="dd-item ">
+        <a href="/func/passingparams/">
+        Passing parameters by value
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/func/scope/" title="Functions and scope" class="dd-item ">
+        <a href="/func/scope/">
+        Functions and scope
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/storage/" title="Storage classes" class="dd-item
+        
+        
+        
+        ">
+      <a href="/storage/">
+          <b>10. </b>Storage classes
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/storage/introduction/" title="Introduction" class="dd-item ">
+        <a href="/storage/introduction/">
+        Introduction
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/storage/auto/" title="Auto variables" class="dd-item ">
+        <a href="/storage/auto/">
+        Auto variables
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/storage/static/" title="Static variables" class="dd-item ">
+        <a href="/storage/static/">
+        Static variables
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/storage/extern/" title="Extern variables" class="dd-item ">
+        <a href="/storage/extern/">
+        Extern variables
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/storage/register/" title="Register variables" class="dd-item ">
+        <a href="/storage/register/">
+        Register variables
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/storage/scope/" title="Scope of functions" class="dd-item ">
+        <a href="/storage/scope/">
+        Scope of functions
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/arrays/" title="Arrays" class="dd-item
+        
+        
+        
+        ">
+      <a href="/arrays/">
+          <b>11. </b>Arrays
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/arrays/introduction/" title="Introduction" class="dd-item ">
+        <a href="/arrays/introduction/">
+        Introduction
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/arrays/multidim/" title="Multidimensional arrays" class="dd-item ">
+        <a href="/arrays/multidim/">
+        Multidimensional arrays
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/arrays/strings/" title="Strings" class="dd-item ">
+        <a href="/arrays/strings/">
+        Strings
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/pointers/" title="Pointers" class="dd-item
+        
+        
+        
+        ">
+      <a href="/pointers/">
+          <b>12. </b>Pointers
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/pointers/declaration/" title="Pointer declaration" class="dd-item ">
+        <a href="/pointers/declaration/">
+        Pointer declaration
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/pointers/andarrays/" title="Pointers and arrays" class="dd-item ">
+        <a href="/pointers/andarrays/">
+        Pointers and arrays
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/pointers/andfunctions/" title="Pointers and functions" class="dd-item ">
+        <a href="/pointers/andfunctions/">
+        Pointers and functions
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/pointers/andstrings/" title="Pointers and strings" class="dd-item ">
+        <a href="/pointers/andstrings/">
+        Pointers and strings
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/pointers/arraysof/" title="Arrays of pointers" class="dd-item ">
+        <a href="/pointers/arraysof/">
+        Arrays of pointers
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/funcpointers/" title="Function pointers" class="dd-item
+        
+        
+        
+        ">
+      <a href="/funcpointers/">
+          <b>13. </b>Function pointers
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/funcpointers/introduction/" title="Introduction" class="dd-item ">
+        <a href="/funcpointers/introduction/">
+        Introduction
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/funcpointers/calling/" title="Calling a function via a function pointer" class="dd-item ">
+        <a href="/funcpointers/calling/">
+        Calling a function via a function pointer
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/funcpointers/passing/" title="Passing a function to a function" class="dd-item ">
+        <a href="/funcpointers/passing/">
+        Passing a function to a function
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/structs/" title="Structures" class="dd-item
+        
+        
+        
+        ">
+      <a href="/structs/">
+          <b>14. </b>Structures
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/structs/definition/" title="Structure definition" class="dd-item ">
+        <a href="/structs/definition/">
+        Structure definition
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/structs/declaration/" title="Variable declaration" class="dd-item ">
+        <a href="/structs/declaration/">
+        Variable declaration
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/structs/using/" title="Using structure variables" class="dd-item ">
+        <a href="/structs/using/">
+        Using structure variables
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/structs/types/" title="Structure types" class="dd-item ">
+        <a href="/structs/types/">
+        Structure types
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/structs/initialization/" title="Initialization of structure variables" class="dd-item ">
+        <a href="/structs/initialization/">
+        Initialization of structure variables
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/structs/nested/" title="Nested structures" class="dd-item ">
+        <a href="/structs/nested/">
+        Nested structures
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/structs/pointersto/" title="Pointers to structures" class="dd-item ">
+        <a href="/structs/pointersto/">
+        Pointers to structures
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/structs/arraysof/" title="Creating arrays of structures" class="dd-item ">
+        <a href="/structs/arraysof/">
+        Creating arrays of structures
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/structs/initarraysof/" title="Initializing arrays of structures at declaration" class="dd-item ">
+        <a href="/structs/initarraysof/">
+        Initializing arrays of structures at declaration
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/structs/usingarraysof/" title="Using arrays of structures" class="dd-item ">
+        <a href="/structs/usingarraysof/">
+        Using arrays of structures
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/structs/passingtofuncs/" title="Passing structures to functions" class="dd-item ">
+        <a href="/structs/passingtofuncs/">
+        Passing structures to functions
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/bitfields/" title="Bitfields" class="dd-item
+        
+        
+        
+        ">
+      <a href="/bitfields/">
+          <b>15. </b>Bitfields
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/bitfields/using/" title="Using bit fields" class="dd-item ">
+        <a href="/bitfields/using/">
+        Using bit fields
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/peripherals/" title="Peripheral access using CMSIS" class="dd-item
+        parent
+        
+        
+        ">
+      <a href="/peripherals/">
+          <b>16. </b>Peripheral access using CMSIS
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/peripherals/accessing/" title="Accessing peripherals" class="dd-item active">
+        <a href="/peripherals/accessing/">
+        Accessing peripherals
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/peripherals/readmodifywrite/" title="Reading, modifying, and writing bit fields in registers" class="dd-item ">
+        <a href="/peripherals/readmodifywrite/">
+        Reading, modifying, and writing bit fields in registers
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/peripherals/alternative/" title="Alternative mechanism" class="dd-item ">
+        <a href="/peripherals/alternative/">
+        Alternative mechanism
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/unions/" title="Unions" class="dd-item
+        
+        
+        
+        ">
+      <a href="/unions/">
+          <b>17. </b>Unions
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/unions/introduction/" title="Introduction" class="dd-item ">
+        <a href="/unions/introduction/">
+        Introduction
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/unions/creating/" title="Creating unions with typedefs" class="dd-item ">
+        <a href="/unions/creating/">
+        Creating unions with typedefs
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/unions/inmemory/" title="Unions in memory" class="dd-item ">
+        <a href="/unions/inmemory/">
+        Unions in memory
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/unions/vsstructures/" title="Unions vs. structures" class="dd-item ">
+        <a href="/unions/vsstructures/">
+        Unions vs. structures
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/enums/" title="Enumerations" class="dd-item
+        
+        
+        
+        ">
+      <a href="/enums/">
+          <b>18. </b>Enumerations
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/enums/declaration/" title="Enumeration declaration" class="dd-item ">
+        <a href="/enums/declaration/">
+        Enumeration declaration
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/enums/declarationtypevar/" title="Declaration of enumeration type variable" class="dd-item ">
+        <a href="/enums/declarationtypevar/">
+        Declaration of enumeration type variable
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/enums/tagless/" title="Tagless enumeration variable" class="dd-item ">
+        <a href="/enums/tagless/">
+        Tagless enumeration variable
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/enums/typedef/" title="Declare an enumeration type with `typedef`" class="dd-item ">
+        <a href="/enums/typedef/">
+        Declare an enumeration type with `typedef`
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/enums/using/" title="Using an enumeration type variable" class="dd-item ">
+        <a href="/enums/using/">
+        Using an enumeration type variable
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/macros/" title="Macros" class="dd-item
+        
+        
+        
+        ">
+      <a href="/macros/">
+          <b>19. </b>Macros
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/macros/simple/" title="Simple macros" class="dd-item ">
+        <a href="/macros/simple/">
+        Simple macros
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/macros/argument/" title="Argument macros" class="dd-item ">
+        <a href="/macros/argument/">
+        Argument macros
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/links/" title="Links" class="dd-item
+        
+        
+        
+        ">
+      <a href="/links/">
+          <b>20. </b>Links
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+          
+        
+    </ul>
+
+    
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'></a> > <a href='/peripherals/'>Peripheral access using CMSIS</a> > Accessing peripherals
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Accessing peripherals
+            </h1>
+          
+
+        
+
+
+<p>Each peripheral provides a data type definition with a name that is composed of:</p>
+<ul>
+<li>an optional prefix <code>&lt;device abbreviation&gt;_</code></li>
+<li><code>&lt;peripheral name&gt;</code></li>
+<li>postfix <code>_Type</code> or <code>_TypeDef</code> to identify a type definition.</li>
+</ul>
+<p>To access the peripheral registers and related function in a device, the files <code>device.h</code> and <code>core_cm#.h</code> define as a minimum:</p>
+<ol>
+<li>The <strong>register layout typedef</strong> for each peripheral that defines all register names. RESERVED is used to introduce space into the structure for adjusting the addresses of the peripheral registers.</li>
+</ol>
+<p><strong>Code example</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span>
+{
+  __IM  uint32_t CPUID;                  <span style="color:#75715e">/*!&lt; Offset: 0x000 (R/ )  CPUID Base Register */</span>
+  __IOM uint32_t ICSR;                   <span style="color:#75715e">/*!&lt; Offset: 0x004 (R/W)  Interrupt Control and State Register */</span>
+  __IOM uint32_t VTOR;                   <span style="color:#75715e">/*!&lt; Offset: 0x008 (R/W)  Vector Table Offset Register */</span>
+  __IOM uint32_t AIRCR;                  <span style="color:#75715e">/*!&lt; Offset: 0x00C (R/W)  Application Interrupt and Reset Control Register */</span>
+  __IOM uint32_t SCR;                    <span style="color:#75715e">/*!&lt; Offset: 0x010 (R/W)  System Control Register */</span>
+  __IOM uint32_t CCR;                    <span style="color:#75715e">/*!&lt; Offset: 0x014 (R/W)  Configuration Control Register */</span>
+  __IOM uint8_t  SHP[<span style="color:#ae81ff">12U</span>];               <span style="color:#75715e">/*!&lt; Offset: 0x018 (R/W)  System Handlers Priority Registers (4-7, 8-11, 12-15) */</span>
+  __IOM uint32_t SHCSR;                  <span style="color:#75715e">/*!&lt; Offset: 0x024 (R/W)  System Handler Control and State Register */</span>
+  __IOM uint32_t CFSR;                   <span style="color:#75715e">/*!&lt; Offset: 0x028 (R/W)  Configurable Fault Status Register */</span>
+  __IOM uint32_t HFSR;                   <span style="color:#75715e">/*!&lt; Offset: 0x02C (R/W)  HardFault Status Register */</span>
+  __IOM uint32_t DFSR;                   <span style="color:#75715e">/*!&lt; Offset: 0x030 (R/W)  Debug Fault Status Register */</span>
+  __IOM uint32_t MMFAR;                  <span style="color:#75715e">/*!&lt; Offset: 0x034 (R/W)  MemManage Fault Address Register */</span>
+  __IOM uint32_t BFAR;                   <span style="color:#75715e">/*!&lt; Offset: 0x038 (R/W)  BusFault Address Register */</span>
+  __IOM uint32_t AFSR;                   <span style="color:#75715e">/*!&lt; Offset: 0x03C (R/W)  Auxiliary Fault Status Register */</span>
+  __IM  uint32_t PFR[<span style="color:#ae81ff">2U</span>];                <span style="color:#75715e">/*!&lt; Offset: 0x040 (R/ )  Processor Feature Register */</span>
+  __IM  uint32_t DFR;                    <span style="color:#75715e">/*!&lt; Offset: 0x048 (R/ )  Debug Feature Register */</span>
+  __IM  uint32_t ADR;                    <span style="color:#75715e">/*!&lt; Offset: 0x04C (R/ )  Auxiliary Feature Register */</span>
+  __IM  uint32_t MMFR[<span style="color:#ae81ff">4U</span>];               <span style="color:#75715e">/*!&lt; Offset: 0x050 (R/ )  Memory Model Feature Register */</span>
+  __IM  uint32_t ISAR[<span style="color:#ae81ff">5U</span>];               <span style="color:#75715e">/*!&lt; Offset: 0x060 (R/ )  Instruction Set Attributes Register */</span>
+        uint32_t RESERVED0[<span style="color:#ae81ff">5U</span>];
+  __IOM uint32_t CPACR;                  <span style="color:#75715e">/*!&lt; Offset: 0x088 (R/W)  Coprocessor Access Control Register */</span>
+} SCB_Type;
+</code></pre></div>
+<div class="notices note" ><p>IO Type Qualifiers are used to specify the access to peripheral variables:</p>
+</div>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center">IO Type Qualifier</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">__IM</td>
+<td>Struct member</td>
+<td>Defines &lsquo;read only&rsquo; permissions</td>
+</tr>
+<tr>
+<td style="text-align:center">__OM</td>
+<td>Struct member</td>
+<td>Defines &lsquo;write only&rsquo; permissions</td>
+</tr>
+<tr>
+<td style="text-align:center">__IOM</td>
+<td>Struct member</td>
+<td>Defines &lsquo;read / write&rsquo; permissions</td>
+</tr>
+<tr>
+<td style="text-align:center">__I</td>
+<td>Scalar variable</td>
+<td>Defines &lsquo;read only&rsquo; permissions</td>
+</tr>
+<tr>
+<td style="text-align:center">__O</td>
+<td>Scalar variable</td>
+<td>Defines &lsquo;write only&rsquo; permissions</td>
+</tr>
+<tr>
+<td style="text-align:center">__IO</td>
+<td>Scalar variable</td>
+<td>Defines &lsquo;read / write&rsquo; permissions</td>
+</tr>
+</tbody>
+</table>
+<ol start="2">
+<li>The <strong>base address</strong> for each peripheral (in case of multiple peripherals that use the same register layout typedef multiple base addresses are defined).</li>
+</ol>
+<p><strong>Code example</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#define SCS_BASE (0xE000E000UL) </span><span style="color:#75715e">// System Control Space Base Address
+</span></code></pre></div><ol start="3">
+<li><strong>Access definitions</strong> for each peripheral. In case of multiple peripherals that are using the same register layout typedef, multiple access definitions exist (UART0, UART2).</li>
+</ol>
+<p><strong>Code example</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#define SCB  ((SCB_Type *) SCB_BASE) </span><span style="color:#75715e">// SCB configuration struct
+</span></code></pre></div><p>These definitions allow accessing peripheral registers with simple assignments.</p>
+<p><strong>Code example</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">SCB<span style="color:#f92672">-&gt;</span>SCR <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</code></pre></div><ol start="4">
+<li>For core registers, macros define the position and the mask value for a bit field. Such definitions are often also created for other peripheral registers.</li>
+</ol>
+<p><strong>Code example</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">/* SCB Interrupt Control State Register Definitions */</span>
+<span style="color:#75715e">#define SCB_ICSR_NMIPENDSET_Pos  31U </span><span style="color:#75715e">// SCB ICSR: NMIPENDSET Position 
+</span><span style="color:#75715e"></span><span style="color:#75715e">#define SCB_ICSR_NMIPENDSET_Msk  (1UL &lt;&lt; SCB_ICSR_NMIPENDSET_Pos) </span><span style="color:#75715e">// SCB ICSR: NMIPENDSET Mask 
+</span><span style="color:#75715e"></span><span style="color:#75715e">#define SCB_ICSR_PENDSVSET_Pos   28U </span><span style="color:#75715e">// SCB ICSR: PENDSVSET Position 
+</span><span style="color:#75715e"></span><span style="color:#75715e">#define SCB_ICSR_PENDSVSET_Msk   (1UL &lt;&lt; SCB_ICSR_PENDSVSET_Pos)  </span><span style="color:#75715e">// SCB ICSR: PENDSVSET Mask 
+</span><span style="color:#75715e"></span><span style="color:#75715e">#define SCB_ICSR_PENDSVCLR_Pos   27U </span><span style="color:#75715e">// SCB ICSR: PENDSVCLR Position 
+</span><span style="color:#75715e"></span><span style="color:#75715e">#define SCB_ICSR_PENDSVCLR_Msk   (1UL &lt;&lt; SCB_ICSR_PENDSVCLR_Pos)  </span><span style="color:#75715e">// SCB ICSR: PENDSVCLR Mask 
+</span><span style="color:#75715e"></span><span style="color:#75715e">#define SCB_ICSR_PENDSTSET_Pos   26U </span><span style="color:#75715e">// SCB ICSR: PENDSTSET Position 
+</span><span style="color:#75715e"></span><span style="color:#75715e">#define SCB_ICSR_PENDSTSET_Msk   (1UL &lt;&lt; SCB_ICSR_PENDSTSET_Pos)  </span><span style="color:#75715e">// SCB ICSR: PENDSTSET Mask 
+</span><span style="color:#75715e"></span><span style="color:#75715e">#define SCB_ICSR_PENDSTCLR_Pos   25U </span><span style="color:#75715e">// SCB ICSR: PENDSTCLR Position 
+</span><span style="color:#75715e"></span><span style="color:#75715e">#define SCB_ICSR_PENDSTCLR_Msk   (1UL &lt;&lt; SCB_ICSR_PENDSTCLR_Pos)  </span><span style="color:#75715e">// SCB ICSR: PENDSTCLR Mask 
+</span><span style="color:#75715e"></span><span style="color:#75715e">#define SCB_ICSR_ISRPREEMPT_Pos  23U </span><span style="color:#75715e">// SCB ICSR: ISRPREEMPT Position 
+</span><span style="color:#75715e"></span><span style="color:#75715e">#define SCB_ICSR_ISRPREEMPT_Msk  (1UL &lt;&lt; SCB_ICSR_ISRPREEMPT_Pos)  </span><span style="color:#75715e">// SCB ICSR: ISRPREEMPT Mask 
+</span><span style="color:#75715e"></span><span style="color:#75715e">#define SCB_ICSR_ISRPENDING_Pos  22U </span><span style="color:#75715e">// SCB ICSR: ISRPENDING Position 
+</span><span style="color:#75715e"></span><span style="color:#75715e">#define SCB_ICSR_ISRPENDING_Msk  (1UL &lt;&lt; SCB_ICSR_ISRPENDING_Pos) </span><span style="color:#75715e">// SCB ICSR: ISRPENDING Mask 
+</span><span style="color:#75715e"></span><span style="color:#75715e">#define SCB_ICSR_VECTPENDING_Pos 12U </span><span style="color:#75715e">// SCB ICSR: VECTPENDING Position 
+</span><span style="color:#75715e"></span><span style="color:#75715e">#define SCB_ICSR_VECTPENDING_Msk (0x1FFUL &lt;&lt; SCB_ICSR_VECTPENDING_Pos) </span><span style="color:#75715e">// SCB ICSR: VECTPENDING Mask 
+</span><span style="color:#75715e"></span><span style="color:#75715e">#define SCB_ICSR_RETTOBASE_Pos   11U </span><span style="color:#75715e">// SCB ICSR: RETTOBASE Position 
+</span><span style="color:#75715e"></span><span style="color:#75715e">#define SCB_ICSR_RETTOBASE_Msk   (1UL &lt;&lt; SCB_ICSR_RETTOBASE_Pos)  </span><span style="color:#75715e">// SCB ICSR: RETTOBASE Mask 
+</span><span style="color:#75715e"></span><span style="color:#75715e">#define SCB_ICSR_VECTACTIVE_Pos  0U  </span><span style="color:#75715e">// SCB ICSR: VECTACTIVE Position 
+</span><span style="color:#75715e"></span><span style="color:#75715e">#define SCB_ICSR_VECTACTIVE_Msk  (0x1FFUL &lt;&lt; SCB_ICSR_VECTACTIVE_Pos)  </span><span style="color:#75715e">// SCB ICSR: VECTACTIVE Mask 
+</span></code></pre></div>
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/peripherals/" title="Peripheral access using CMSIS"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/peripherals/readmodifywrite/" title="Reading, modifying, and writing bit fields in registers" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1610804803"></script>
+    <script src="/js/perfect-scrollbar.min.js?1610804803"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1610804803"></script>
+    <script src="/js/jquery.sticky.js?1610804803"></script>
+    <script src="/js/featherlight.min.js?1610804803"></script>
+    <script src="/js/highlight.pack.js?1610804803"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1610804803"></script>
+    <script src="/js/learn.js?1610804803"></script>
+    <script src="/js/hugo-learn.js?1610804803"></script>
+    
+        
+            <script src="/mermaid/mermaid.js?1610804803"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>
+

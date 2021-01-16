@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/arrays/introduction/</loc>
+    <lastmod>2020-12-23T22:38:04+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/storage/introduction/</loc>
+    <lastmod>2020-12-23T22:30:52+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/func/functions/</loc>
+    <lastmod>2020-12-23T22:19:42+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/loops/for/</loc>
+    <lastmod>2020-12-23T22:07:56+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/decisions/boolean/</loc>
+    <lastmod>2020-12-23T21:58:56+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/exprstat/expression/</loc>
+    <lastmod>2020-12-23T21:52:18+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/constlit/constants/</loc>
+    <lastmod>2020-12-23T21:13:17+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/vars/variables/</loc>
+    <lastmod>2020-12-23T16:41:49+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/comments/</loc>
+    <lastmod>2020-12-23T16:06:16+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/peripherals/accessing/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/operators/arithmetic/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/enums/declaration/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/printf/use/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/funcpointers/introduction/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/unions/introduction/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/pointers/declaration/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/macros/simple/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/structs/definition/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/bitfields/using/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/arrays/multidim/</loc>
+    <lastmod>2020-12-23T22:38:14+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/storage/auto/</loc>
+    <lastmod>2020-12-23T22:28:32+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/func/return/</loc>
+    <lastmod>2020-12-23T22:17:13+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/loops/while/</loc>
+    <lastmod>2020-12-23T22:08:01+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/decisions/if/</loc>
+    <lastmod>2020-12-23T21:59:01+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/exprstat/compound/</loc>
+    <lastmod>2020-12-23T21:52:24+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/vars/identifiers/</loc>
+    <lastmod>2020-12-23T16:41:55+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/comments/block/</loc>
+    <lastmod>2020-12-23T16:25:49+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/vars/</loc>
+    <lastmod>2020-12-23T16:05:03+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/macros/argument/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/operators/assignment/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/funcpointers/calling/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/printf/conversion/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/unions/creating/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/enums/declarationtypevar/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/constlit/literals/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/pointers/andarrays/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/peripherals/readmodifywrite/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/structs/declaration/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/arrays/strings/</loc>
+    <lastmod>2020-12-23T22:38:19+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/storage/static/</loc>
+    <lastmod>2020-12-23T22:28:37+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/func/parameters/</loc>
+    <lastmod>2020-12-23T22:17:22+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/loops/do-while/</loc>
+    <lastmod>2020-12-23T22:08:07+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/decisions/switch/</loc>
+    <lastmod>2020-12-23T21:59:06+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/exprstat/control/</loc>
+    <lastmod>2020-12-23T21:52:30+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/vars/datatypes/</loc>
+    <lastmod>2020-12-23T16:42:03+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/comments/single/</loc>
+    <lastmod>2020-12-23T16:25:54+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/constlit/</loc>
+    <lastmod>2020-12-23T16:06:27+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/peripherals/alternative/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/funcpointers/passing/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/pointers/andfunctions/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/operators/relational/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/enums/tagless/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/unions/inmemory/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/unions/vsstructures/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/structs/using/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/storage/extern/</loc>
+    <lastmod>2020-12-23T22:28:42+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/func/callfunc/</loc>
+    <lastmod>2020-12-23T22:17:28+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/loops/break/</loc>
+    <lastmod>2020-12-23T22:08:14+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/vars/declaring/</loc>
+    <lastmod>2020-12-23T16:49:55+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/comments/nesting/</loc>
+    <lastmod>2020-12-23T16:26:02+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/printf/</loc>
+    <lastmod>2020-12-23T16:06:38+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/enums/typedef/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/operators/logical/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/pointers/andstrings/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/structs/types/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/storage/register/</loc>
+    <lastmod>2020-12-23T22:28:48+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/func/prototypes/</loc>
+    <lastmod>2020-12-23T22:17:36+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/loops/continue/</loc>
+    <lastmod>2020-12-23T22:08:20+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/operators/</loc>
+    <lastmod>2020-12-23T16:06:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/pointers/arraysof/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/operators/bitwise/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/structs/initialization/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/enums/using/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/func/passingparams/</loc>
+    <lastmod>2020-12-23T22:17:44+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/exprstat/</loc>
+    <lastmod>2020-12-23T16:06:56+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/structs/nested/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/operators/shift/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/storage/scope/</loc>
+    <lastmod>2020-12-23T22:28:53+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/func/scope/</loc>
+    <lastmod>2020-12-23T22:17:51+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/decisions/</loc>
+    <lastmod>2020-12-23T16:07:02+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/operators/memory/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/structs/pointersto/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/loops/</loc>
+    <lastmod>2020-12-23T16:07:11+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/structs/arraysof/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/operators/other/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/func/</loc>
+    <lastmod>2020-12-23T16:07:17+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/structs/initarraysof/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/operators/precedence/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/storage/</loc>
+    <lastmod>2020-12-23T16:07:26+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/structs/usingarraysof/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/arrays/</loc>
+    <lastmod>2020-12-23T16:07:32+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/structs/passingtofuncs/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/pointers/</loc>
+    <lastmod>2020-12-23T16:07:37+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/funcpointers/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/structs/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/bitfields/</loc>
+    <lastmod>2020-12-23T16:08:03+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/peripherals/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/unions/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/enums/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/macros/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/links/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/</loc>
+    <lastmod>2020-12-23T22:38:19+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mcusuperuser.github.io/tags/</loc>
+  </url>
+  
+</urlset>

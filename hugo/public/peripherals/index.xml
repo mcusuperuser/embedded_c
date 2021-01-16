@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Peripheral access using CMSIS on Embedded C for Arm Cortex-M Microcontrollers</title>
+    <link>https://mcusuperuser.github.io/peripherals/</link>
+    <description>Recent content in Peripheral access using CMSIS on Embedded C for Arm Cortex-M Microcontrollers</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://mcusuperuser.github.io/peripherals/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Accessing peripherals</title>
+      <link>https://mcusuperuser.github.io/peripherals/accessing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/peripherals/accessing/</guid>
+      <description>Each peripheral provides a data type definition with a name that is composed of:
+ an optional prefix &amp;lt;device abbreviation&amp;gt;_ &amp;lt;peripheral name&amp;gt; postfix _Type or _TypeDef to identify a type definition.  To access the peripheral registers and related function in a device, the files device.h and core_cm#.h define as a minimum:
+ The register layout typedef for each peripheral that defines all register names. RESERVED is used to introduce space into the structure for adjusting the addresses of the peripheral registers.</description>
+    </item>
+    
+    <item>
+      <title>Reading, modifying, and writing bit fields in registers</title>
+      <link>https://mcusuperuser.github.io/peripherals/readmodifywrite/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/peripherals/readmodifywrite/</guid>
+      <description>How do we find the current value of the ICSR ISRPREEMPT bit? We read the register SCB, AND it (using &amp;amp;) with the mask, and then shift it right (using &amp;raquo;) by the shift value:
+Code example
+id = (SCB-&amp;gt;ICSR &amp;amp; SCB_ICSR_ISRPREEMPT_Msk) &amp;gt;&amp;gt; SCB_ICSR_ISRPREEMPT_Pos; How do we set fields NMIPENDSET and PENDSVSET in that register, leaving everything else as zero? We use the = assignment operator:
+Code example
+SCB-&amp;gt;ICSR = SCB_ICSR_NMIPENDSET_Msk | SCB_ICSR_PENDSVSET_Msk; How do we set fields NMIPENDSET and PENDSVSET in that register without modifying anything else?</description>
+    </item>
+    
+    <item>
+      <title>Alternative mechanism</title>
+      <link>https://mcusuperuser.github.io/peripherals/alternative/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/peripherals/alternative/</guid>
+      <description>Using the CMSIS macros _VAL2FLD(field, value) and _FLD2VAL(field, value) you can access bit fields more easily.
+Code example
+id = _FLD2VAL(SCB_CPUID_REVISION, SCB-&amp;gt;CPUID); // uses the #define&amp;#39;s _Pos and _Msk of the related bit field to extract the value of a bit field from a register.  SCB-&amp;gt;CPUID = _VAL2FLD(SCB_CPUID_REVISION, 0x3) | _VAL2FLD(SCB_CPUID_VARIANT, 0x3); // uses the #define&amp;#39;s _Pos and _Msk of the related bit field to shift bit-field values for assigning to a register.</description>
+    </item>
+    
+  </channel>
+</rss>

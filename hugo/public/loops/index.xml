@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Loops on Embedded C for Arm Cortex-M Microcontrollers</title>
+    <link>https://mcusuperuser.github.io/loops/</link>
+    <description>Recent content in Loops on Embedded C for Arm Cortex-M Microcontrollers</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 23 Dec 2020 16:07:11 +0100</lastBuildDate><atom:link href="https://mcusuperuser.github.io/loops/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>For loop</title>
+      <link>https://mcusuperuser.github.io/loops/for/</link>
+      <pubDate>Wed, 23 Dec 2020 22:07:56 +0100</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/loops/for/</guid>
+      <description>A for loop checks the loop condition at the top and automatically executes the iterator at the bottom of the loop.
+Syntax
+for (expression1; expression2; expression 3) statement The expression1 initializes the loop count variable once (e.g. n= 0). The expression2 is the test condition. The loop will continue while this is true (e.g. n &amp;lt;= 10). The expression3 is executed at the end of each iteration; usually to modify the loop count variable (e.</description>
+    </item>
+    
+    <item>
+      <title>While loop</title>
+      <link>https://mcusuperuser.github.io/loops/while/</link>
+      <pubDate>Wed, 23 Dec 2020 22:08:01 +0100</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/loops/while/</guid>
+      <description>A while loop checks the loop condition at the top; you must create the iterator if needed.
+Syntax
+while (expression) statement If the expression is true, the statement will be executed. Afterwards, the expression will be reevaluated to determine whether or not to execute the statement again. It is possible that the statement will never be executed if the expression is false when it is evaluated for the first time.</description>
+    </item>
+    
+    <item>
+      <title>do while loop</title>
+      <link>https://mcusuperuser.github.io/loops/do-while/</link>
+      <pubDate>Wed, 23 Dec 2020 22:08:07 +0100</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/loops/do-while/</guid>
+      <description>A do .. while loop checks the loop condition at the bottom; you must create the iterator if needed.
+Syntax
+do statement while (expression); The statement is executed and then the expression is evaluated to determine whether or not to execute the statement again. The statement will always execute at least once, even if the expression is false when the loop starts.
+Code example
+int n = 0; do { printf(&amp;#34;Loop iteration %d\n&amp;#34;, n); } while (n &amp;lt; 5); Output</description>
+    </item>
+    
+    <item>
+      <title>break statement</title>
+      <link>https://mcusuperuser.github.io/loops/break/</link>
+      <pubDate>Wed, 23 Dec 2020 22:08:14 +0100</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/loops/break/</guid>
+      <description>Syntax
+break; The break statement causes immediate termination of a loop, even if the exit condition has not been met. Also, it exits from a switch statement so that execution doesn&amp;rsquo;t fall through to next case clause.
+Code example
+int n = 0; while (n &amp;lt; 10) { if (n == 5) break; printf(&amp;#34;Loop iteration %d\n&amp;#34;, n++); } Output
+Loop iteration 0 Loop iteration 1 Loop iteration 2 Loop iteration 3 Loop iteration 4 </description>
+    </item>
+    
+    <item>
+      <title>continue statement</title>
+      <link>https://mcusuperuser.github.io/loops/continue/</link>
+      <pubDate>Wed, 23 Dec 2020 22:08:20 +0100</pubDate>
+      
+      <guid>https://mcusuperuser.github.io/loops/continue/</guid>
+      <description>Syntax
+continue; The continue statement causes a program to jump back to the beginning of a loop without completing the current iteration.
+Code example
+int n = 0; while (n &amp;lt; 5) { if (n == 3) continue; printf(&amp;#34;Loop iteration %d\n&amp;#34;, n++); } Output
+Loop iteration 0 Loop iteration 1 Loop iteration 2 Loop iteration 4 </description>
+    </item>
+    
+  </channel>
+</rss>
