@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>The printf() C library function - Embedded C for Arm Cortex-M Microcontrollers</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "The printf() C library function";
+        var mkdocs_page_input_path = "printf.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="index.html" class="icon icon-home"> Embedded C for Arm Cortex-M Microcontrollers
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="index.html">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables, identifiers and data types</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="constants.html">Constants and literals</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">The printf() C library function</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-use-printf">How to use printf()</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conversion-characters">Conversion characters</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#special-characters">Special characters</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="exercise01.html">First exercise</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="expressions.html">Expressions and statements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="making_decisions.html">Decision making</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="storage_classes.html">Storage classes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="arrays.html">Arrays</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="pointers.html">Pointers</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="function_pointers.html">Function pointers</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="structures.html">Structures</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="bit_fields.html">Bit fields</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="peripheral_access.html">Peripheral access using CMSIS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="unions.html">Unions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="further_reading.html">Further reading</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Embedded C for Arm Cortex-M Microcontrollers</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html" class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">The printf() C library function</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/mcusuperuser/embedded_c/edit/master/docs/printf.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="the-printf-c-library-function">The printf() C library function<a class="headerlink" href="#the-printf-c-library-function" title="Permanent link">#</a></h1>
+<p>One of the most commonly used C library function is the <code>printf()</code> function which allows to write text to the "standard
+output" (normally a monitor or line printer). In embedded systems, often a UART is used. In Arm Cortex-M based systems
+you can redirect the standard output to the ITM debug channel which saves resources (the UART) and is much faster.</p>
+<h3 id="how-to-use-printf">How to use printf()<a class="headerlink" href="#how-to-use-printf" title="Permanent link">#</a></h3>
+<pre><code class="language-c">printf(ControlString, arg1, ..., argn);
+</code></pre>
+<p>Everything within the <code>ControlString</code> is printed verbatim except <code>%d</code>'s
+which are replaced by the argument values from the list.</p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">int n = 1, m = 7;
+printf(&quot;n = %d\nm = %d\n&quot;, n, m);
+</code></pre>
+<p>The output is:</p>
+<pre><code class="language-c">n = 1
+m = 7
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li><code>%d</code> is the <em>conversion character</em>.</li>
+<li><code>\n</code> is a <em>special character</em>.</li>
+</ul>
+</div>
+<h3 id="conversion-characters">Conversion characters<a class="headerlink" href="#conversion-characters" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Conversion character</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>%c</code></td>
+<td style="text-align: left;">Single character</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>%s</code></td>
+<td style="text-align: left;">String (all characters until <code>\0</code>)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>%d</code></td>
+<td style="text-align: left;">Signed decimal number</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>%#</code></td>
+<td style="text-align: left;">A <code>0x</code> should precede a hexadecimal number</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>%u</code></td>
+<td style="text-align: left;">Unsigned decimal number</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>%o</code></td>
+<td style="text-align: left;">Unsigned octal number</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>%x</code></td>
+<td style="text-align: left;">Unsigned hexadecimal number with lowercase digits (<code>1a4e</code>)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>%X</code></td>
+<td style="text-align: left;">As x, but with uppercase digits (<code>1A4E</code>)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>%f</code></td>
+<td style="text-align: left;">Signed decimal value (floating point)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>%e</code></td>
+<td style="text-align: left;">Signed decimal with exponent (<code>1.13e-4</code>)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>%E</code></td>
+<td style="text-align: left;">As e, but uses E for exponent (<code>1.13E-4</code>)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>%g</code></td>
+<td style="text-align: left;">As e or f, but depends on size and precision of value</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>%G</code></td>
+<td style="text-align: left;">As g, but uses E for exponent</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The optional characters <code>l</code> or <code>L</code> may immediately precede the type character to respectively specify long versions
+of the integer types <code>d</code>, <code>i</code>, <code>u</code>, <code>o</code>, <code>x</code>, and <code>X</code>.</p>
+</div>
+<h3 id="special-characters">Special characters<a class="headerlink" href="#special-characters" title="Permanent link">#</a></h3>
+<p>Special characters (also called escape sequences) are used to display non-printing or hard-to-print characters. These
+characters control how text is positioned in the output. We have seen the <code>\n</code> example for a <em>newline</em>.</p>
+<p>A list of escape sequences can be found in the chapter <a href="constants.html#string-literals">Constants and literals</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Escape sequences and words are often joined together in the ControlString (see the example above: <code>\nm</code>). This
+looks a bit strange, but follows a general logic. If you'd add a <em>space</em> between the two, you would start the
+<em>newline</em> with a space as well.</p>
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="constants.html" class="btn btn-neutral float-left" title="Constants and literals"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="exercise01.html" class="btn btn-neutral float-right" title="First exercise">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/mcusuperuser/embedded_c" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="constants.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="exercise01.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

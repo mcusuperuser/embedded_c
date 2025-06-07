@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Storage classes - Embedded C for Arm Cortex-M Microcontrollers</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Storage classes";
+        var mkdocs_page_input_path = "storage_classes.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="index.html" class="icon icon-home"> Embedded C for Arm Cortex-M Microcontrollers
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="index.html">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables, identifiers and data types</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="constants.html">Constants and literals</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="printf.html">The printf() C library function</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="exercise01.html">First exercise</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="expressions.html">Expressions and statements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="making_decisions.html">Decision making</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Storage classes</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#auto-variables">Auto variables</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#static-variables">Static variables</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#extern-variables">Extern variables</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#register-variables">Register variables</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#scope-of-functions">Scope of functions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#library-and-header-files">Library and header files</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="arrays.html">Arrays</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="pointers.html">Pointers</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="function_pointers.html">Function pointers</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="structures.html">Structures</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="bit_fields.html">Bit fields</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="peripheral_access.html">Peripheral access using CMSIS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="unions.html">Unions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="further_reading.html">Further reading</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Embedded C for Arm Cortex-M Microcontrollers</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html" class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Storage classes</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/mcusuperuser/embedded_c/edit/master/docs/storage_classes.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="storage-classes">Storage classes<a class="headerlink" href="#storage-classes" title="Permanent link">#</a></h1>
+<p>Storage classes describe the features of a variable/function. These features basically include the scope, visibility and lifetime. They are used to trace the existence of a certain variable during the runtime of a program.</p>
+<p><em>Scope</em> refers to where in a program a variable may be accessed. <em>Lifetime</em> refers to how long a variable will exist or retain its value.</p>
+<p>In C, four storage classes are available:
+- <a href="#automatic-variables">Automatic</a>
+- <a href="#static-variables">Static</a>
+- <a href="#external-variables">External</a>
+- <a href="#register-variables">Register</a></p>
+<p><strong>Syntax</strong></p>
+<pre><code class="language-c">storage_class type identifier;
+</code></pre>
+<h2 id="auto-variables">Auto variables<a class="headerlink" href="#auto-variables" title="Permanent link">#</a></h2>
+<p>The default storage class for all variables declared inside a function or a block is <code>auto</code>. Auto variables can be only accessed within the block/function they have been declared and not outside them. To access them outside their scope, use a pointer to the very exact memory location where the variables resides. They are assigned a garbage value by default whenever they are declared. As <code>auto</code> is the default, the keyword <code>auto</code> is rarely used. Typically, <code>auto</code> variables are created on the stack.</p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">int foo (char n, float m) {  // n, m are auto variables
+    int j, k;                // j, k are auto variables
+}
+</code></pre>
+<h2 id="static-variables">Static variables<a class="headerlink" href="#static-variables" title="Permanent link">#</a></h2>
+<p>Variables declared as <code>static</code> preserve their value even after they are out of their scope, as they are given a permanent address in memory. They are created/initialized once when the program starts and are only destroyed when the program ends! Their scope is local to the function to which they were defined. Global static variables can be accessed anywhere in the program. By default, they are assigned the value 0 by the compiler.</p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">int a; // global variable is static
+
+int main (void) {
+    a = 23;
+    ..
+}
+</code></pre>
+<p><strong>Code example main.c</strong></p>
+<pre><code class="language-c">float foo (float f) {
+    static float a = 3.141;
+    ..
+    a -= f;
+    return a;
+}
+</code></pre>
+<p><em>Note</em></p>
+<ul>
+<li>A variable declared as static inside a function retains its value between consecutive function calls.</li>
+<li>If given an initial value, a <code>static</code> variable is only initialized when first created – not during each function call.</li>
+</ul>
+<h2 id="extern-variables">Extern variables<a class="headerlink" href="#extern-variables" title="Permanent link">#</a></h2>
+<p>The <code>extern</code> storage class keyword tells the compiler that the variable is defined elsewhere and will be used in the current scope. Thus, it still needs to be declared within the current scope. </p>
+<p>A variable declared as <code>extern</code> outside of any function is used to indicate that the variable is defined in another source file. Memory is only allocated for it when it's defined.</p>
+<p><strong>Code example main.c</strong></p>
+<pre><code class="language-c">extern int a;
+
+int main (void) {
+    a = 23;
+    ..
+}
+</code></pre>
+<p><strong>Code example someOtherProjectFile.c</strong></p>
+<pre><code class="language-c">int a;
+
+int foo (void) {
+    ..
+}
+</code></pre>
+<h2 id="register-variables">Register variables<a class="headerlink" href="#register-variables" title="Permanent link">#</a></h2>
+<p>This storage class declares <code>register</code> variables which have the same functionality as <code>auto</code> variables. The only difference is that the Arm compiler v5 tries to store these variables in a register of the Arm Cortex-M core if a free register is available. This accelerates the access to the <code>register</code> variables. Arm compiler v6 ignores this keyword.</p>
+<h2 id="scope-of-functions">Scope of functions<a class="headerlink" href="#scope-of-functions" title="Permanent link">#</a></h2>
+<p>The scope of a function depends on it storage class, which can be either <code>static</code> or <code>external</code>. The scope of a function is either local to the
+file where it is defined - in case of a <code>static</code> function - or globally available to any file in a project - in case of an <code>external</code> function.</p>
+<p>By default, functions have a global scope within a project. The <code>extern</code> keyword is not required, but a function prototype in the calling file (or a header file).</p>
+<p><strong>Code example main.c</strong></p>
+<pre><code class="language-c">int foo (void);
+
+int main (void) {
+    ..
+    a = foo();
+    ..
+}
+</code></pre>
+<p><strong>Code example someOtherProjectFile.c</strong></p>
+<pre><code class="language-c">int foo (void) {
+    ..
+}
+</code></pre>
+<h3 id="library-and-header-files">Library and header files<a class="headerlink" href="#library-and-header-files" title="Permanent link">#</a></h3>
+<p>Include a header file of you library in a source file. The header file contains the variable and function declarations, while the related source file contains the variable and function definitions. </p>
+<p><strong>Code example main.c</strong></p>
+<pre><code class="language-c">#include someOtherProjectFile.h // include the library header file
+
+int a; 
+
+int main (void) {
+    ..
+    a = foo(); // using the function from the library
+    myVar = a; // using the variable from the library
+    ..
+}
+</code></pre>
+<p><strong>Code example someOtherProjectFile.h</strong></p>
+<pre><code class="language-c">extern int myVar;
+
+int foo (void);
+</code></pre>
+<p><strong>Code example someOtherProjectFile.c</strong></p>
+<pre><code class="language-c">int myVar;
+
+int foo (void) {
+    ..
+}
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="functions.html" class="btn btn-neutral float-left" title="Functions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="arrays.html" class="btn btn-neutral float-right" title="Arrays">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/mcusuperuser/embedded_c" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="functions.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="arrays.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

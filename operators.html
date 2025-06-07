@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Operators - Embedded C for Arm Cortex-M Microcontrollers</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Operators";
+        var mkdocs_page_input_path = "operators.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="index.html" class="icon icon-home"> Embedded C for Arm Cortex-M Microcontrollers
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="index.html">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables, identifiers and data types</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="constants.html">Constants and literals</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="printf.html">The printf() C library function</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="exercise01.html">First exercise</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Operators</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#arithmetic-operators">Arithmetic operators</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#division-operator">Division operator</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#implicit-type-conversion">Implicit type conversion</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#increment-and-decrement">Increment and decrement</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#assignment-operators">Assignment operators</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#simple-assignments">Simple assignments</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#compound-assignments">Compound assignments</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#relational-comparison-operators">Relational (comparison) operators</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#logical-operators">Logical operators</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bitwise-operators">Bitwise operators</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#shift-operators">Shift operators</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#power-of-2-integer-divide-vs-shift-right">Power of 2 integer divide vs. shift right</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#memory-addressingmember-access">Memory addressing/member access</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#other-operators">Other operators</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#the-conditional-operator">The conditional operator</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#explicit-type-cast-operator">Explicit type cast operator</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#operator-precedence">Operator precedence</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#precedence">Precedence</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#associativity">Associativity</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="expressions.html">Expressions and statements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="making_decisions.html">Decision making</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="storage_classes.html">Storage classes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="arrays.html">Arrays</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="pointers.html">Pointers</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="function_pointers.html">Function pointers</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="structures.html">Structures</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="bit_fields.html">Bit fields</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="peripheral_access.html">Peripheral access using CMSIS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="unions.html">Unions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="further_reading.html">Further reading</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Embedded C for Arm Cortex-M Microcontrollers</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html" class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Operators</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/mcusuperuser/embedded_c/edit/master/docs/operators.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="operators">Operators<a class="headerlink" href="#operators" title="Permanent link">#</a></h1>
+<p>What is an operator?</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>An arithmetic expression contains one or more operands and arithmetic operators.</p>
+</div>
+<p>Operands may be variables, constants or functions that return a value.</p>
+<h2 id="arithmetic-operators">Arithmetic operators<a class="headerlink" href="#arithmetic-operators" title="Permanent link">#</a></h2>
+<p>Arithmetic operators are used to perform arithmetic/mathematical operations on operands. Arithmetic operators are of
+two distinct types:</p>
+<ul>
+<li>Binary Operators work on two operands: <code>+, -, *, /, %</code></li>
+<li>Unary Operators work on a single operand: <code>+, -, ++, --</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Operator</th>
+<th>Operation</th>
+<th style="text-align: center;">Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>*</code></td>
+<td>Multiplication</td>
+<td style="text-align: center;"><code>a * b</code></td>
+<td>Product of <code>a</code> and <code>b</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>/</code></td>
+<td>Division</td>
+<td style="text-align: center;"><code>a / b</code></td>
+<td>Quotient of <code>a</code> and <code>b</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>%</code></td>
+<td>Modulo</td>
+<td style="text-align: center;"><code>a % b</code></td>
+<td>Remainder of <code>a</code> divided by <code>b</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>+</code></td>
+<td>Addition</td>
+<td style="text-align: center;"><code>a + b</code></td>
+<td>Sum of <code>a</code> and <code>b</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>-</code></td>
+<td>Subtraction</td>
+<td style="text-align: center;"><code>a - b</code></td>
+<td>Difference of <code>a</code> and <code>b</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>-</code></td>
+<td>(unary) Negative</td>
+<td style="text-align: center;"><code>-a</code></td>
+<td>Negative value of <code>a</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>+</code></td>
+<td>(unary) Positive</td>
+<td style="text-align: center;"><code>+a</code></td>
+<td>Value of <code>a</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="division-operator">Division operator<a class="headerlink" href="#division-operator" title="Permanent link">#</a></h3>
+<p>If both operands are of an integer type, the result will be an integer type as well (valid for <code>int</code> and <code>char</code>).</p>
+<p>If one or both of the operands is a floating point type, the result will be a floating point type (<code>float</code>, <code>double</code>).</p>
+<h3 id="implicit-type-conversion">Implicit type conversion<a class="headerlink" href="#implicit-type-conversion" title="Permanent link">#</a></h3>
+<p>When an expression is used in the context where a value of a different type is expected, conversion may occur. In such
+cases, the type of one operand will be temporarily "promoted" to the larger type of the other operand. This means that
+during an operation, the smaller data type will be promoted to the largest one in the expression.</p>
+<p><strong>Code examples</strong></p>
+<pre><code class="language-c">short n = -5;
+-n      // promotion to int; result is 5
+n * -3L // promotion to long, because -3L is a long; result is 15
+7 / n   // promotion to int; result is -1
+9 % n   // promotion to int; result is 4
+8.0 / n // promotion to double, because 8.0 is a double; result is -1.6
+</code></pre>
+<h3 id="increment-and-decrement">Increment and decrement<a class="headerlink" href="#increment-and-decrement" title="Permanent link">#</a></h3>
+<p>Increment/decrement operators are unary operators that increment/decrement the value of a given variable by 1.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Operator</th>
+<th>Operation</th>
+<th style="text-align: center;">Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>++</code></td>
+<td>Increment</td>
+<td style="text-align: center;"><code>a++</code></td>
+<td>Postfix form: use <code>a</code> and then add <code>1</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>|</code></td>
+<td><code>++a</code></td>
+<td style="text-align: center;">Prefix form: add <code>1</code> to <code>a</code> and then use <code>a</code></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>--</code></td>
+<td>Decrement</td>
+<td style="text-align: center;"><code>a--</code></td>
+<td>Postfix form: use <code>a</code> and then subtract <code>1</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>|</code></td>
+<td><code>--a</code></td>
+<td style="text-align: center;">Prefix form: subtract <code>1</code> from <code>a</code> and then use <code>a</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">int n, m;
+n = 3;
+
+// Postfix example
+m = (n++) + 8;  // Result: n = 4, m = 11
+
+// Prefix example
+m = (++n) + 8;  // Result: n = 4, m = 12
+</code></pre>
+<h2 id="assignment-operators">Assignment operators<a class="headerlink" href="#assignment-operators" title="Permanent link">#</a></h2>
+<p>Assignment operators are binary operators that modify the variable to their left using the value to their right, or in other words, they assign a value to a variable.</p>
+<p>There are two types of assignment operators available:</p>
+<h3 id="simple-assignments">Simple assignments<a class="headerlink" href="#simple-assignments" title="Permanent link">#</a></h3>
+<p><code>variable = expression</code></p>
+<p>The expression is evaluated and the result is assigned to the variable.</p>
+<h3 id="compound-assignments">Compound assignments<a class="headerlink" href="#compound-assignments" title="Permanent link">#</a></h3>
+<p><code>variable = variable operator expression</code></p>
+<p>The variable is modified using the operator and the expression and the result is assigned to the variable.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Operator</th>
+<th style="text-align: center;">Example</th>
+<th>Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>=</code></td>
+<td style="text-align: center;"><code>a = b</code></td>
+<td>Assign the value of <code>b</code> to <code>a</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>+=</code></td>
+<td style="text-align: center;"><code>a += b</code></td>
+<td><code>a = a + b</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>-=</code></td>
+<td style="text-align: center;"><code>a -= b</code></td>
+<td><code>a = a - b</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>*=</code></td>
+<td style="text-align: center;"><code>a *= b</code></td>
+<td><code>a = a * b</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>/=</code></td>
+<td style="text-align: center;"><code>a /= b</code></td>
+<td><code>a = a / b</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>%=</code></td>
+<td style="text-align: center;"><code>a %= b</code></td>
+<td><code>a = a % b</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>&amp;=</code></td>
+<td style="text-align: center;"><code>a &amp;= b</code></td>
+<td><code>a = a &amp; b</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>\|=</code></td>
+<td style="text-align: center;"><code>a \|= b</code></td>
+<td><code>a = a \| b</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>^=</code></td>
+<td style="text-align: center;"><code>a ^= b</code></td>
+<td><code>a = a ^ b</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>&lt;&lt;=</code></td>
+<td style="text-align: center;"><code>a &lt;&lt;= b</code></td>
+<td><code>a = a &lt;&lt; b</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>&gt;&gt;=</code></td>
+<td style="text-align: center;"><code>a &gt;&gt;= b</code></td>
+<td><code>a = a &gt;&gt; b</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="relational-comparison-operators">Relational (comparison) operators<a class="headerlink" href="#relational-comparison-operators" title="Permanent link">#</a></h2>
+<p>Relational operators are binary operators that test a condition and return <code>1</code> if that condition is logically <code>true</code>
+and <code>0</code> if that condition is <code>false</code>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Operator</th>
+<th style="text-align: left;">Operation</th>
+<th style="text-align: center;">Example</th>
+<th>Result (FALSE = 0, TRUE = 1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>==</code></td>
+<td style="text-align: left;">Equal to</td>
+<td style="text-align: center;"><code>a == b</code></td>
+<td><code>1</code> if <code>a</code> equal to <code>b</code>, else <code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>!=</code></td>
+<td style="text-align: left;">Not equal to</td>
+<td style="text-align: center;"><code>a != b</code></td>
+<td><code>1</code> if <code>a</code> not equal to <code>b</code>, else <code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>&gt;</code></td>
+<td style="text-align: left;">Greater than</td>
+<td style="text-align: center;"><code>a &gt; b</code></td>
+<td><code>1</code> if <code>a</code> greater than <code>b</code>, else <code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>&gt;=</code></td>
+<td style="text-align: left;">Greater than or equal to</td>
+<td style="text-align: center;"><code>a &gt;= b</code></td>
+<td><code>1</code> if <code>a</code> greater than or equal to <code>b</code>, else <code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>&lt;</code></td>
+<td style="text-align: left;">Less than</td>
+<td style="text-align: center;"><code>a &lt; b</code></td>
+<td><code>1</code> if <code>a</code> less than <code>b</code>, else <code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>&lt;=</code></td>
+<td style="text-align: left;">Less than or equal to</td>
+<td style="text-align: center;"><code>a &lt;= b</code></td>
+<td><code>1</code> if <code>a</code> less than or equal to <code>b</code>, else <code>0</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not interchange <code>=</code> with <code>==</code>. <code>=</code> is the assignment operator, while <code>==</code> is the "equals to" relational
+operator.</p>
+</div>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">int n, m;
+
+n = 3;         // assign the value 3 to a
+
+if (m == 45) { // check if m equals to 45
+    // do something here
+}
+</code></pre>
+<h2 id="logical-operators">Logical operators<a class="headerlink" href="#logical-operators" title="Permanent link">#</a></h2>
+<p>Logical operators apply standard <em>boolean algebra</em> operations to their operands.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Operator</th>
+<th style="text-align: left;">Operation</th>
+<th style="text-align: center;">Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>!</code></td>
+<td style="text-align: left;">Logical NOT</td>
+<td style="text-align: center;"><code>!a</code></td>
+<td><code>1</code> if <code>a = 0</code>, else <code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>&amp;&amp;</code></td>
+<td style="text-align: left;">Logical AND</td>
+<td style="text-align: center;"><code>a &amp;&amp; b</code></td>
+<td><code>1</code> if both <code>a ≠ 0</code> and <code>b ≠ 0</code>, else <code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>||</code></td>
+<td style="text-align: left;">Logical OR</td>
+<td style="text-align: center;"><code>a || b</code></td>
+<td><code>0</code> if both <code>a = 0</code> and <code>b = 0</code>, else <code>1</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="bitwise-operators">Bitwise operators<a class="headerlink" href="#bitwise-operators" title="Permanent link">#</a></h2>
+<p>Bitwise operators apply the operation to each bit of the first operand with each corresponding bit of the second operand.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Operator</th>
+<th style="text-align: left;">Operation</th>
+<th style="text-align: center;">Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>~</code></td>
+<td style="text-align: left;">Bitwise NOT</td>
+<td style="text-align: center;"><code>~a</code></td>
+<td><code>1</code>, if <code>0</code> in <code>a</code>; <code>0</code>, if <code>1</code> in <code>a</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>&amp;</code></td>
+<td style="text-align: left;">Bitwise AND</td>
+<td style="text-align: center;"><code>a &amp; b</code></td>
+<td><code>1</code>, if <code>1</code> in both <code>a</code> and <code>b</code>; <code>0</code>, if <code>0</code> in <code>a</code> or <code>b</code> or both</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>|</code></td>
+<td style="text-align: left;">Bitwise OR</td>
+<td style="text-align: center;"><code>a | b</code></td>
+<td><code>1</code>, if <code>1</code> in <code>a</code> or <code>b</code> or both; <code>0</code>, if <code>0</code> in both <code>a</code> and <code>b</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>^</code></td>
+<td style="text-align: left;">Bitwise XOR</td>
+<td style="text-align: center;"><code>a ^ b</code></td>
+<td><code>1</code>, if <code>1</code> in <code>a</code> or <code>b</code> but not both; <code>0</code>, if <code>0</code> or <code>1</code> in both <code>a</code> and <code>b</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>The bitwise NOT is also known as "One's complement".</li>
+<li>Do not interchange <code>&amp;</code> with <code>&amp;&amp;</code>. <code>&amp;</code> is the <strong>bitwise</strong> AND operator, while <code>&amp;&amp;</code> is the <strong>logical</strong> AND
+  operator.</li>
+</ul>
+</div>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">int n, m;
+
+if (n &amp;&amp; m) { // check if both values are true (non-zero)
+    // do something here
+}
+</code></pre>
+<h2 id="shift-operators">Shift operators<a class="headerlink" href="#shift-operators" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Operator</th>
+<th style="text-align: left;">Operation</th>
+<th style="text-align: center;">Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>&lt;&lt;</code></td>
+<td style="text-align: left;">Bitwise left shift</td>
+<td style="text-align: center;"><code>a &lt;&lt; b</code></td>
+<td>Shift <code>a</code> by <code>b</code> bits to the left</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>&gt;&gt;</code></td>
+<td style="text-align: left;">Bitwise right shift</td>
+<td style="text-align: center;"><code>a &gt;&gt; b</code></td>
+<td>Shift <code>a</code> by <code>b</code> bits to the right</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>Bits that are shifted out are lost (in both cases).</li>
+<li>For shift left, 0's are shifted in (zero fill).</li>
+</ul>
+</div>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">// Logical shift right (zero fill)
+// If a is unsigned:
+unsigned char a;
+a = 250;    // a = 0b11111010 = 250
+b = a &gt;&gt; 2; // b = 0b00111110 = 62
+
+// Arithmetic shift right (sign extend)
+// If a is signed:
+char a;
+a = -6;     // a = 0b11111010 = -6
+b = a &gt;&gt; 2; // b = 0b11111110 = -2
+</code></pre>
+<h3 id="power-of-2-integer-divide-vs-shift-right">Power of 2 integer divide vs. shift right<a class="headerlink" href="#power-of-2-integer-divide-vs-shift-right" title="Permanent link">#</a></h3>
+<p>Generally, it is more efficient to use a shift right instead of dividing by a power of 2. This means that <code>b = a / 2^n</code> is equal to <code>b = a &gt;&gt; n</code>. This trick works for integer and fixed point values.</p>
+<h2 id="memory-addressingmember-access">Memory addressing/member access<a class="headerlink" href="#memory-addressingmember-access" title="Permanent link">#</a></h2>
+<p>Member access operators allow access to the members of their operands.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Operator</th>
+<th style="text-align: left;">Operation</th>
+<th style="text-align: center;">Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>[]</code></td>
+<td style="text-align: left;">Array subscript</td>
+<td style="text-align: center;"><code>a[b]</code></td>
+<td>access the <code>b</code>th element of array <code>a</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>*</code></td>
+<td style="text-align: left;">Pointer dereference</td>
+<td style="text-align: center;"><code>*a</code></td>
+<td>The object or function <code>a</code> points to</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>&amp;</code></td>
+<td style="text-align: left;">Address of</td>
+<td style="text-align: center;"><code>&amp;a</code></td>
+<td>Pointer to <code>a</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>.</code></td>
+<td style="text-align: left;">Member access (struct/union)</td>
+<td style="text-align: center;"><code>a.b</code></td>
+<td>The member <code>b</code> of struct or union <code>a</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>-&gt;</code></td>
+<td style="text-align: left;">Member access through pointer</td>
+<td style="text-align: center;"><code>a-&gt;b</code></td>
+<td>The member <code>b</code> of struct or union pointed to by <code>a</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This will become important when talking about arrays, pointers, structs, and unions later.</p>
+</div>
+<h2 id="other-operators">Other operators<a class="headerlink" href="#other-operators" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Operator</th>
+<th style="text-align: left;">Operation</th>
+<th style="text-align: center;">Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>(...)</code></td>
+<td style="text-align: left;">Function call</td>
+<td style="text-align: center;"><code>f(...)</code></td>
+<td>Calls the function f(), with specified arguments</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>,</code></td>
+<td style="text-align: left;">Comma operator</td>
+<td style="text-align: center;"><code>a, b</code></td>
+<td>Evaluates <code>a</code> then <code>b</code>, else result is value of <code>b</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>(type)</code></td>
+<td style="text-align: left;">Type cast</td>
+<td style="text-align: center;"><code>(type)a</code></td>
+<td>Casts the type of <code>a</code> to type</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>? :</code></td>
+<td style="text-align: left;">Conditional operator</td>
+<td style="text-align: center;"><code>a ? b : c</code></td>
+<td>The value of <code>b</code> if <code>a</code> is true, else value of <code>c</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>sizeof</code></td>
+<td style="text-align: left;">Sizeof operator</td>
+<td style="text-align: center;"><code>sizeof a</code></td>
+<td>The size in bytes of <code>a</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-conditional-operator">The conditional operator<a class="headerlink" href="#the-conditional-operator" title="Permanent link">#</a></h3>
+<p><code>(test_expression) ? do_if_true : do_if_false;</code></p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">int a = 3, b = 4, c;
+
+(a % 2 != 0) ?
+  printf(&quot;%d is odd\n&quot;, a) :
+  printf(&quot;%d is even\n&quot;, a);
+
+c = (a % 2 != 0) ? a : b; // conditionally assigns a value to c
+</code></pre>
+<h3 id="explicit-type-cast-operator">Explicit type cast operator<a class="headerlink" href="#explicit-type-cast-operator" title="Permanent link">#</a></h3>
+<p>You can use the cast operator <code>(type)</code> to cast a variable:</p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">int a = 10;
+float b;
+b = (float)a / 4; // b is 2.5, because float/int = float
+</code></pre>
+<h2 id="operator-precedence">Operator precedence<a class="headerlink" href="#operator-precedence" title="Permanent link">#</a></h2>
+<p>The following table lists the precedence and associativity of C operators. Operators are listed top to bottom, in
+descending precedence. Conflicts between operators with the same precedence are handled via the rules of associativity.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Precedence</th>
+<th style="text-align: center;">Operator</th>
+<th style="text-align: left;">Description</th>
+<th>Associativity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><code>++ --</code></td>
+<td style="text-align: left;">Suffix/postfix increment and decrement</td>
+<td>Left-to-right</td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><code>()</code></td>
+<td style="text-align: left;">Function call</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><code>[]</code></td>
+<td style="text-align: left;">Array subscripting</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><code>.</code></td>
+<td style="text-align: left;">Structure and union member</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><code>-&gt;</code></td>
+<td style="text-align: left;">Structure and union member access through pointer</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><code>(type){list}</code></td>
+<td style="text-align: left;">Compound literal(C99)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><code>++ --</code></td>
+<td style="text-align: left;">Prefix increment and decrement</td>
+<td>Right-to-left</td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><code>+ -</code></td>
+<td style="text-align: left;">Unary plus and minus</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><code>! ~</code></td>
+<td style="text-align: left;">Logical NOT and bitwise NOT</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><code>(type)</code></td>
+<td style="text-align: left;">Type cast</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><code>*</code></td>
+<td style="text-align: left;">Indirection (dereference)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><code>&amp;</code></td>
+<td style="text-align: left;">Address-of</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><code>sizeof</code></td>
+<td style="text-align: left;">Size-of</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"><code>* / %</code></td>
+<td style="text-align: left;">Multiplication, division, and remainder</td>
+<td>Left-to-right</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"><code>+ -</code></td>
+<td style="text-align: left;">Addition and subtraction</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;"><code>&lt;&lt; &gt;&gt;</code></td>
+<td style="text-align: left;">Bitwise left shift and right shift</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;"><code>&lt; &lt;=</code></td>
+<td style="text-align: left;">For relational operators &lt; and ≤ respectively</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><code>&gt; &gt;=</code></td>
+<td style="text-align: left;">For relational operators &gt; and ≥ respectively</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;"><code>== !=</code></td>
+<td style="text-align: left;">For relational = and ≠ respectively</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;"><code>&amp;</code></td>
+<td style="text-align: left;">Bitwise AND</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;"><code>^</code></td>
+<td style="text-align: left;">Bitwise XOR (exclusive or)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;"><code>|</code></td>
+<td style="text-align: left;">Bitwise OR (inclusive or)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;"><code>&amp;&amp;</code></td>
+<td style="text-align: left;">Logical AND</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;"><code>||</code></td>
+<td style="text-align: left;">Logical OR</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;"><code>?:</code></td>
+<td style="text-align: left;">Ternary conditional</td>
+<td>Right-to-Left</td>
+</tr>
+<tr>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;"><code>=</code></td>
+<td style="text-align: left;">Simple assignment</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><code>+= -=</code></td>
+<td style="text-align: left;">Assignment by sum and difference</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><code>*= /= %=</code></td>
+<td style="text-align: left;">Assignment by product, quotient, and remainder</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><code>&lt;&lt;= &gt;&gt;=</code></td>
+<td style="text-align: left;">Assignment by bitwise left shift and right shift</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><code>&amp;= ^= |=</code></td>
+<td style="text-align: left;">Assignment by bitwise AND, XOR, and OR</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;"><code>,</code></td>
+<td style="text-align: left;">Comma</td>
+<td>Left-to-right</td>
+</tr>
+</tbody>
+</table>
+<h3 id="precedence">Precedence<a class="headerlink" href="#precedence" title="Permanent link">#</a></h3>
+<p>When expressions contain multiple operators, their precedence determines the order of evaluation.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Expression</th>
+<th style="text-align: center;">Expression with precedence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>a – b * c</code></td>
+<td style="text-align: center;"><code>a – (b * c)</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>a + ++b</code></td>
+<td style="text-align: center;"><code>a + (++b)</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>a + ++b * c</code></td>
+<td style="text-align: center;"><code>a + ((++b) * c)</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If functions are part of an expression, there is no way to tell which function is evaluated first.</p>
+</div>
+<h3 id="associativity">Associativity<a class="headerlink" href="#associativity" title="Permanent link">#</a></h3>
+<p>For two operators with the same precedence, the associativity determines the order of the evaluation of the expression.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Expression</th>
+<th style="text-align: left;">Associativity</th>
+<th style="text-align: center;">Expression with precedence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>x / y % z</code></td>
+<td style="text-align: left;">Left-to-Right</td>
+<td style="text-align: center;"><code>(x / y) % z</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>x = y = z</code></td>
+<td style="text-align: left;">Right-to-Left</td>
+<td style="text-align: center;"><code>x = (y = z)</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>~++x</code></td>
+<td style="text-align: left;">Right-to-Left</td>
+<td style="text-align: center;"><code>~(++x)</code></td>
+</tr>
+</tbody>
+</table>
+<p>Although these rules are always applied, it is good practice to explicitly group the elements of an expression using <code>()</code>.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="exercise01.html" class="btn btn-neutral float-left" title="First exercise"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="expressions.html" class="btn btn-neutral float-right" title="Expressions and statements">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/mcusuperuser/embedded_c" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="exercise01.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="expressions.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

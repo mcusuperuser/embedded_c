@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Macros - Embedded C for Arm Cortex-M Microcontrollers</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Macros";
+        var mkdocs_page_input_path = "macros.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="index.html" class="icon icon-home"> Embedded C for Arm Cortex-M Microcontrollers
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="index.html">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables, identifiers and data types</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="constants.html">Constants and literals</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="printf.html">The printf() C library function</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="exercise01.html">First exercise</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="expressions.html">Expressions and statements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="making_decisions.html">Decision making</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="storage_classes.html">Storage classes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="arrays.html">Arrays</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="pointers.html">Pointers</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="function_pointers.html">Function pointers</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="structures.html">Structures</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="bit_fields.html">Bit fields</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="peripheral_access.html">Peripheral access using CMSIS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="unions.html">Unions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Macros</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#simple-macros">Simple macros</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#argument-macros">Argument macros</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="further_reading.html">Further reading</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Embedded C for Arm Cortex-M Microcontrollers</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html" class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Macros</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/mcusuperuser/embedded_c/edit/master/docs/macros.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="macros">Macros<a class="headerlink" href="#macros" title="Permanent link">#</a></h1>
+<p>What are macros?</p>
+<blockquote>
+<p>Macros allow for complex text replacements created with <code>#define</code> that insert code into your program. While macros may take parameters like a function, the macro code and parameters are always inserted into code by text substitution (this means that data types are not taken care of).</p>
+</blockquote>
+<p>Macros:
+- Are evaluated by the preprocessor
+- Cannot be executed by themselves
+- Are used to control the generation of code before the compilation process
+- Provide valuable shortcuts</p>
+<h2 id="simple-macros">Simple macros<a class="headerlink" href="#simple-macros" title="Permanent link">#</a></h2>
+<p><strong>Syntax</strong></p>
+<pre><code class="language-c">#define label text
+</code></pre>
+<p><em>Note</em></p>
+<ul>
+<li>Every instance of <code>label</code> in the current file will be replaced by <code>text</code></li>
+<li><code>text</code> can be anything you can type into your editor</li>
+<li>Arithmetic expressions are evaluated at compile time</li>
+</ul>
+<p><strong>Code example (system_ARMCM3.c)</strong></p>
+<pre><code class="language-c">/*----------------------------------------------------------------------------
+  Define clocks
+ *----------------------------------------------------------------------------*/
+#define  XTAL            (50000000UL)     /* Oscillator frequency */
+#define  SYSTEM_CLOCK    (XTAL / 2U)
+
+/*----------------------------------------------------------------------------
+  System Core Clock Variable
+ *----------------------------------------------------------------------------*/
+uint32_t SystemCoreClock = SYSTEM_CLOCK;  /* System Core Clock Frequency */
+</code></pre>
+<h2 id="argument-macros">Argument macros<a class="headerlink" href="#argument-macros" title="Permanent link">#</a></h2>
+<p>Argument macros create function-like macros:</p>
+<p><strong>Syntax</strong></p>
+<pre><code class="language-c">#define label(arg1, ..., argn) code
+</code></pre>
+<p><em>Note</em></p>
+<ul>
+<li>The code must fit on a single line. For multi-line macros use '\' to split lines</li>
+<li>Arguments are inserted into code as text substitutions</li>
+<li>Each instance of <code>label()</code> will be expanded into code</li>
+</ul>
+<p><strong>Code example (arm_math.h)</strong></p>
+<pre><code class="language-c">#define __SIMD32(addr)        (*(__SIMD32_TYPE **) &amp; (addr))
+#define __SIMD32_CONST(addr)  ( (__SIMD32_TYPE * )   (addr))
+#define _SIMD32_OFFSET(addr)  (*(__SIMD32_TYPE * )   (addr))
+#define __SIMD64(addr)        (*(      int64_t **) &amp; (addr))
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="enums.html" class="btn btn-neutral float-left" title="Enumerations"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="further_reading.html" class="btn btn-neutral float-right" title="Further reading">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/mcusuperuser/embedded_c" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="enums.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="further_reading.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

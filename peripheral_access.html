@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Peripheral access using CMSIS - Embedded C for Arm Cortex-M Microcontrollers</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Peripheral access using CMSIS";
+        var mkdocs_page_input_path = "peripheral_access.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="index.html" class="icon icon-home"> Embedded C for Arm Cortex-M Microcontrollers
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="index.html">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables, identifiers and data types</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="constants.html">Constants and literals</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="printf.html">The printf() C library function</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="exercise01.html">First exercise</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="expressions.html">Expressions and statements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="making_decisions.html">Decision making</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="storage_classes.html">Storage classes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="arrays.html">Arrays</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="pointers.html">Pointers</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="function_pointers.html">Function pointers</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="structures.html">Structures</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="bit_fields.html">Bit fields</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Peripheral access using CMSIS</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#accessing-peripherals">Accessing peripherals</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#reading-modifying-and-writing-bit-fields-in-registers">Reading, modifying, and writing bit fields in registers</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#alternative-mechanism">Alternative mechanism</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="unions.html">Unions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="further_reading.html">Further reading</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Embedded C for Arm Cortex-M Microcontrollers</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html" class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Peripheral access using CMSIS</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/mcusuperuser/embedded_c/edit/master/docs/peripheral_access.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="peripheral-access-using-cmsis">Peripheral access using CMSIS<a class="headerlink" href="#peripheral-access-using-cmsis" title="Permanent link">#</a></h1>
+<p>CMSIS defines naming conventions, requirements, and optional features for accessing device specific peripherals (including core peripherals). Typically, the device header file <code>&lt;device.h&gt;</code> contains these definitions and also includes the core specific header files.</p>
+<p>Each peripheral provides a data type definition with a name that is composed of:
+- an optional prefix <code>&lt;device abbreviation&gt;_</code>
+- <code>&lt;peripheral name&gt;</code>
+- postfix <code>_Type</code> or <code>_TypeDef</code> to identify a type definition.</p>
+<h2 id="accessing-peripherals">Accessing peripherals<a class="headerlink" href="#accessing-peripherals" title="Permanent link">#</a></h2>
+<p>To access the peripheral registers and related function in a device, the files <code>device.h</code> and <code>core_cm#.h</code> define as a minimum:</p>
+<ol>
+<li>The <strong>register layout typedef</strong> for each peripheral that defines all register names. RESERVED is used to introduce space into the structure for adjusting the addresses of the peripheral registers.</li>
+</ol>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">typedef struct
+{
+  __IM  uint32_t CPUID;                  /*!&lt; Offset: 0x000 (R/ )  CPUID Base Register */
+  __IOM uint32_t ICSR;                   /*!&lt; Offset: 0x004 (R/W)  Interrupt Control and State Register */
+  __IOM uint32_t VTOR;                   /*!&lt; Offset: 0x008 (R/W)  Vector Table Offset Register */
+  __IOM uint32_t AIRCR;                  /*!&lt; Offset: 0x00C (R/W)  Application Interrupt and Reset Control Register */
+  __IOM uint32_t SCR;                    /*!&lt; Offset: 0x010 (R/W)  System Control Register */
+  __IOM uint32_t CCR;                    /*!&lt; Offset: 0x014 (R/W)  Configuration Control Register */
+  __IOM uint8_t  SHP[12U];               /*!&lt; Offset: 0x018 (R/W)  System Handlers Priority Registers (4-7, 8-11, 12-15) */
+  __IOM uint32_t SHCSR;                  /*!&lt; Offset: 0x024 (R/W)  System Handler Control and State Register */
+  __IOM uint32_t CFSR;                   /*!&lt; Offset: 0x028 (R/W)  Configurable Fault Status Register */
+  __IOM uint32_t HFSR;                   /*!&lt; Offset: 0x02C (R/W)  HardFault Status Register */
+  __IOM uint32_t DFSR;                   /*!&lt; Offset: 0x030 (R/W)  Debug Fault Status Register */
+  __IOM uint32_t MMFAR;                  /*!&lt; Offset: 0x034 (R/W)  MemManage Fault Address Register */
+  __IOM uint32_t BFAR;                   /*!&lt; Offset: 0x038 (R/W)  BusFault Address Register */
+  __IOM uint32_t AFSR;                   /*!&lt; Offset: 0x03C (R/W)  Auxiliary Fault Status Register */
+  __IM  uint32_t PFR[2U];                /*!&lt; Offset: 0x040 (R/ )  Processor Feature Register */
+  __IM  uint32_t DFR;                    /*!&lt; Offset: 0x048 (R/ )  Debug Feature Register */
+  __IM  uint32_t ADR;                    /*!&lt; Offset: 0x04C (R/ )  Auxiliary Feature Register */
+  __IM  uint32_t MMFR[4U];               /*!&lt; Offset: 0x050 (R/ )  Memory Model Feature Register */
+  __IM  uint32_t ISAR[5U];               /*!&lt; Offset: 0x060 (R/ )  Instruction Set Attributes Register */
+        uint32_t RESERVED0[5U];
+  __IOM uint32_t CPACR;                  /*!&lt; Offset: 0x088 (R/W)  Coprocessor Access Control Register */
+} SCB_Type;
+</code></pre>
+<p><em>Note</em></p>
+<ul>
+<li>IO Type Qualifiers are used to specify the access to peripheral variables:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">IO Type Qualifier</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">__IM</td>
+<td>Struct member</td>
+<td>Defines 'read only' permissions</td>
+</tr>
+<tr>
+<td style="text-align: center;">__OM</td>
+<td>Struct member</td>
+<td>Defines 'write only' permissions</td>
+</tr>
+<tr>
+<td style="text-align: center;">__IOM</td>
+<td>Struct member</td>
+<td>Defines 'read / write' permissions</td>
+</tr>
+<tr>
+<td style="text-align: center;">__I</td>
+<td>Scalar variable</td>
+<td>Defines 'read only' permissions</td>
+</tr>
+<tr>
+<td style="text-align: center;">__O</td>
+<td>Scalar variable</td>
+<td>Defines 'write only' permissions</td>
+</tr>
+<tr>
+<td style="text-align: center;">__IO</td>
+<td>Scalar variable</td>
+<td>Defines 'read / write' permissions</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>The <strong>base address</strong> for each peripheral (in case of multiple peripherals that use the same register layout typedef multiple base addresses are defined).</li>
+</ol>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">#define SCS_BASE (0xE000E000UL) // System Control Space Base Address
+</code></pre>
+<ol>
+<li><strong>Access definitions</strong> for each peripheral. In case of multiple peripherals that are using the same register layout typedef, multiple access definitions exist (UART0, UART2).</li>
+</ol>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">#define SCB  ((SCB_Type *) SCB_BASE) // SCB configuration struct
+</code></pre>
+<p>These definitions allow accessing peripheral registers with simple assignments.</p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">SCB-&gt;SCR = 0;
+</code></pre>
+<ol>
+<li>For core registers, macros define the position and the mask value for a bit field. Such definitions are often also created for other peripheral registers.</li>
+</ol>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">/* SCB Interrupt Control State Register Definitions */
+#define SCB_ICSR_NMIPENDSET_Pos  31U // SCB ICSR: NMIPENDSET Position 
+#define SCB_ICSR_NMIPENDSET_Msk  (1UL &lt;&lt; SCB_ICSR_NMIPENDSET_Pos) // SCB ICSR: NMIPENDSET Mask 
+#define SCB_ICSR_PENDSVSET_Pos   28U // SCB ICSR: PENDSVSET Position 
+#define SCB_ICSR_PENDSVSET_Msk   (1UL &lt;&lt; SCB_ICSR_PENDSVSET_Pos)  // SCB ICSR: PENDSVSET Mask 
+#define SCB_ICSR_PENDSVCLR_Pos   27U // SCB ICSR: PENDSVCLR Position 
+#define SCB_ICSR_PENDSVCLR_Msk   (1UL &lt;&lt; SCB_ICSR_PENDSVCLR_Pos)  // SCB ICSR: PENDSVCLR Mask 
+#define SCB_ICSR_PENDSTSET_Pos   26U // SCB ICSR: PENDSTSET Position 
+#define SCB_ICSR_PENDSTSET_Msk   (1UL &lt;&lt; SCB_ICSR_PENDSTSET_Pos)  // SCB ICSR: PENDSTSET Mask 
+#define SCB_ICSR_PENDSTCLR_Pos   25U // SCB ICSR: PENDSTCLR Position 
+#define SCB_ICSR_PENDSTCLR_Msk   (1UL &lt;&lt; SCB_ICSR_PENDSTCLR_Pos)  // SCB ICSR: PENDSTCLR Mask 
+#define SCB_ICSR_ISRPREEMPT_Pos  23U // SCB ICSR: ISRPREEMPT Position 
+#define SCB_ICSR_ISRPREEMPT_Msk  (1UL &lt;&lt; SCB_ICSR_ISRPREEMPT_Pos)  // SCB ICSR: ISRPREEMPT Mask 
+#define SCB_ICSR_ISRPENDING_Pos  22U // SCB ICSR: ISRPENDING Position 
+#define SCB_ICSR_ISRPENDING_Msk  (1UL &lt;&lt; SCB_ICSR_ISRPENDING_Pos) // SCB ICSR: ISRPENDING Mask 
+#define SCB_ICSR_VECTPENDING_Pos 12U // SCB ICSR: VECTPENDING Position 
+#define SCB_ICSR_VECTPENDING_Msk (0x1FFUL &lt;&lt; SCB_ICSR_VECTPENDING_Pos) // SCB ICSR: VECTPENDING Mask 
+#define SCB_ICSR_RETTOBASE_Pos   11U // SCB ICSR: RETTOBASE Position 
+#define SCB_ICSR_RETTOBASE_Msk   (1UL &lt;&lt; SCB_ICSR_RETTOBASE_Pos)  // SCB ICSR: RETTOBASE Mask 
+#define SCB_ICSR_VECTACTIVE_Pos  0U  // SCB ICSR: VECTACTIVE Position 
+#define SCB_ICSR_VECTACTIVE_Msk  (0x1FFUL &lt;&lt; SCB_ICSR_VECTACTIVE_Pos)  // SCB ICSR: VECTACTIVE Mask 
+</code></pre>
+<h2 id="reading-modifying-and-writing-bit-fields-in-registers">Reading, modifying, and writing bit fields in registers<a class="headerlink" href="#reading-modifying-and-writing-bit-fields-in-registers" title="Permanent link">#</a></h2>
+<ul>
+<li>How do we find the current value of the ICSR ISRPREEMPT bit? We read the  register SCB, AND it (using &amp;) with the mask, and then shift it right (using &gt;&gt;) by the shift value:</li>
+</ul>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">id = (SCB-&gt;ICSR &amp; SCB_ICSR_ISRPREEMPT_Msk) &gt;&gt; SCB_ICSR_ISRPREEMPT_Pos;
+</code></pre>
+<ul>
+<li>How do we set fields NMIPENDSET and PENDSVSET in that register, leaving everything else as zero? We use the = assignment operator:</li>
+</ul>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">SCB-&gt;ICSR = SCB_ICSR_NMIPENDSET_Msk | SCB_ICSR_PENDSVSET_Msk;
+</code></pre>
+<ul>
+<li>How do we set fields NMIPENDSET and PENDSVSET in that register without modifying anything else? We need to perform a read/modify/write operation with the OR read/modify/write operator |=:</li>
+</ul>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">SCB-&gt;ICSR |= SCB_ICSR_NMIPENDSET_Msk | SCB_ICSR_PENDSVSET_Msk;
+</code></pre>
+<ul>
+<li>How do we clear field NMIPENDSET in that register without modifying anything else? We need to perform a read/modify/write operation, while zeroing out the bit for NMIPENDSET. We do this by first complementing the mask for NMIPENDSET using the ~ operator. This flips all of its ones to zeros and zeros to ones. Using the AND read/modify/write operator &amp;= will zero out the control register’s bits for NMIPENDSET’s field:</li>
+</ul>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">SCB-&gt;ICSR &amp;= SCB_ICSR_NMIPENDSET_Msk;
+</code></pre>
+<h2 id="alternative-mechanism">Alternative mechanism<a class="headerlink" href="#alternative-mechanism" title="Permanent link">#</a></h2>
+<p>Using the CMSIS macros <code>_VAL2FLD(field, value)</code> and <code>_FLD2VAL(field, value)</code> you can access bit fields more easily.</p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">id = _FLD2VAL(SCB_CPUID_REVISION, SCB-&gt;CPUID); // uses the #define's _Pos and _Msk of the related bit field to extract the value of a bit field from a register.
+
+SCB-&gt;CPUID = _VAL2FLD(SCB_CPUID_REVISION, 0x3) | _VAL2FLD(SCB_CPUID_VARIANT, 0x3); // uses the #define's _Pos and _Msk of the related bit field to shift bit-field values for assigning to a register.
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="bit_fields.html" class="btn btn-neutral float-left" title="Bit fields"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="unions.html" class="btn btn-neutral float-right" title="Unions">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/mcusuperuser/embedded_c" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="bit_fields.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="unions.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

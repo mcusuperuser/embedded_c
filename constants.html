@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Constants and literals - Embedded C for Arm Cortex-M Microcontrollers</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Constants and literals";
+        var mkdocs_page_input_path = "constants.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="index.html" class="icon icon-home"> Embedded C for Arm Cortex-M Microcontrollers
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="index.html">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables, identifiers and data types</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Constants and literals</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-declare-a-constant">How to declare a constant</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#types-of-literals">Types of literals</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#string-literals">String literals</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="printf.html">The printf() C library function</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="exercise01.html">First exercise</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="expressions.html">Expressions and statements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="making_decisions.html">Decision making</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="storage_classes.html">Storage classes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="arrays.html">Arrays</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="pointers.html">Pointers</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="function_pointers.html">Function pointers</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="structures.html">Structures</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="bit_fields.html">Bit fields</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="peripheral_access.html">Peripheral access using CMSIS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="unions.html">Unions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="further_reading.html">Further reading</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Embedded C for Arm Cortex-M Microcontrollers</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html" class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Constants and literals</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/mcusuperuser/embedded_c/edit/master/docs/constants.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="constants-and-literals">Constants and literals<a class="headerlink" href="#constants-and-literals" title="Permanent link">#</a></h1>
+<p>What are constants and literals?</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>A literal is a notation for representing a fixed value in source code. A constant is a value that cannot be altered
+by the program during normal execution.</p>
+</div>
+<p>In other words: a literal is the actual value (such as a number or character for example), that is assigned to a
+variable or constant. You can also use literals directly as a function parameter or as an operand in an expression.
+While both terms are often used interchangeably, they are not the same. A literal is a constant, but a constant is not
+a literal.</p>
+<p>Constants, as the name implies, never change their value which makes development changes easy and eliminates the use of
+"magic numbers".</p>
+<h3 id="how-to-declare-a-constant">How to declare a constant<a class="headerlink" href="#how-to-declare-a-constant" title="Permanent link">#</a></h3>
+<p>There are two ways to declare a constant:</p>
+<pre><code class="language-c">#define identifierName value
+const type identifierName value;
+</code></pre>
+<ul>
+<li>The <code>identifierName</code> is the constant, while the <code>value</code> is the literal.</li>
+<li>The first way is very efficient for an embedded system, as it does not consume any memory in the microcontroller. Using the <code>#define</code>, you declare a text substitution label, which means that each instance of <code>identifierName</code> will be replaced with value by the preprocessor unless <code>identifierName</code> is inside a string.</li>
+<li>A <code>#define</code> is <em>never</em> terminated with a <code>';'</code>, unless you want that semicolon to be part of the substitution.</li>
+<li>The second way allocates a variable in program memory, but it cannot be changed due to the <code>const</code> keyword. While this is inefficient for normal constants, it is a good way to save lookup tables in Flash memory for example.</li>
+</ul>
+<h2 id="types-of-literals">Types of literals<a class="headerlink" href="#types-of-literals" title="Permanent link">#</a></h2>
+<p>The Arm assembler user's guide states that "source code can contain numeric, string, Boolean, and single character literals".</p>
+<p>Literals can be expressed as:</p>
+<ul>
+<li>Decimal numbers, for example <code>123</code>.</li>
+<li>Hexadecimal numbers, for example <code>0x7B</code>.</li>
+<li>Numbers in any base from 2 to 9, for example <code>5_204</code> is a number in base 5.</li>
+<li>Floating point numbers, for example <code>123.4</code>.</li>
+<li>Boolean values <code>{TRUE}</code> or <code>{FALSE}</code>.</li>
+<li>Single character values enclosed by single quotes, for example <code>'w'</code>.</li>
+<li>Strings enclosed in double quotes, for example <code>"This is a string"</code>.</li>
+</ul>
+<h3 id="string-literals">String literals<a class="headerlink" href="#string-literals" title="Permanent link">#</a></h3>
+<p>C does not have a string type. One way to store strings in C is to use arrays of characters. Later, we will learn how
+to use pointers to define strings.</p>
+<p>When strings are declared as character arrays, they are stored like other types of arrays in C. If you declare the
+string without a dimension, the null character is automatically appended to the end of the string:</p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">char name[] = &quot;Cortex&quot;;
+</code></pre>
+<p>This is stored as:</p>
+<pre><code class="language-c">name[0] = 'C'
+name[1] = 'o'
+name[2] = 'r'
+name[3] = 't'
+name[4] = 'e'
+name[5] = 'x'
+name[6] = '\0'
+</code></pre>
+<p><strong>Special characters in strings</strong></p>
+<p>Use escape sequences to include special characters in strings, just like any other ordinary character. The backslash
+<code>\</code> plus the following character is considered as a single character with a single ASCII value.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Escape sequence</th>
+<th style="text-align: center;">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>\a</code></td>
+<td style="text-align: center;">alert (beep)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>\\</code></td>
+<td style="text-align: center;">backslash</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>\b</code></td>
+<td style="text-align: center;">backspace</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>\r</code></td>
+<td style="text-align: center;">carriage return</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>\"</code></td>
+<td style="text-align: center;">double quote</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>\f</code></td>
+<td style="text-align: center;">formfeed</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>\t</code></td>
+<td style="text-align: center;">horizontal tab</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>\n</code></td>
+<td style="text-align: center;">newline</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>\0</code></td>
+<td style="text-align: center;">null character</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>\'</code></td>
+<td style="text-align: center;">single quote</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>\v</code></td>
+<td style="text-align: center;">vertical tab</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>\?</code></td>
+<td style="text-align: center;">question mark</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">char salutation[] = &quot;Dear Paul,\n&quot;;
+</code></pre>
+<p>In order to nest strings, you need to escape the double quotes:</p>
+<pre><code class="language-c">&quot;printf (\&quot;hello world!\n\&quot;)&quot;
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="variables.html" class="btn btn-neutral float-left" title="Variables, identifiers and data types"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="printf.html" class="btn btn-neutral float-right" title="The printf() C library function">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/mcusuperuser/embedded_c" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="variables.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="printf.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

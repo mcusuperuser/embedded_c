@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Structures - Embedded C for Arm Cortex-M Microcontrollers</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Structures";
+        var mkdocs_page_input_path = "structures.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="index.html" class="icon icon-home"> Embedded C for Arm Cortex-M Microcontrollers
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="index.html">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables, identifiers and data types</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="constants.html">Constants and literals</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="printf.html">The printf() C library function</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="exercise01.html">First exercise</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="expressions.html">Expressions and statements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="making_decisions.html">Decision making</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="storage_classes.html">Storage classes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="arrays.html">Arrays</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="pointers.html">Pointers</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="function_pointers.html">Function pointers</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Structures</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#structure-definition">Structure definition</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#variable-declaration">Variable declaration</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#using-structure-variables">Using structure variables</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#structure-types">Structure types</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#declare-a-structure-type-variable">Declare a structure type variable</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#initialization-of-structure-variables">Initialization of structure variables</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nested-structures">Nested structures</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pointers-to-structures">Pointers to structures</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#accessing-structure-members-using-a-pointer">Accessing structure members using a pointer</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#creating-arrays-of-structures">Creating arrays of structures</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#initializing-arrays-of-structures-at-declaration">Initializing arrays of structures at declaration</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#using-arrays-of-structures">Using arrays of structures</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#passing-structures-to-functions">Passing structures to functions</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="bit_fields.html">Bit fields</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="peripheral_access.html">Peripheral access using CMSIS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="unions.html">Unions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="further_reading.html">Further reading</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Embedded C for Arm Cortex-M Microcontrollers</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html" class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Structures</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/mcusuperuser/embedded_c/edit/master/docs/structures.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="structures">Structures<a class="headerlink" href="#structures" title="Permanent link">#</a></h1>
+<p>What are structures?</p>
+<blockquote>
+<p>Arrays are named collections of identical objects. Structures are named collections of different objects. Variables within a structure are referred to as <em>members</em>, and may be accessed individually as needed.</p>
+</blockquote>
+<p>Structures:
+- may contain any number of members. These members may be of any data type.
+- allow a group of related variables to be treated as a single unit, even if different types are contained.
+- organize complicated data more easily.</p>
+<h2 id="structure-definition">Structure definition<a class="headerlink" href="#structure-definition" title="Permanent link">#</a></h2>
+<p><strong>Syntax</strong></p>
+<pre><code class="language-c">struct structName {
+    type1 memberName1;  // Members are declared just
+    ...                 // like odinary variables
+    typen memberNamen;
+}
+</code></pre>
+<h2 id="variable-declaration">Variable declaration<a class="headerlink" href="#variable-declaration" title="Permanent link">#</a></h2>
+<p>There are two ways to declare a structure variable:</p>
+<ol>
+<li>At structure definition:</li>
+</ol>
+<p><strong>Syntax</strong></p>
+<pre><code class="language-c">struct structName {
+    type1 memberName1;  // Members are declared just
+    ...                 // like odinary variables
+    typen memberNamen;
+} variableName1, ..., variableNamen;
+</code></pre>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">// structure to handle color values
+struct rgb {
+    int red;
+    int green;
+    int blue;
+} color; // declare color of type rgb
+</code></pre>
+<ol>
+<li>If the structure has already been defined:</li>
+</ol>
+<p><strong>Syntax</strong></p>
+<pre><code class="language-c">struct structName variableName1, ..., variableNamen;
+</code></pre>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">// structure to handle color values
+struct rgb {
+    int red;
+    int green;
+    int blue;
+}
+...
+struct rgb color; // declare color of type rgb
+</code></pre>
+<h2 id="using-structure-variables">Using structure variables<a class="headerlink" href="#using-structure-variables" title="Permanent link">#</a></h2>
+<p><strong>Syntax</strong></p>
+<pre><code class="language-c">structVariableName.memberName;
+</code></pre>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">// structure to handle color values
+struct rgb {
+    int red;
+    int green;
+    int blue;
+} color;
+
+int main (void){
+    color.red   = 0;   // set   red portion of color
+    color.green = 145; // set green portion of color
+    blue        = 189; // set  blue portion of color
+}
+</code></pre>
+<h2 id="structure-types">Structure types<a class="headerlink" href="#structure-types" title="Permanent link">#</a></h2>
+<p>Structure types can be created using a <code>typedef</code>.</p>
+<p><strong>Syntax</strong></p>
+<pre><code class="language-c">typedef struct structTag {
+    type1 memberName1;
+    ...
+    typen memberNamen;
+} typeName;
+</code></pre>
+<p><em>Note</em></p>
+<ul>
+<li>The <code>structTag</code> is optional</li>
+</ul>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">// structure type to handle color values
+typedef struct {
+    int red;
+    int green;
+    int blue;
+} rgb;
+</code></pre>
+<h3 id="declare-a-structure-type-variable">Declare a structure type variable<a class="headerlink" href="#declare-a-structure-type-variable" title="Permanent link">#</a></h3>
+<p>If the <code>typeName</code> has already been defined, you can declare a variable of that type without the <code>struct</code> keyword:</p>
+<p><strong>Syntax</strong></p>
+<pre><code class="language-c">typeName variableName1, ..., variableNamen;
+</code></pre>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">// structure type to handle color values
+typedef struct {
+    int red;
+    int green;
+    int blue;
+} rgb;
+...
+rgb color;
+</code></pre>
+<h2 id="initialization-of-structure-variables">Initialization of structure variables<a class="headerlink" href="#initialization-of-structure-variables" title="Permanent link">#</a></h2>
+<p>If <code>typeName</code> or <code>structName</code> have already been defined:</p>
+<p><strong>Syntax</strong></p>
+<pre><code class="language-c">typeName variableName = {const1, ..., constn};
+// or
+struct structName variableName = {const1, ...,constn};
+</code></pre>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">// structure type to handle color values
+typedef struct {
+    int red;
+    int green;
+    int blue;
+} rgb;
+...
+rgb color = {0, 145, 189};
+</code></pre>
+<h2 id="nested-structures">Nested structures<a class="headerlink" href="#nested-structures" title="Permanent link">#</a></h2>
+<p>Using the <code>typedef</code> structure declaration, you can nest one structure within another structure.</p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">// declare struct type for a single point
+typedef struct {
+    float x;
+    float y;
+} point;
+
+// declare a struct type for a line with a start and end point
+typedef struct {
+    point start;
+    point end;
+} line;
+
+int main(void) {
+    line l;
+
+    l.start.x = 3.5;
+    l.start.y = 8.4;
+    l.end.x = 12.7;
+    l.end.y = 18.5;
+    ...
+}
+</code></pre>
+<h2 id="pointers-to-structures">Pointers to structures<a class="headerlink" href="#pointers-to-structures" title="Permanent link">#</a></h2>
+<p>There are two ways to declare a pointer to a structure. If the <code>typeName</code> or the <code>structName</code> have already been defined:</p>
+<p><strong>Syntax</strong></p>
+<pre><code class="language-c">typeName *pointerName;
+// or
+struct structName *pointerName;
+</code></pre>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">// structure type to handle color values
+typedef struct {
+    int red;
+    int green;
+    int blue;
+} rgb;
+...
+rgb *pColor;
+</code></pre>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">// structure type to handle color values
+struct rgb {
+    int red;
+    int green;
+    int blue;
+}
+...
+struct rgb *pColor;
+</code></pre>
+<h3 id="accessing-structure-members-using-a-pointer">Accessing structure members using a pointer<a class="headerlink" href="#accessing-structure-members-using-a-pointer" title="Permanent link">#</a></h3>
+<p>If a <code>pointerName</code> has already been defined:</p>
+<p><strong>Syntax</strong></p>
+<pre><code class="language-c">pointerName -&gt; memberName;
+</code></pre>
+<p><em>Note</em></p>
+<ul>
+<li>First, the pointer must be initialized to point to the address of the structure itself: <code>pointerName = &amp;structVariable;</code></li>
+</ul>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">// structure type to handle color values
+typedef struct {
+    int red;
+    int green;
+    int blue;
+} rgb;
+...
+rgb color;   // rgb variable
+rgb *pColor; // pointer to color
+
+int  main (void) {
+    pColor        = color;
+    pColor-&gt;red   = 0;     // Set   red using pColor
+    pColor-&gt;green = 145;   // Set green using pColor
+    pColor-&gt;blue  = 189;   // Set  blue using pColor
+}
+</code></pre>
+<p><em>Note</em></p>
+<ul>
+<li>We will later see in an example how CMSIS uses this to access core peripherals of a Cortex-M based device.</li>
+</ul>
+<h2 id="creating-arrays-of-structures">Creating arrays of structures<a class="headerlink" href="#creating-arrays-of-structures" title="Permanent link">#</a></h2>
+<p>There are two ways to create arrays of structures. If the <code>typeName</code> or the <code>structName</code> have already been defined:</p>
+<p><strong>Syntax</strong></p>
+<pre><code class="language-c">typeName arrayName[n];
+// or
+struct structName arrayName[n];
+</code></pre>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">// structure type to handle color values
+typedef struct {
+    int red;
+    int green;
+    int blue;
+} rgb;
+...
+rgb aColor[2];
+</code></pre>
+<h2 id="initializing-arrays-of-structures-at-declaration">Initializing arrays of structures at declaration<a class="headerlink" href="#initializing-arrays-of-structures-at-declaration" title="Permanent link">#</a></h2>
+<p>If the <code>typeName</code> or the <code>structName</code> have already been defined:</p>
+<p><strong>Syntax</strong></p>
+<pre><code class="language-c">typeName arrayName[n] = {{list1}, ..., {listn}};
+// or
+struct structName arrayName[n] = {{list1}, ..., {listn}};
+</code></pre>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">// structure type to handle color values
+typedef struct {
+    int red;
+    int green;
+    int blue;
+} rgb;
+...
+rgb aColor[2] = {{0, 0, 0}, {255, 255, 255}};
+</code></pre>
+<h3 id="using-arrays-of-structures">Using arrays of structures<a class="headerlink" href="#using-arrays-of-structures" title="Permanent link">#</a></h3>
+<p>If the <code>arrayName</code> has already been defined:</p>
+<p><strong>Syntax</strong></p>
+<pre><code class="language-c">arrayName[n].memberName
+</code></pre>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">// structure type to handle color values
+typedef struct {
+    int red;
+    int green;
+    int blue;
+} rgb;
+...
+rgb aColor[2] = {{0, 0, 0}, {255, 255, 255}};
+
+int main (void) {
+    aColor[0].red   = 0;
+    aColor[0].green = 145;
+    aColor[0].blue  = 189;
+    ...
+}
+</code></pre>
+<h3 id="passing-structures-to-functions">Passing structures to functions<a class="headerlink" href="#passing-structures-to-functions" title="Permanent link">#</a></h3>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">// structure type to handle color values
+typedef struct {
+    int red;
+    int green;
+    int blue;
+} rgb;
+
+void show_rgb (rgb n) {
+    printf(&quot;(%d, %d, %d)\n&quot;, n.reg, n.green, n.blue);
+}
+
+int main (void) {
+    rgb a = {0, 145, 198};
+    rgb b = {0, 255, 255};
+
+    show_rgb (a);
+    show_rgb (b);
+}
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="function_pointers.html" class="btn btn-neutral float-left" title="Function pointers"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="bit_fields.html" class="btn btn-neutral float-right" title="Bit fields">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/mcusuperuser/embedded_c" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="function_pointers.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="bit_fields.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

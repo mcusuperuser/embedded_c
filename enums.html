@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Enumerations - Embedded C for Arm Cortex-M Microcontrollers</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Enumerations";
+        var mkdocs_page_input_path = "enums.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="index.html" class="icon icon-home"> Embedded C for Arm Cortex-M Microcontrollers
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="index.html">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables, identifiers and data types</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="constants.html">Constants and literals</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="printf.html">The printf() C library function</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="exercise01.html">First exercise</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="expressions.html">Expressions and statements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="making_decisions.html">Decision making</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="storage_classes.html">Storage classes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="arrays.html">Arrays</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="pointers.html">Pointers</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="function_pointers.html">Function pointers</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="structures.html">Structures</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="bit_fields.html">Bit fields</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="peripheral_access.html">Peripheral access using CMSIS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="unions.html">Unions</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Enumerations</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#enumeration-declaration">Enumeration declaration</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#declaration-of-enumeration-tape-variable">Declaration of enumeration tape variable</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tagless-enumeration-variable">Tagless enumeration variable</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#declare-an-enumeration-type-with-typedef">Declare an enumeration type with typedef</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#using-an-enumeration-type-variable">Using an enumeration type variable</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="further_reading.html">Further reading</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Embedded C for Arm Cortex-M Microcontrollers</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html" class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Enumerations</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/mcusuperuser/embedded_c/edit/master/docs/enums.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="enumerations">Enumerations<a class="headerlink" href="#enumerations" title="Permanent link">#</a></h1>
+<p>What are enumerations?</p>
+<blockquote>
+<p>Enumerations are user defined data types (with a limited range of values).</p>
+</blockquote>
+<p>Enumerations:
+- Are unique integer data types
+- May only contain a specified list of values
+- Values are specified as symbolic constants</p>
+<h2 id="enumeration-declaration">Enumeration declaration<a class="headerlink" href="#enumeration-declaration" title="Permanent link">#</a></h2>
+<p><strong>Syntax</strong></p>
+<pre><code class="language-c">enum typeName { label0, label1, ..., labeln }
+</code></pre>
+<p><em>Note</em></p>
+<ul>
+<li>The compiler sets label0 = 0, label1 = 1, labeln = n</li>
+</ul>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">enum month {JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC};
+</code></pre>
+<p><em>Note</em></p>
+<ul>
+<li>You can assign a specific value to any label</li>
+<li>Subsequent labels will increment from that value</li>
+</ul>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">enum group {Peter, Paul = 5, Mary};
+// label values: Peter = 0, Paul = 5, Mary = 6
+</code></pre>
+<h2 id="declaration-of-enumeration-tape-variable">Declaration of enumeration tape variable<a class="headerlink" href="#declaration-of-enumeration-tape-variable" title="Permanent link">#</a></h2>
+<p><strong>Declared along with type</strong></p>
+<pre><code class="language-c">enum typeName { list_of_constants } variable_name1, ...;
+</code></pre>
+<p><strong>Declared independently</strong></p>
+<pre><code class="language-c">enum typeName variable_name1, ...;
+</code></pre>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">enum month {JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC} current_month;
+
+enum month current_month;
+</code></pre>
+<h2 id="tagless-enumeration-variable">Tagless enumeration variable<a class="headerlink" href="#tagless-enumeration-variable" title="Permanent link">#</a></h2>
+<p>If you omit the tape name, you can only have variables of that type that are specified as part of the <code>enum</code> declaration. Later, you cannot specify any additional variable of the <code>enum</code> type.  </p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">enum {JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC} current_month;
+</code></pre>
+<h2 id="declare-an-enumeration-type-with-typedef">Declare an enumeration type with <code>typedef</code><a class="headerlink" href="#declare-an-enumeration-type-with-typedef" title="Permanent link">#</a></h2>
+<p>As always, variables can be declared as type <code>typeName</code> without requiring the keyword <code>enum</code>:</p>
+<p><strong>Syntax</strong></p>
+<pre><code class="language-c">typedef enum {list_of_constants} typeName;
+</code></pre>
+<p>The enumeration can now be used as an ordinary data type, such as int or float.</p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">typedef enum {JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC} month;
+month current_month; // Variable of type month
+</code></pre>
+<h2 id="using-an-enumeration-type-variable">Using an enumeration type variable<a class="headerlink" href="#using-an-enumeration-type-variable" title="Permanent link">#</a></h2>
+<p>If the enumeration and the variable have already been defined:</p>
+<p><strong>Syntax</strong></p>
+<pre><code class="language-c">varName = labeln;
+</code></pre>
+<p><em>Note</em></p>
+<ul>
+<li>Use the labels just like any other symbolic constant</li>
+<li>Enumeration type variables must only use the type’s labels or equivalent integer</li>
+</ul>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">enum color {red, green, blue};
+enum color myCar;
+
+myCar = red;
+myCar = 3;
+
+if (myCar == 2) {
+    // do something
+}
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="unions.html" class="btn btn-neutral float-left" title="Unions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="macros.html" class="btn btn-neutral float-right" title="Macros">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/mcusuperuser/embedded_c" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="unions.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="macros.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

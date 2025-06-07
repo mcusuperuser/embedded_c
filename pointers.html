@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Pointers - Embedded C for Arm Cortex-M Microcontrollers</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Pointers";
+        var mkdocs_page_input_path = "pointers.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="index.html" class="icon icon-home"> Embedded C for Arm Cortex-M Microcontrollers
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="index.html">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables, identifiers and data types</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="constants.html">Constants and literals</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="printf.html">The printf() C library function</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="exercise01.html">First exercise</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="expressions.html">Expressions and statements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="making_decisions.html">Decision making</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="storage_classes.html">Storage classes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="arrays.html">Arrays</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Pointers</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#pointer-declaration">Pointer declaration</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#creating-pointer-types-with-typedef">Creating pointer types with typedef</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#initialization">Initialization</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#in-other-words">In other words</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pointers-at-work">Pointers at work</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pointers-and-arrays">Pointers and arrays</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#initializing-a-pointer-to-an-array">Initializing a pointer to an array</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#incrementdecrement-syntax-rules">Increment/decrement syntax rules</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pointers-and-functions">Pointers and functions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#passing-pointers-to-functions">Passing pointers to functions</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pointers-and-strings">Pointers and strings</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#pointers-versus-arrays">Pointers versus arrays</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#arrays-of-pointers">Arrays of pointers</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#initialization_1">Initialization</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dereferencing">Dereferencing</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="function_pointers.html">Function pointers</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="structures.html">Structures</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="bit_fields.html">Bit fields</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="peripheral_access.html">Peripheral access using CMSIS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="unions.html">Unions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="further_reading.html">Further reading</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Embedded C for Arm Cortex-M Microcontrollers</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html" class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Pointers</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/mcusuperuser/embedded_c/edit/master/docs/pointers.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="pointers">Pointers<a class="headerlink" href="#pointers" title="Permanent link">#</a></h1>
+<p>What is a pointer?</p>
+<p>Often, you will read that a pointer points to something, but this is not true:</p>
+<blockquote>
+<p>A pointer is a variable that contains the memory address of another variable.</p>
+</blockquote>
+<p><img alt="Pointer" src="img/pointer_intro.png" /></p>
+<p>As any other variable, you need to declare a pointer. Furthermore, you have to initialize a pointer before you can use it.</p>
+<p>Where are pointers used?</p>
+<p>Pointers provide a method to pass more than one piece of
+information into and out of a function (remember that a function can only return one value). They also provide means to pass arguments by reference to functions, rather than by value. And finally, pointers are more efficient when accessing arrays and dealing with strings.</p>
+<h2 id="pointer-declaration">Pointer declaration<a class="headerlink" href="#pointer-declaration" title="Permanent link">#</a></h2>
+<p>You declare a pointer just like any other variable. Adding a <code>*</code> make a variable a pointer. The <code>*</code> can be anywhere between the <code>type</code> and the <code>name</code>:</p>
+<p><strong>Syntax</strong></p>
+<pre><code class="language-c">type*  name; // All these expressions are equivalent.
+type * name; // For better readability, you should stick
+type  *name; // to one version throughout your code.
+</code></pre>
+<p><em>Note</em></p>
+<ul>
+<li><code>type</code> can be any C type (such as <code>char</code>, <code>int</code>, or <code>float</code> for example).</li>
+<li><code>name</code> is the name of the pointer variable.</li>
+<li>Pointers are usually described as "a pointer to <code>type</code>"</li>
+</ul>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">int *myPointer                // Declares a pointer named myPointer as an integer type
+
+float *myOtherPointer         // Declares a pointer named myOtherPointer as a float type
+
+myPointer = &amp;myIntVar;        // Assigns the memory address of myIntVar to myPointer
+
+myOtherPointer = &amp;myFloatVar; // Assigns the memory address of myFloatVar to myOtherPointer
+</code></pre>
+<h3 id="creating-pointer-types-with-typedef">Creating pointer types with typedef<a class="headerlink" href="#creating-pointer-types-with-typedef" title="Permanent link">#</a></h3>
+<p><strong>Syntax</strong></p>
+<pre><code class="language-c">typedef type *typeName;
+</code></pre>
+<p><em>Note</em></p>
+<ul>
+<li>A pointer variable can now be declared as type <code>typeName</code> which is a synonym for <code>type</code>.</li>
+<li>The * is no longer needed since <code>typeName</code> explicitly identifies the variable as a pointer to <code>type</code>.</li>
+</ul>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">typedef int *intPointer; // Create a pointer to int type
+
+intPointer p;            // Create pointer to int (without *)
+                         // Equivalent to int *p;
+</code></pre>
+<h3 id="initialization">Initialization<a class="headerlink" href="#initialization" title="Permanent link">#</a></h3>
+<p>To set a pointer to point to another variable, we use the <code>&amp;</code> operator (address of), and the pointer variable is used
+without the dereference operator <code>*</code>:</p>
+<p><code>p = &amp;n;</code></p>
+<p>This assigns the address of the variable <code>n</code> to the pointer <code>p</code> (<code>p</code> now points to <code>n</code>).</p>
+<p><em>Note</em></p>
+<ul>
+<li><code>p</code> must be declared to point to the type of <code>n</code> (e.g. <code>int n; int *p;</code>).</li>
+</ul>
+<h3 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">#</a></h3>
+<p>When accessing the variable pointed to by a pointer, we use the pointer with the dereference operator <code>*</code>:</p>
+<p><code>m = *p;</code></p>
+<p>This assigns to the variable m, the value of what p is pointing to (n from the last example). Using <code>*p</code>, is the same as using the variable it points to (e.g. n).</p>
+<h3 id="in-other-words">In other words<a class="headerlink" href="#in-other-words" title="Permanent link">#</a></h3>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">int n, *p; // Create an integer variable and a pointer to an integer variable
+
+p = &amp;n;    // Assign the address of n to p
+*p = 3;    // Equals to n = 3;
+</code></pre>
+<p>In the pointer world:
+- <code>&amp;n</code> is a constant pointer which represents the address of <code>n</code>. This address of n will never change.
+- <code>p</code> is a variable pointer to int which can be assigned the address of any int any time.
+- <code>*p</code> represents the data pointed to by <code>p</code> and may be used anywhere you would use <code>n</code>.
+- <code>*</code> is the dereference operator, also called the indirection operator.
+- When declaring a pointer, <code>*</code> is used to indicate that the variable is a pointer rather than an ordinary variable.</p>
+<h3 id="pointers-at-work">Pointers at work<a class="headerlink" href="#pointers-at-work" title="Permanent link">#</a></h3>
+<p>Consider the following code example. How is this working in an actual design?</p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">int n, m;    // Create two integer variables
+int *p;      // Create a pointer to an integer variable
+
+ n = 0x1234; // Assign 0x1234 to n
+ m = 0xABCD; // Assign 0xABCD to m
+ p = &amp;n;     // Assign the address of n to p
+*p = 0x4321; // Assign 0x4321 to n using *p
+ p = &amp;m;     // Assign the address of m to p
+*p = 0xDCBA; // Assign 0xDCBA to m using *p
+</code></pre>
+<p>Zero-initialized RAM at program start: 
+<img alt="Initialization with ZI RAM" src="img/pointers_at_work1.png" /></p>
+<p>Assign 0x1234 to n:
+<img alt="Assign 0x1234 to n" src="img/pointers_at_work2.png" /></p>
+<p>Assign 0xABCD to m:
+<img alt="Assign 0xABCD to m" src="img/pointers_at_work3.png" /></p>
+<p>Assign the address of n to p:
+<img alt="Assign the address of n to p" src="img/pointers_at_work4.png" /></p>
+<p>Assign 0x4321 to n using *p:
+<img alt="Assign 0x4321 to n using *p" src="img/pointers_at_work5.png" /></p>
+<p>Assign the address of m to p:
+<img alt="Assign the address of m to p" src="img/pointers_at_work6.png" /></p>
+<p>Assign 0xDCBA to m using *p:
+<img alt="Assign 0xDCBA to m using *p" src="img/pointers_at_work7.png" /></p>
+<h2 id="pointers-and-arrays">Pointers and arrays<a class="headerlink" href="#pointers-and-arrays" title="Permanent link">#</a></h2>
+<p>In general, array elements occupy consecutive locations in memory. Using this knowledge, we can use pointers to access array elements.</p>
+<p><img alt="Integer array memory locations" src="img/array_in_memory.png" /></p>
+<h3 id="initializing-a-pointer-to-an-array">Initializing a pointer to an array<a class="headerlink" href="#initializing-a-pointer-to-an-array" title="Permanent link">#</a></h3>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">int a[5] = {0, 1, 2, 3, 4}; // integer array
+int *p;      // Create a pointer to an integer variable
+</code></pre>
+<p>To initialize the pointer to the array, you can use three different (equal) methods:</p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">p = a;     // Works only for arrays, as the array name (here: a) is the same as the address of its first element; Arm compiler will not complain
+p = &amp;a;    // Works for arrays and variabls alike, but in case of an array, the Arm compiler will issue a warning
+p = &amp;a[0]; // safe way to point to the first element; compiler will not complain 
+</code></pre>
+<p>To move to the next element of the array, simply increment the pointer:</p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">p++; // Moves the pointer to the next element of the array
+p--; // Moves the pointer to the previous element of the array
+</code></pre>
+<p><em>Note</em></p>
+<ul>
+<li>Adding or subtracting a number to/from the pointer will change it by a multiple of the number of bytes of its type.</li>
+</ul>
+<p><strong>Code example</strong></p>
+<p><img alt="Pointer arithmetic" src="img/pointer_arithmetic1.png" /></p>
+<p><img alt="Pointer arithmetic" src="img/pointer_arithmetic2.png" /></p>
+<p><img alt="Pointer arithmetic" src="img/pointer_arithmetic3.png" /></p>
+<p><img alt="Pointer arithmetic" src="img/pointer_arithmetic4.png" /></p>
+<p><img alt="Pointer arithmetic" src="img/pointer_arithmetic5.png" /></p>
+<p><img alt="Pointer arithmetic" src="img/pointer_arithmetic6.png" /></p>
+<p><img alt="Pointer arithmetic" src="img/pointer_arithmetic7.png" /></p>
+<p><img alt="Pointer arithmetic" src="img/pointer_arithmetic8.png" /></p>
+<h3 id="incrementdecrement-syntax-rules">Increment/decrement syntax rules<a class="headerlink" href="#incrementdecrement-syntax-rules" title="Permanent link">#</a></h3>
+<p>Use parentheses to determine what gets incremented or decremented.</p>
+<p><strong>Modify the pointer itself</strong></p>
+<pre><code class="language-c">// Pre-increment:
+*(++p);
+*++p;
+++p;
+// usage example:
+n = *(++p);
+// is equivalent to:
+p = p + 1;
+n = *p;
+
+// Post-increment:
+*(p++);
+*p++;
+p++;
+// usage example:
+n = *p++;
+// is equivalent to:
+n = *p;
+p = p + 1;
+</code></pre>
+<p><strong>Modify the value pointed to by the pointer</strong></p>
+<pre><code class="language-c">// Pre-increment:
+++(*p);
+// usage example:
+n = ++(*p);
+// is equivalent to:
+*p = *p + 1;
+n = *p;
+
+// Post-increment:
+(*p)++;
+// usage example:
+n = (*p)++;
+// is equivalent to:
+n = *p;
+*p = *p + 1;
+</code></pre>
+<p><strong>Post-increment code example</strong></p>
+<p><img alt="Post-increment" src="img/postincrement1.png" /></p>
+<p><img alt="Post-increment" src="img/postincrement2.png" /></p>
+<p><img alt="Post-increment" src="img/postincrement3.png" /></p>
+<p><img alt="Post-increment" src="img/postincrement4.png" /></p>
+<p><em>Note</em></p>
+<ul>
+<li>Remember that <code>*(p++)</code> is the same as <code>*p++</code>!</li>
+</ul>
+<p><strong>Pre-increment code example</strong></p>
+<p><img alt="Pre-increment" src="img/preincrement1.png" /></p>
+<p><img alt="Pre-increment" src="img/preincrement2.png" /></p>
+<p><img alt="Pre-increment" src="img/preincrement3.png" /></p>
+<p><em>Note</em></p>
+<ul>
+<li>Remember that <code>*(++p)</code> is the same as <code>*++p</code>!</li>
+</ul>
+<h2 id="pointers-and-functions">Pointers and functions<a class="headerlink" href="#pointers-and-functions" title="Permanent link">#</a></h2>
+<p>In general, functions operate on copies of the data that is passed to them. This is called pass by value. The value of the variable that is passed to a function is copied into the local variable of the function. The original variable <em>is not</em> changed.</p>
+<h3 id="passing-pointers-to-functions">Passing pointers to functions<a class="headerlink" href="#passing-pointers-to-functions" title="Permanent link">#</a></h3>
+<p>Using a pointer, a function can operate on the original value instead of a copy. This is called pass by reference.</p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">int n = 3;
+
+void square (int *a) { 
+    *a *= *a;
+}
+
+int main (void) {
+    square(&amp;n);
+}
+</code></pre>
+<p><em>Note</em></p>
+<ul>
+<li>In the example above, the address of the variable is passed to the function and stored in the local pointer variable a. After the function call, n = 9. It was changed by the function.</li>
+</ul>
+<p>Functions with pointer parameters:</p>
+<p><code>int foo (*n)</code></p>
+<p>must be called in one of the following two ways.</p>
+<ol>
+<li><code>foo(&amp;a)</code> which passes an address to the function so that the address may be assigned to the pointer parameter: <code>n = &amp;a</code>.</li>
+<li><code>foo(p)</code> which passes a pointer to the function so that the pointer may be assigned to the pointer parameter <code>n = p</code>.</li>
+</ol>
+<p>As addresses of parameters are copied to local pointer
+variables, functions can now modify the original
+variables via pointers, as shown in the next example.</p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">void swap_values (int *v1, int *v2) {
+    int temp;
+    temp = *v1;
+    *v1  = *v2;
+    *v2  = temp;
+}
+
+// main() function
+int main(void) {
+    int  n = 5, m = 10;
+    int *p = &amp;m;
+    swap_values (&amp;n, p);
+  // Endless loop
+    while(1);
+}
+</code></pre>
+<h2 id="pointers-and-strings">Pointers and strings<a class="headerlink" href="#pointers-and-strings" title="Permanent link">#</a></h2>
+<p>Until now, we have used arrays of <code>char</code> to work with strings. Using pointers, strings can be created and used in a more efficient way.</p>
+<p><strong>Syntax</strong></p>
+<pre><code class="language-c">char *name = &quot;string_content&quot;;
+</code></pre>
+<p><em>Note</em></p>
+<ul>
+<li>Initializing a character string when it is declared is essentially the same for both a pointer and an array</li>
+<li>The NULL character <code>\0</code> is automatically appended to
+strings in both cases</li>
+</ul>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">char *str = &quot;Cortex&quot;;
+</code></pre>
+<p><img alt="Pointer to string" src="img/pointer_to_string.png" /></p>
+<p>At initialization, a pointer to a string points to the first character. To access subsequent characters, add an offset to the pointer.</p>
+<p><img alt="Pointer to string" src="img/pointer_to_string_plus4.png" /></p>
+<h3 id="pointers-versus-arrays">Pointers versus arrays<a class="headerlink" href="#pointers-versus-arrays" title="Permanent link">#</a></h3>
+<p>An entire string may be assigned to a pointer in a single step, while a character array must be assigned character
+by character. Also, you must explicitly add the NULL character <code>\0</code> to an array.</p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">// Pointer variable
+char *str;
+str = &quot;Cortex&quot;;
+
+// Array variable
+char str[7];
+str[0] = 'C';
+str[1] = 'o';
+str[2] = 'r';
+str[3] = 't';
+str[4] = 'e';
+str[5] = 'x';
+str[6] = '\0';
+</code></pre>
+<h2 id="arrays-of-pointers">Arrays of pointers<a class="headerlink" href="#arrays-of-pointers" title="Permanent link">#</a></h2>
+<p>An array of pointers is an array variable whose elements are all be pointers.</p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">char *str[3]; // creates an array of three pointers to char
+
+str[0] = &quot;IN&quot;;
+str[1] = &quot;OUT&quot;;
+str[2] = &quot;TRISTATE&quot;;
+</code></pre>
+<p>The array <code>str[]</code> itself is like any other array. Each element, such as str[1], is a pointers to <code>char</code>.</p>
+<p><img alt="Array of pointers" src="img/array_of_pointers.png" /></p>
+<p><em>Note</em></p>
+<ul>
+<li>Strings will not “pack” this nicely! There will be empty locations between strings as the compiler aligns the strings in memory.</li>
+</ul>
+<h3 id="initialization_1">Initialization<a class="headerlink" href="#initialization_1" title="Permanent link">#</a></h3>
+<p>A pointer array element may be initialized just like its ordinary variable counterpart.</p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">str[0] = &amp;n;
+</code></pre>
+<p>When using strings:</p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">str[0] = &quot;String&quot;;
+</code></pre>
+<h3 id="dereferencing">Dereferencing<a class="headerlink" href="#dereferencing" title="Permanent link">#</a></h3>
+<p>To use the value pointed to by a pointer array element, just dereference it like you would an ordinary variable</p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">m = *str[0];
+</code></pre>
+<p>Using *str[0] is the same as using the object it points to, such as <code>n</code> or the string literal <code>"String"</code>.</p>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">#</a></h2>
+<p>Pointers enable the programmer to pass a variable by reference to a function. This allows the function to modify the original variable and not just a copy of its contents.</p>
+<p>Arrays are frequently treated like pointers. An array name alone represents the address of its first element.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="arrays.html" class="btn btn-neutral float-left" title="Arrays"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="function_pointers.html" class="btn btn-neutral float-right" title="Function pointers">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/mcusuperuser/embedded_c" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="arrays.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="function_pointers.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

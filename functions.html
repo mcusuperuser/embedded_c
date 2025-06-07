@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Functions - Embedded C for Arm Cortex-M Microcontrollers</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Functions";
+        var mkdocs_page_input_path = "functions.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="index.html" class="icon icon-home"> Embedded C for Arm Cortex-M Microcontrollers
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="index.html">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables, identifiers and data types</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="constants.html">Constants and literals</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="printf.html">The printf() C library function</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="exercise01.html">First exercise</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="expressions.html">Expressions and statements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="making_decisions.html">Decision making</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Functions</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#return-data-type">Return data type</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-call-a-function">How to call a function</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#function-prototypes">Function prototypes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#function-prototype-formats">Function prototype formats</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#passing-parameters-by-value">Passing parameters by value</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#functions-and-scope">Functions and scope</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#scope-of-parameters">Scope of parameters</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#scope-of-variables-inside-a-function">Scope of variables inside a function</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#global-versus-local-variables">Global versus local variables</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#overloading-variable-names">Overloading variable names</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#define-within-a-function">#define within a function</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="storage_classes.html">Storage classes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="arrays.html">Arrays</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="pointers.html">Pointers</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="function_pointers.html">Function pointers</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="structures.html">Structures</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="bit_fields.html">Bit fields</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="peripheral_access.html">Peripheral access using CMSIS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="unions.html">Unions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="further_reading.html">Further reading</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Embedded C for Arm Cortex-M Microcontrollers</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html" class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Functions</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/mcusuperuser/embedded_c/edit/master/docs/functions.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">#</a></h1>
+<p>What are functions?</p>
+<blockquote>
+<p>Functions are self contained program segments designed to perform a specific task. They take inputs, do some computation, and produce output. </p>
+</blockquote>
+<p>Functions provide a way to modularize code and make it easier to maintain. Also, functions promote code reuse.</p>
+<p><em>Note</em></p>
+<ul>
+<li>All C programs have one (at least the <code>main()</code> function is required) or more functions</li>
+<li>Functions can accept parameters from the code that calls them</li>
+<li>Functions usually return a single value</li>
+<li>Functions help to organize a program into logical, manageable segments</li>
+</ul>
+<p><strong>Syntax</strong></p>
+<pre><code class="language-c">type identifier (type1 arg1, type2 arg2, ..., typen argn) {
+    declarations        // body
+    statements          // body
+    return expression;  // body
+}
+</code></pre>
+<p>Where:</p>
+<ul>
+<li><code>type</code> is the data type of the return expression.</li>
+<li><code>identifier</code> is the name of the function.</li>
+<li><code>type1 arg1, type2 arg2, ..., typen argn</code> is the parameter list which is optional.</li>
+<li><code>expression</code> is the (optional) return value.</li>
+<li>the body is also optional. </li>
+</ul>
+<h2 id="return-data-type">Return data type<a class="headerlink" href="#return-data-type" title="Permanent link">#</a></h2>
+<ul>
+<li>A function's <code>type</code> must match the type of data in the return <code>expression</code></li>
+<li>A function may have multiple return statements (of the same type), but only one will be executed</li>
+<li>The function type is <code>void</code> if the <code>return</code> statement has no <code>expression</code> or is not present at all. This is also known as a procedure function, since nothing is returned.</li>
+<li>Functions can return any type except arrays and functions. We can get around this limitation by returning a pointer to an array or a pointer to a function.</li>
+</ul>
+<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">#</a></h2>
+<ul>
+<li>A function's parameters are declared just like ordinary variables, but in a comma separated list inside the parentheses</li>
+<li>The parameter names are only valid inside the function (local to the function)</li>
+<li>The list may mix different data types</li>
+<li>Parameters of the same type must be declared separately (as separation using commas will not work here)</li>
+<li>If no parameters are required, use the keyword <code>void</code> in place of the parameter list when defining the function</li>
+</ul>
+<h2 id="how-to-call-a-function">How to call a function<a class="headerlink" href="#how-to-call-a-function" title="Permanent link">#</a></h2>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">foo ();         // no parameters, no return value
+x = foo ();     // no parameters, but with a return value
+foo (n, m);     // with parameters, but no return value
+x = foo (n, m); // with parameters and with a return value
+</code></pre>
+<h2 id="function-prototypes">Function prototypes<a class="headerlink" href="#function-prototypes" title="Permanent link">#</a></h2>
+<p>Just like a variable, a function must be declared before it may be used. This declaration must occur before <code>main()</code> or any other function that uses it. The declaration may have two forms:
+- The entire function definition
+- Just a function prototype – the function definition itself may then be placed anywhere in the program</p>
+<p><strong>Code example 1</strong></p>
+<p>In this example, the function is declared <em>and</em> defined before it is used in <code>main()</code>.</p>
+<pre><code class="language-c">int n = 5, m = 10, res;
+int minimum (int a, int b) {
+    return ((a &lt;= b) ? a : b);
+}
+
+int main (void) {
+    res = minimum (n, m);
+    printf(&quot;The minimum is %d\n&quot;, res);
+}
+</code></pre>
+<p><strong>Code example 2</strong></p>
+<p>In this example, the function is declared before it is used in <code>main()</code>, but only defined after it is used in <code>main()</code>.</p>
+<pre><code class="language-c">int n = 5, m = 10, res;
+int minimum (int a, int b);
+
+int main (void) {
+    res = minimum (n, m);
+    printf(&quot;The minimum is %d\n&quot;, res);
+}
+
+int minimum (int a, int b) {
+    return ((a &lt;= b) ? a : b);
+}
+</code></pre>
+<h3 id="function-prototype-formats">Function prototype formats<a class="headerlink" href="#function-prototype-formats" title="Permanent link">#</a></h3>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">// Function prototype 1:
+int minimum (int x, int y);  // exact copy of the function header
+
+// Function prototype 2:
+int minimum (int, int);      // contains only the parameter data types
+</code></pre>
+<h2 id="passing-parameters-by-value">Passing parameters by value<a class="headerlink" href="#passing-parameters-by-value" title="Permanent link">#</a></h2>
+<p>Parameters are passed to a function <em>by value</em>. These values are copied into the local parameter variables. This means, that the original variable that is passed to a function cannot be modified by the function, since only a copy of its value was passed.</p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">int n = 5, m = 10, res;
+int minimum (int a, int b);
+
+int main (void) {
+    res = minimum (n, m);  // the value of n is copied into a
+                           // the value of m is copied into b
+    printf(&quot;The minimum is %d\n&quot;, res);
+}
+
+int minimum (int a, int b) {
+    return ((a &lt;= b) ? a : b);
+}
+</code></pre>
+<h2 id="functions-and-scope">Functions and scope<a class="headerlink" href="#functions-and-scope" title="Permanent link">#</a></h2>
+<h3 id="scope-of-parameters">Scope of parameters<a class="headerlink" href="#scope-of-parameters" title="Permanent link">#</a></h3>
+<p>A function's parameters are local to the function and have no meaning outside
+the function itself. Parameter names may have the same identifier as a variable declared outside the function, but the parameter names will take precedence inside the function.</p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">// The following n's are not the same: 
+int n;
+int absolute (int n);
+</code></pre>
+<h3 id="scope-of-variables-inside-a-function">Scope of variables inside a function<a class="headerlink" href="#scope-of-variables-inside-a-function" title="Permanent link">#</a></h3>
+<p>Variables that are declared inside a function are local to the function itself. </p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">void my_func (int n) {
+    int m;
+    ..
+    m -= n;  // n refers to the function paramter
+             // while me refers to the locally declared variable
+}
+</code></pre>
+<p><em>Note</em></p>
+<ul>
+<li>Variables that are declared within a function block are not accessible outside the function.</li>
+<li>Any access to a local variable outside the function will generate an error.</li>
+</ul>
+<h3 id="global-versus-local-variables">Global versus local variables<a class="headerlink" href="#global-versus-local-variables" title="Permanent link">#</a></h3>
+<p>Global variables can be seen by everybody, while local variables can only be seen locally.</p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">int n = 5;              // can be seen by everybody
+
+int foo (int m);        // foo's local paramter is m
+
+int foo (int m) {       // foo cannot see main's local variable i
+    int p = 3;          // foo's local variable is p
+    return (n - m * p); // foo can see gloabal variable n
+}
+
+int main (void) {       // main cannot see foo's paramter m nor local variable p
+    int i = 2;          // main's local variable is i
+    n = foo (i);        // main can see global variable n
+    i = foo (n);
+}
+</code></pre>
+<h3 id="overloading-variable-names">Overloading variable names<a class="headerlink" href="#overloading-variable-names" title="Permanent link">#</a></h3>
+<p>A locally declared identifier takes precedence over a globally defined one. This enables the usage of the same parameter name in different functions. Each function will only use its own parameter. </p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">int n = 5;              // global variable n
+
+int foo (int n) {       // foo's function parameter
+    int p = 3;          // foo's local variable is p
+    return (n(1 - p));  // foo can not see glonbal variable n
+                        // function parameter n is used instead
+}
+
+void bar (int n) {      // bar's function parameter
+    // do some computation here
+}
+</code></pre>
+<h3 id="define-within-a-function"><code>#define</code> within a function<a class="headerlink" href="#define-within-a-function" title="Permanent link">#</a></h3>
+<p>Use <code>#define</code>'s within a function with care. Defining already defined identifiers again can lead to unexpected behavior. </p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">#define a 5
+
+void func_define (void) {
+    #define a 7
+    printf (&quot;%d\n&quot;, a);
+}
+
+void main (void) {
+    printf (&quot;%d\n&quot;, a);
+    func_define();
+}
+</code></pre>
+<p>Running the code above will lead to the following output:</p>
+<pre><code>7
+7
+</code></pre>
+<p><em>Note</em></p>
+<p>Remember that a <code>#define</code> is used by the preprocessor to do text substitution before the code is compiled. Situations like the above will lead to unexpected behavior. You can not rely on the order in which the <code>#define</code>'s are processed.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="loops.html" class="btn btn-neutral float-left" title="Loops"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="storage_classes.html" class="btn btn-neutral float-right" title="Storage classes">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/mcusuperuser/embedded_c" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="loops.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="storage_classes.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

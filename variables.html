@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Variables, identifiers and data types - Embedded C for Arm Cortex-M Microcontrollers</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Variables, identifiers and data types";
+        var mkdocs_page_input_path = "variables.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="index.html" class="icon icon-home"> Embedded C for Arm Cortex-M Microcontrollers
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="index.html">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Variables, identifiers and data types</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#identifiers">Identifiers</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#ansi-c-keywords">ANSI C keywords</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#arm-compiler-6-armclang-keywords-and-operators">Arm compiler 6 (armclang) keywords and operators</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#data-types">Data types</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#size-and-alignment-of-basic-data-types-in-arm-cc">Size and alignment of basic data types in Arm C/C++</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#how-to-declare-a-variable">How to declare a variable</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#using-typedefs">Using typedefs</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#declaring-variables">Declaring variables</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="constants.html">Constants and literals</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="printf.html">The printf() C library function</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="exercise01.html">First exercise</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="expressions.html">Expressions and statements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="making_decisions.html">Decision making</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="storage_classes.html">Storage classes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="arrays.html">Arrays</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="pointers.html">Pointers</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="function_pointers.html">Function pointers</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="structures.html">Structures</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="bit_fields.html">Bit fields</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="peripheral_access.html">Peripheral access using CMSIS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="unions.html">Unions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="further_reading.html">Further reading</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Embedded C for Arm Cortex-M Microcontrollers</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html" class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Variables, identifiers and data types</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/mcusuperuser/embedded_c/edit/master/docs/variables.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="variables-identifiers-and-data-types">Variables, identifiers and data types<a class="headerlink" href="#variables-identifiers-and-data-types" title="Permanent link">#</a></h1>
+<p>What is a variable?</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>A variable is a name that represents one or more memory locations used to hold program data.</p>
+</div>
+<p>A variable is a kind of bucket that you can use to hold program data.</p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">int myVar;
+myVar = 42;
+</code></pre>
+<ul>
+<li>Variable declarations consist of a <strong>data type</strong> and a unique <strong>identifier (name)</strong></li>
+</ul>
+<pre><code class="language-c">int   myVar;
+char  myLetter;
+float myFLoat,
+</code></pre>
+<ul>
+<li>The data type determines the size of the memory location that is used to store the variable and determines how the value of the variable is interpreted.</li>
+</ul>
+<h2 id="identifiers">Identifiers<a class="headerlink" href="#identifiers" title="Permanent link">#</a></h2>
+<p>What are identifiers?</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Identifiers are names that are given to program elements, such as variables, functions, arrays, or any other named
+element.</p>
+</div>
+<ul>
+<li>Valid characters in identifiers are '_', 'a' to 'z', 'A' to 'Z', and '0' to '9' (not allowed for the first character).</li>
+<li>Identifiers are case sensitive, so <code>myVar</code> is not the same as <code>myvar</code>!</li>
+<li>You <em>must not use</em> keywords of the C language as identifiers.</li>
+<li>The Arm compiler provides additional keywords that are extensions to the C/C++ standards and <em>must also not be used</em> as identifiers.</li>
+</ul>
+<h3 id="ansi-c-keywords">ANSI C keywords<a class="headerlink" href="#ansi-c-keywords" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>auto</td>
+<td>break</td>
+<td>case</td>
+<td>char</td>
+<td>const</td>
+</tr>
+<tr>
+<td>continue</td>
+<td>default</td>
+<td>do</td>
+<td>double</td>
+<td>else</td>
+</tr>
+<tr>
+<td>enum</td>
+<td>extern</td>
+<td>float</td>
+<td>for</td>
+<td>goto</td>
+</tr>
+<tr>
+<td>if</td>
+<td>int</td>
+<td>long</td>
+<td>register</td>
+<td>return</td>
+</tr>
+<tr>
+<td>short</td>
+<td>signed</td>
+<td>sizeof</td>
+<td>static</td>
+<td>struct</td>
+</tr>
+<tr>
+<td>switch</td>
+<td>typedef</td>
+<td>union</td>
+<td>unsigned</td>
+<td>void</td>
+</tr>
+<tr>
+<td>volatile</td>
+<td>while</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="arm-compiler-6-armclang-keywords-and-operators">Arm compiler 6 (armclang) keywords and operators<a class="headerlink" href="#arm-compiler-6-armclang-keywords-and-operators" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>__alignof__</td>
+<td>__asm</td>
+<td>__declspec</td>
+<td>__inline</td>
+</tr>
+</tbody>
+</table>
+<h2 id="data-types">Data types<a class="headerlink" href="#data-types" title="Permanent link">#</a></h2>
+<p>C provides various data types. Normally, you would use:</p>
+<ul>
+<li><code>int</code> for most variables and things that you can count, such as loop counts, events, and apples</li>
+<li><code>char</code> for characters and strings</li>
+<li><code>float</code> for measurable things that require decimal numbers, such as distance, temperature, or voltage</li>
+<li><code>uint32_t</code> for bit manipulations, especially on 32-bit registers</li>
+<li>The appropriate <code>&lt;stdint.h&gt;</code>/<code>&lt;arm_math.h&gt;</code> types for storing and working with data explicitly meeting your needs (for example if you require that an integer has exactly N bits)</li>
+</ul>
+<h3 id="size-and-alignment-of-basic-data-types-in-arm-cc">Size and alignment of basic data types in Arm C/C++<a class="headerlink" href="#size-and-alignment-of-basic-data-types-in-arm-cc" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>ANSI C Type</th>
+<th>stdint.h C Type</th>
+<th style="text-align: center;">Size in bits</th>
+<th style="text-align: center;">Natural alignment in bytes</th>
+<th style="text-align: left;">Range of values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>char</td>
+<td>uint8_t</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">1 (byte-aligned)</td>
+<td style="text-align: left;">0 to 255 (unsigned) by default.</td>
+</tr>
+<tr>
+<td>signed char</td>
+<td>int8_t</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">1 (byte-aligned)</td>
+<td style="text-align: left;">-128 to 127</td>
+</tr>
+<tr>
+<td>unsigned char</td>
+<td>uint8_t</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">1 (byte-aligned)</td>
+<td style="text-align: left;">0 to 255</td>
+</tr>
+<tr>
+<td>signed short</td>
+<td>int16_t</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2 (halfword-aligned)</td>
+<td style="text-align: left;">-32,768 to 32,767</td>
+</tr>
+<tr>
+<td>unsigned short</td>
+<td>uint16_t</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2 (halfword-aligned)</td>
+<td style="text-align: left;">0 to 65,535</td>
+</tr>
+<tr>
+<td>signed int</td>
+<td>int32_t</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">4 (word-aligned)</td>
+<td style="text-align: left;">-2,147,483,648 to 2,147,483,647</td>
+</tr>
+<tr>
+<td>unsigned int</td>
+<td>uint32_t</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">4 (word-aligned)</td>
+<td style="text-align: left;">0 to 4,294,967,295</td>
+</tr>
+<tr>
+<td>signed long</td>
+<td></td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">4 (word-aligned)</td>
+<td style="text-align: left;">-2,147,483,648 to 2,147,483,647</td>
+</tr>
+<tr>
+<td>unsigned long</td>
+<td></td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">4 (word-aligned)</td>
+<td style="text-align: left;">0 to 4,294,967,295</td>
+</tr>
+<tr>
+<td>signed long long</td>
+<td>int64_t</td>
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">8 (doubleword-aligned)</td>
+<td style="text-align: left;">-9,223,372,036,854,775,808 to 9,223,372,036,854,775,807</td>
+</tr>
+<tr>
+<td>unsigned long long</td>
+<td>uint64_t</td>
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">8 (doubleword-aligned)</td>
+<td style="text-align: left;">0 to 18,446,744,073,709,551,615</td>
+</tr>
+<tr>
+<td>float</td>
+<td>float32_t <arm_math.h></td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">4 (word-aligned)</td>
+<td style="text-align: left;">1.175494351e-38 to 3.40282347e+38 (normalized values)</td>
+</tr>
+<tr>
+<td>double</td>
+<td>float64_t <arm_math.h></td>
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">8 (doubleword-aligned)</td>
+<td style="text-align: left;">2.22507385850720138e-308 to 1.79769313486231571e+308 (normalized values)</td>
+</tr>
+<tr>
+<td>long double</td>
+<td>float64_t <arm_math.h></td>
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">8 (doubleword-aligned)</td>
+<td style="text-align: left;">2.22507385850720138e-308 to 1.79769313486231571e+308 (normalized values)</td>
+</tr>
+<tr>
+<td>All pointers</td>
+<td></td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">4 (word-aligned)</td>
+<td style="text-align: left;">Not applicable.</td>
+</tr>
+<tr>
+<td>bool (C++ only)</td>
+<td></td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">1 (byte-aligned)</td>
+<td style="text-align: left;">false or true</td>
+</tr>
+<tr>
+<td>_Bool (C only)</td>
+<td></td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">1 (byte-aligned)</td>
+<td style="text-align: left;">false or true</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>Integers are represented in <a href="https://en.wikipedia.org/wiki/Two%27s_complement" title="Two´s complement on Wikipedia">two's complement</a> form.</li>
+<li>Floating-point quantities are stored in <a href="https://en.wikipedia.org/wiki/IEEE_754" title="IEEE 754 on Wikipedia">IEEE format</a>.</li>
+</ul>
+</div>
+<h3 id="how-to-declare-a-variable">How to declare a variable<a class="headerlink" href="#how-to-declare-a-variable" title="Permanent link">#</a></h3>
+<pre><code class="language-c">type identifier1, identifier2, ..., identifiern;
+</code></pre>
+<ul>
+<li>Variables must be declared before they can be used</li>
+<li>The type is important! It tells the compiler how much memory space to allocate and how handle the values</li>
+</ul>
+<pre><code class="language-c">char   myFirstLetter;
+int    a, b, c;
+float  currentSpeed;
+double sensorValue;
+</code></pre>
+<p>There are multiple ways to declare a variable:</p>
+<p><strong>Declaration on a single line</strong></p>
+<pre><code class="language-c">type name;
+</code></pre>
+<p><strong>Declaration on a single line with an initial value</strong></p>
+<pre><code class="language-c">type name = initialValue;
+</code></pre>
+<p><strong>Multiple declarations of the same type on a single line</strong></p>
+<pre><code class="language-c">type name1, name2, name3;
+</code></pre>
+<p><strong>Multiple declarations of the same type on a single line with initial values</strong></p>
+<pre><code class="language-c">type name1 = value1, name2 = value2, name3;
+</code></pre>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">unsigned int myVar;
+signed int   answer = 42;
+char         myFirstLetter = 'a', mySecondLetter, myLastLetter = 'z';
+float        hugeNumber = 5.12e+21
+</code></pre>
+<h2 id="using-typedefs">Using typedefs<a class="headerlink" href="#using-typedefs" title="Permanent link">#</a></h2>
+<p><strong>Syntax</strong></p>
+<pre><code class="language-c">typedef type typeName;
+</code></pre>
+<ul>
+<li>Typedefs are an alternative way to name types and create an alias name for the type.</li>
+<li>The <em>typeName</em> is now the same as the type</li>
+</ul>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">typedef unsigned int uint32_t;
+
+uint32_t a, b;    // alias for unsigned int a, b;
+</code></pre>
+<h3 id="declaring-variables">Declaring variables<a class="headerlink" href="#declaring-variables" title="Permanent link">#</a></h3>
+<p><em>Header</em> files are used to declare variables and other program elements in a separate file. Usually, header files have the filename extension <em>.h</em>. To use a header file in your C code, associate it with the <code>#include</code> directive.</p>
+<p>The <code>#include</code> directive can be used in three different ways. You can:</p>
+<ol>
+<li>Look for a header file in the compiler include path, which contains the compiler's directory and all of its sub-directories:</li>
+</ol>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+</code></pre>
+<ol>
+<li>Look for a file in the project directory:</li>
+</ol>
+<pre><code class="language-c">#include &quot;myHeader.h&quot;
+</code></pre>
+<ol>
+<li>Look for a file using an absolute or relative path:</li>
+</ol>
+<pre><code class="language-c">#include &quot;..\..\myHeader2.h&quot;
+#include &quot;C:\projects\myProject\inc\myHeader3.h&quot;
+</code></pre>
+<p><strong>Code example</strong></p>
+<p><code>main.h</code> header file:</p>
+<pre><code class="language-c">int   n, m, p;
+float myFloat;
+</code></pre>
+<p><code>main.c</code> source file:</p>
+<pre><code class="language-c">#include &quot;main.h&quot;
+
+int main (void) {
+    n = 3;
+    m = 1;
+    p = n - m;
+    myFLoat = 1 / p;
+}
+</code></pre>
+<p>Using the <code>#include</code> directive, the contents of the main.h header file are pasted into the main.c source file, starting at the <code>#include</code> directive’s line.</p>
+<p>After the preprocessor runs, the compiler sees the main.c source file as follows:</p>
+<pre><code class="language-c">int n, m, p;
+float myFloat;
+
+int main (void) {
+    n = 3;
+    m = 1;
+    p = n - m;
+    myFloat = 1 / p;
+}
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="comments.html" class="btn btn-neutral float-left" title="Comments"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="constants.html" class="btn btn-neutral float-right" title="Constants and literals">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/mcusuperuser/embedded_c" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="comments.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="constants.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

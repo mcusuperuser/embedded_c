@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Decision making - Embedded C for Arm Cortex-M Microcontrollers</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Decision making";
+        var mkdocs_page_input_path = "making_decisions.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="index.html" class="icon icon-home"> Embedded C for Arm Cortex-M Microcontrollers
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="index.html">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables, identifiers and data types</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="constants.html">Constants and literals</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="printf.html">The printf() C library function</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="exercise01.html">First exercise</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="expressions.html">Expressions and statements</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Decision making</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#boolean-expressions">Boolean expressions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#express-it-differently">Express it differently</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#if-statement">if statement</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#if-a-vs-if-a-1">if (a) vs. if (a == 1)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nesting-if-statements">Nesting if statements</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#if-else-statement">if else statement</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#if-else-if-statement">if else if statement</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#switch-statement">switch statement</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="storage_classes.html">Storage classes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="arrays.html">Arrays</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="pointers.html">Pointers</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="function_pointers.html">Function pointers</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="structures.html">Structures</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="bit_fields.html">Bit fields</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="peripheral_access.html">Peripheral access using CMSIS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="unions.html">Unions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="further_reading.html">Further reading</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Embedded C for Arm Cortex-M Microcontrollers</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html" class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Decision making</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/mcusuperuser/embedded_c/edit/master/docs/making_decisions.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="decision-making">Decision making<a class="headerlink" href="#decision-making" title="Permanent link">#</a></h1>
+<h2 id="boolean-expressions">Boolean expressions<a class="headerlink" href="#boolean-expressions" title="Permanent link">#</a></h2>
+<p>C (unlike C++) does not have a boolean data type. As shown in the table in chapter <a href="#data-types">Data types</a>, you can use <code>_Bool</code> for that. But the usual convention is that any boolean expression returns integer values:
+- <code>0</code> if an expression evaluates as <code>FALSE</code>
+- non-zero if it evaluates as <code>TRUE</code> (usually <code>1</code>, but this is not guaranteed)</p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">int main (void) {
+    int a = 3, b, c;
+    c = (a &gt; 2); // c = 1 (TRUE)
+    b = (a &lt; 1); // b = 0 (FALSE)
+}
+</code></pre>
+<h3 id="express-it-differently">Express it differently<a class="headerlink" href="#express-it-differently" title="Permanent link">#</a></h3>
+<p>Expressions can be written in different ways which all lead to the same result (are evaluated similarly). Laziness drives programmers to usually use the first method of the following example:</p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">#define BUTTONPRESSED 1
+
+int main (void) {
+    if (BUTTONPRESSED)
+      // do something
+    if (BUTTONPRESSED != 0)
+      // do something else
+}
+</code></pre>
+<h2 id="if-statement"><code>if</code> statement<a class="headerlink" href="#if-statement" title="Permanent link">#</a></h2>
+<p><strong>Syntax</strong></p>
+<pre><code class="language-c">if (expression) statement
+</code></pre>
+<p>The expression is evaluated in a boolean fashion. If it is true, the statement is executed.</p>
+<p><em>Note</em></p>
+<ul>
+<li>The <code>statement</code> can also be a compound/block statement.</li>
+</ul>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">#define BUTTONPRESSED 1
+
+int main (void) {
+    if (BUTTONPRESSED) {
+        printf(&quot;Button is pressed\n&quot;);
+    }
+}
+</code></pre>
+<h3 id="if-a-vs-if-a-1"><code>if (a)</code> vs. <code>if (a == 1)</code><a class="headerlink" href="#if-a-vs-if-a-1" title="Permanent link">#</a></h3>
+<p>Not only laziness commands the usage of <code>if (a)</code>. This C code will also lead to reduced assembly code size, as it only has to test for not being equal to <code>0</code>:</p>
+<pre><code>0x00001170 4807      LDR      r0,[pc,#28]  ; @0x00001190
+0x00001172 6800      LDR      r0,[r0,#0x00]
+0x00001174 B110      CBZ      r0,0x0000117C
+</code></pre>
+<p><code>if (a == 1)</code> creates more assembly code, as it has to explicitly check the equality with <code>1</code>:</p>
+<pre><code>0x0000117C 4808      LDR      r0,[pc,#32]  ; @0x000011A0
+0x0000117E 6800      LDR      r0,[r0,#0x00]
+0x00001180 2801      CMP      r0,#0x01
+0x00001182 D102      BNE      0x0000118A
+</code></pre>
+<p><em>Note</em></p>
+<ul>
+<li><code>CBZ</code> is the "compare and branch on zero" instruction that will only branch if the comparison with <code>0</code> is TRUE.</li>
+<li>There is no "compare and branch on one" instruction, so you have to compare first (<code>CMP</code>) and then branch (<code>BNE</code>) if the result is not equal one.</li>
+</ul>
+<h3 id="nesting-if-statements">Nesting <code>if</code> statements<a class="headerlink" href="#nesting-if-statements" title="Permanent link">#</a></h3>
+<p>You can nest <code>if</code> statements easily.</p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">#define BUTTONPRESSED 1
+float adc_input;
+
+int main (void) {
+    if (BUTTONPRESSED) {
+        printf(&quot;Button is pressed\n&quot;);
+        } if (adc_input &gt;= 2.3) {
+            printf(&quot;Input is larger than 2.3\n&quot;);
+            }
+}
+</code></pre>
+<h3 id="if-else-statement"><code>if else</code> statement<a class="headerlink" href="#if-else-statement" title="Permanent link">#</a></h3>
+<p><strong>Syntax</strong></p>
+<pre><code class="language-c">if (expression) statement1
+else statement2
+</code></pre>
+<p>The expression is evaluated in a boolean fashion. If it is true, statement1 is executed, if false, statement2 is executed.</p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">#define BUTTONPRESSED 1
+
+int main (void) {
+    if (BUTTONPRESSED) {
+        printf(&quot;Button is pressed\n&quot;);
+        } else {
+            printf(&quot;Button is not pressed!\n&quot;);
+            }
+}
+</code></pre>
+<h3 id="if-else-if-statement"><code>if else if</code> statement<a class="headerlink" href="#if-else-if-statement" title="Permanent link">#</a></h3>
+<p><strong>Syntax</strong></p>
+<pre><code class="language-c">if (expression1) statement1
+else if (expression2) statement2
+else statement3
+</code></pre>
+<p>The expression1 is evaluated in a boolean fashion. If it is true, statement1 is executed, if false, expression2 is evaluated. If it is true, statement2 is executed, if false, statement3 is executed.</p>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">float adc_input;
+
+int main (void) {
+    if ((adc_input &gt; 0) &amp;&amp; (adc_input &lt;= 1.0)) {
+        printf(&quot;Input below 1 V!\n&quot;);
+    } else if { ((adc_input &gt; 1.0) &amp;&amp; (adc_input &lt;= 2.0))
+        printf(&quot;Input above 1 V and below 2 V!\n&quot;);
+    } else if { ((adc_input &gt; 2.0) &amp;&amp; (adc_input &lt;= 3.0))
+        printf(&quot;Input above 2 V and below 3 V!\n&quot;);
+    } else {
+        printf(&quot;Incorrect input voltage!&quot;);
+    }
+}
+</code></pre>
+<h2 id="switch-statement"><code>switch</code> statement<a class="headerlink" href="#switch-statement" title="Permanent link">#</a></h2>
+<p><strong>Syntax</strong></p>
+<pre><code class="language-c">switch (expression) {
+    case const-expr1: statements1
+    :
+    case const-exprn: statementsn
+    default: statementsn+1
+}
+</code></pre>
+<p>The expression is evaluated and tested for a match with the const-expr in each case clause. The statement(s) in the matching case clause is/are executed.</p>
+<p><em>Note</em></p>
+<ul>
+<li>Each statement falls through to the next statement. This is the default behavior of the switch statement.</li>
+<li>Adding a <code>break</code> statement to each statement block will eliminate fall through, allowing only one case clause's statement block to be executed.</li>
+</ul>
+<p><strong>Code example</strong></p>
+<pre><code class="language-c">switch (number) {
+    case 0:  printf(&quot;Zero selected\n&quot;);  break;
+    case 1:  printf(&quot;One selected\n&quot;);   break;
+    case 2:  printf(&quot;Two selected\n&quot;);   break;
+    case 3:  printf(&quot;Three selected\n&quot;); break;
+    case 4:  printf(&quot;Four selected\n&quot;);  break;
+    case 5:  printf(&quot;Five selected\n&quot;);  break;
+    case 6:  printf(&quot;Six selected\n&quot;);   break;
+    case 7:  printf(&quot;Seven selected\n&quot;); break;
+    case 8:  printf(&quot;Eight selected\n&quot;); break;
+    case 9:  printf(&quot;Nine selected\n&quot;);  break;
+    default: printf(&quot;No number selected\n&quot;);
+}
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="expressions.html" class="btn btn-neutral float-left" title="Expressions and statements"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="loops.html" class="btn btn-neutral float-right" title="Loops">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/mcusuperuser/embedded_c" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="expressions.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="loops.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
