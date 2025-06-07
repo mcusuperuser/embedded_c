@@ -9,5 +9,8 @@
     ],
     "files.associations": {
         "*.yaml": "home-assistant"
-    }
+    },
+    "clangd.arguments": [
+        "--compile-commands-dir=/Users/kito/GitHub/mcusuperuser/embedded_c/projects/ex01n/out/ex01/Empty/Debug"
+    ]
 }

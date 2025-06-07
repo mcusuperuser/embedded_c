@@ -2,11 +2,14 @@
 
 What is a comment?
 
-> Comments are used to document a program's functionality. They explain what a particular block or line of code does. Comments are always ignored by the compiler.
+!!! Important
+    Comments are used to document a program's functionality. They explain what a particular block or line of code doess.
+    Comments are always ignored by the compiler.
 
 There are two kinds of comments:
 
 ### Block comment
+
 ```c
 /* This is a block comment. */
 ```
@@ -15,6 +18,7 @@ There are two kinds of comments:
 - They can span multiple lines
 
 **Code example**
+
 ```c
 /*-----------------------------------------------
  * CMSIS-RTOS 'main' function template
@@ -39,6 +43,7 @@ int main (void) {
 ```
 
 ### Single line comment
+
 ```c
 // This is a single line comment.
 ```
@@ -47,6 +52,7 @@ int main (void) {
 - They can *not* span multiple lines
 
 **Code example**
+
 ```c
 //-----------------------------------------------
 // CMSIS-RTOS 'main' function template
@@ -74,6 +80,7 @@ int main (void) {
 - Single line comments may be nested
 
 **Code example**
+
 ```c
 /*-----------------------------------------------
  * CMSIS-RTOS 'main' function template

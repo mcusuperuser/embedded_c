@@ -2,26 +2,28 @@
 
 What is an operator?
 
-> An arithmetic expression contains one or more operands and arithmetic operators.
+!!! Important
+    An arithmetic expression contains one or more operands and arithmetic operators.
 
 Operands may be variables, constants or functions that return a value.
 
 ## Arithmetic operators
 
-Arithmetic operators are used to perform arithmetic/mathematical operations on operands. Arithmetic operators are of two distinct types:
+Arithmetic operators are used to perform arithmetic/mathematical operations on operands. Arithmetic operators are of
+two distinct types:
 
-- Binary Operators work on two operands: +, -, *, /, %
-- Unary Operators work on a single operand: +, -, ++, --
+- Binary Operators work on two operands: `+, -, *, /, %`
+- Unary Operators work on a single operand: `+, -, ++, --`
 
 | Operator | Operation | Example | Result |
 |:----------:|-----------|:---------:|--------|
-| * | Multiplication | `a * b` | Product of `a` and `b` |
-| / | Division | `a / b` | Quotient of `a` and `b` |
-| % | Modulo | `a % b` | Remainder of `a` divided by `b` |
-| + | Addition | `a + b` | Sum of `a` and `b` |
-| - | Subtraction | `a - b` | Difference of `a` and `b` |
-| - | (unary) Negative | `-a` | Negative value of `a`|
-| + | (unary) Positive | `+a` | Value of `a` |
+| `*` | Multiplication | `a * b` | Product of `a` and `b` |
+| `/` | Division | `a / b` | Quotient of `a` and `b` |
+| `%` | Modulo | `a % b` | Remainder of `a` divided by `b` |
+| `+` | Addition | `a + b` | Sum of `a` and `b` |
+| `-` | Subtraction | `a - b` | Difference of `a` and `b` |
+| `-` | (unary) Negative | `-a` | Negative value of `a`|
+| `+` | (unary) Positive | `+a` | Value of `a` |
 
 ### Division operator
 
@@ -31,9 +33,12 @@ If one or both of the operands is a floating point type, the result will be a fl
 
 ### Implicit type conversion
 
-When an expression is used in the context where a value of a different type is expected, conversion may occur. In such cases, the type of one operand will be temporarily "promoted" to the larger type of the other operand. This means that during an operation, the smaller data type will be promoted to the largest one in the expression.
+When an expression is used in the context where a value of a different type is expected, conversion may occur. In such
+cases, the type of one operand will be temporarily "promoted" to the larger type of the other operand. This means that
+during an operation, the smaller data type will be promoted to the largest one in the expression.
 
 **Code examples**
+
 ```c
 short n = -5;
 -n      // promotion to int; result is 5
@@ -49,12 +54,13 @@ Increment/decrement operators are unary operators that increment/decrement the v
 
 | Operator | Operation | Example | Result |
 |:----------:|-----------|:---------:|--------|
-| ++ | Increment | `a++` | Postfix form: use `a` and then add `1` |
-|  |  | `++a` | Prefix form: add `1` to `a` and then use `a` |
-| -- | Decrement | `a--` | Postfix form: use `a` and then subtract `1` |
-|  |  | `--a` | Prefix form: subtract `1` from `a` and then use `a` |
+| `++` | Increment | `a++` | Postfix form: use `a` and then add `1` |
+|  `|`  | `++a` | Prefix form: add `1` to `a` and then use `a` |
+| `--` | Decrement | `a--` | Postfix form: use `a` and then subtract `1` |
+|  `|`  | `--a` | Prefix form: subtract `1` from `a` and then use `a` |
 
 **Code example**
+
 ```c
 int n, m;
 n = 3;
@@ -100,7 +106,8 @@ The variable is modified using the operator and the expression and the result is
 
 ## Relational (comparison) operators
 
-Relational operators are binary operators that test a condition and return `1` if that condition is logically `true` and `0` if that condition is `false`. 
+Relational operators are binary operators that test a condition and return `1` if that condition is logically `true`
+and `0` if that condition is `false`.
 
 | Operator | Operation                | Example  | Result (FALSE = 0, TRUE = 1) |
 |:--------:|:-------------------------|:--------:|------------------------------|
@@ -111,11 +118,12 @@ Relational operators are binary operators that test a condition and return `1` i
 | `<`      | Less than                | `a < b`  | `1` if `a` less than `b`, else `0` |
 | `<=`     | Less than or equal to    | `a <= b` | `1` if `a` less than or equal to `b`, else `0` |
 
-*Note*
-
-- Do not interchange `=` with `==`. `=` is the assignment operator, while `==` is the "equals to" relational operator.
+!!! Note
+    Do not interchange `=` with `==`. `=` is the assignment operator, while `==` is the "equals to" relational
+    operator.
 
 **Code example**
+
 ```c
 int n, m;
 
@@ -147,12 +155,13 @@ Bitwise operators apply the operation to each bit of the first operand with each
 | `|`      | Bitwise OR          | `a | b`  | `1`, if `1` in `a` or `b` or both; `0`, if `0` in both `a` and `b`
 | `^`      | Bitwise XOR         | `a ^ b`  | `1`, if `1` in `a` or `b` but not both; `0`, if `0` or `1` in both `a` and `b`
 
-*Note*
-
-- The bitwise NOT is also known as "One's complement".
-- Do not interchange `&` with `&&`. `&` is the bitwise AND operator, while `&&` is the logical AND operator.
+!!! Note
+    - The bitwise NOT is also known as "One's complement".
+    - Do not interchange `&` with `&&`. `&` is the **bitwise** AND operator, while `&&` is the **logical** AND
+      operator.
 
 **Code example**
+
 ```c
 int n, m;
 
@@ -168,12 +177,12 @@ if (n && m) { // check if both values are true (non-zero)
 | `<<`     | Bitwise left shift  | `a << b` | Shift `a` by `b` bits to the left
 | `>>`     | Bitwise right shift | `a >> b` | Shift `a` by `b` bits to the right
 
-*Note*
-
-- Bits that are shifted out are lost (in both cases)
-- For shift left, 0's are shifted in (zero fill)
+!!! Note
+    - Bits that are shifted out are lost (in both cases).
+    - For shift left, 0's are shifted in (zero fill).
 
 **Code example**
+
 ```c
 // Logical shift right (zero fill)
 // If a is unsigned:
@@ -204,9 +213,8 @@ Member access operators allow access to the members of their operands.
 | `.`      | Member access (struct/union)  | `a.b`    | The member `b` of struct or union `a`
 | `->`     | Member access through pointer | `a->b`   | The member `b` of struct or union pointed to by `a`
 
-*Note*
-
-- This will become important when talking about arrays, pointers, structs, and unions later.
+!!! Note
+    This will become important when talking about arrays, pointers, structs, and unions later.
 
 ## Other operators
 
@@ -223,6 +231,7 @@ Member access operators allow access to the members of their operands.
 `(test_expression) ? do_if_true : do_if_false;`
 
 **Code example**
+
 ```c
 int a = 3, b = 4, c;
 
@@ -238,6 +247,7 @@ c = (a % 2 != 0) ? a : b; // conditionally assigns a value to c
 You can use the cast operator `(type)` to cast a variable:
 
 **Code example**
+
 ```c
 int a = 10;
 float b;
@@ -246,7 +256,8 @@ b = (float)a / 4; // b is 2.5, because float/int = float
 
 ## Operator precedence
 
-The following table lists the precedence and associativity of C operators. Operators are listed top to bottom, in descending precedence. Conflicts between operators with the same precedence are handled via the rules of associativity.
+The following table lists the precedence and associativity of C operators. Operators are listed top to bottom, in
+descending precedence. Conflicts between operators with the same precedence are handled via the rules of associativity.
 
 |Precedence | Operator       | Description | Associativity |
 |:--------:|:--------------:|:-----------|--------|
@@ -292,9 +303,8 @@ When expressions contain multiple operators, their precedence determines the ord
 | `a + ++b`     | `a + (++b)`                |
 | `a + ++b * c` | `a + ((++b) * c)`          |
 
-*Note*
-
-- If functions are part of an expression, there is no way to tell which function is evaluated first. 
+!!! Note
+    If functions are part of an expression, there is no way to tell which function is evaluated first.
 
 ### Associativity
 

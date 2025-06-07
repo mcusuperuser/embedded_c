@@ -2,11 +2,13 @@
 
 What is a variable?
 
-> A variable is a name that represents one or more memory locations used to hold program data.
+!!! Important
+    A variable is a name that represents one or more memory locations used to hold program data.
 
 A variable is a kind of bucket that you can use to hold program data.
 
 **Code example**
+
 ```c
 int myVar;
 myVar = 42;
@@ -26,7 +28,9 @@ float myFLoat,
 
 What are identifiers?
 
-> Identifiers are names that are given to program elements, such as variables, functions, arrays, or any other named element.
+!!! Important
+    Identifiers are names that are given to program elements, such as variables, functions, arrays, or any other named
+    element.
 
 - Valid characters in identifiers are '_', 'a' to 'z', 'A' to 'Z', and '0' to '9' (not allowed for the first character).
 - Identifiers are case sensitive, so `myVar` is not the same as `myvar`!
@@ -44,18 +48,6 @@ What are identifiers?
 | short | signed | sizeof | static | struct |
 | switch | typedef | union | unsigned | void |
 | volatile | while ||||
-
-### Arm compiler 5 keywords and operators
-
-| | | |
-|---|---|---|
-| __align | __int64 | __svc |
-| \_\_ALIGNOF\_\_ | \_\_INTADDR\_\_ | __svc_indirect |
-| __asm | __irq | __svc_indirect_r7 |
-| __declspec | __packed | __value_in_regs |
-| __forceinline | __pure | __weak |
-| __global_reg | __softfp | __writeonly |
-| __inline | __smc ||
 
 ### Arm compiler 6 (armclang) keywords and operators
 
@@ -95,10 +87,9 @@ All pointers       |                        | 32           | 4 (word-aligned)   
 bool (C++ only)    |                        | 8            | 1 (byte-aligned)           | false or true
 \_Bool (C only)    |                        | 8            | 1 (byte-aligned)           | false or true
 
-*Note*
-
-- Integers are represented in [two's complement](https://en.wikipedia.org/wiki/Two%27s_complement "Two´s complement on Wikipedia") form.
-- Floating-point quantities are stored in [IEEE format](https://en.wikipedia.org/wiki/IEEE_754 "IEEE 754 on Wikipedia").
+!!! Note
+    - Integers are represented in [two's complement](https://en.wikipedia.org/wiki/Two%27s_complement "Two´s complement on Wikipedia") form.
+    - Floating-point quantities are stored in [IEEE format](https://en.wikipedia.org/wiki/IEEE_754 "IEEE 754 on Wikipedia").
 
 ### How to declare a variable
 
@@ -119,11 +110,13 @@ double sensorValue;
 There are multiple ways to declare a variable:
 
 **Declaration on a single line**
+
 ```c
 type name;
 ```
 
 **Declaration on a single line with an initial value**
+
 ```c
 type name = initialValue;
 ```
@@ -134,11 +127,13 @@ type name1, name2, name3;
 ```
 
 **Multiple declarations of the same type on a single line with initial values**
+
 ```c
 type name1 = value1, name2 = value2, name3;
 ```
 
 **Code example**
+
 ```c
 unsigned int myVar;
 signed int   answer = 42;
@@ -147,7 +142,9 @@ float        hugeNumber = 5.12e+21
 ```
 
 ## Using typedefs
+
 **Syntax**
+
 ```c
 typedef type typeName;
 ```
@@ -156,6 +153,7 @@ typedef type typeName;
 - The *typeName* is now the same as the type
 
 **Code example**
+
 ```c
 typedef unsigned int uint32_t;
 
@@ -169,14 +167,19 @@ uint32_t a, b;    // alias for unsigned int a, b;
 The `#include` directive can be used in three different ways. You can:
 
 1. Look for a header file in the compiler include path, which contains the compiler's directory and all of its sub-directories:
+
 ```c
 #include <stdio.h>
 ```
+
 2. Look for a file in the project directory:
+
 ```c
 #include "myHeader.h"
 ```
+
 3. Look for a file using an absolute or relative path:
+
 ```c
 #include "..\..\myHeader2.h"
 #include "C:\projects\myProject\inc\myHeader3.h"
@@ -184,13 +187,15 @@ The `#include` directive can be used in three different ways. You can:
 
 **Code example**
 
-main.h header file:
+`main.h` header file:
+
 ```c
 int   n, m, p;
 float myFloat;
 ```
 
-main.c source file:
+`main.c` source file:
+
 ```c
 #include "main.h"
 
@@ -201,9 +206,11 @@ int main (void) {
     myFLoat = 1 / p;
 }
 ```
+
 Using the `#include` directive, the contents of the main.h header file are pasted into the main.c source file, starting at the `#include` directive’s line.
 
 After the preprocessor runs, the compiler sees the main.c source file as follows:
+
 ```c
 int n, m, p;
 float myFloat;
