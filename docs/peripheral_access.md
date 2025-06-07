@@ -1,8 +1,11 @@
 # Peripheral access using CMSIS
 
-CMSIS defines naming conventions, requirements, and optional features for accessing device specific peripherals (including core peripherals). Typically, the device header file `<device.h>` contains these definitions and also includes the core specific header files.
+CMSIS defines naming conventions, requirements, and optional features for accessing device specific peripherals
+(including core peripherals). Typically, the device header file `<device.h>` contains these definitions and also
+includes the core specific header files.
 
 Each peripheral provides a data type definition with a name that is composed of:
+
 - an optional prefix `<device abbreviation>_`
 - `<peripheral name>`
 - postfix `_Type` or `_TypeDef` to identify a type definition.
@@ -11,9 +14,11 @@ Each peripheral provides a data type definition with a name that is composed of:
 
 To access the peripheral registers and related function in a device, the files `device.h` and `core_cm#.h` define as a minimum:
 
-1. The **register layout typedef** for each peripheral that defines all register names. RESERVED is used to introduce space into the structure for adjusting the addresses of the peripheral registers.
+- The **register layout typedef** for each peripheral that defines all register names. RESERVED is used to introduce
+  space into the structure for adjusting the addresses of the peripheral registers.
 
 **Code example**
+
 ```c
 typedef struct
 {
@@ -41,29 +46,32 @@ typedef struct
 } SCB_Type;
 ```
 
-*Note*
-
-- IO Type Qualifiers are used to specify the access to peripheral variables:
+!!! Note
+    IO Type Qualifiers are used to specify the access to peripheral variables (see following table).
 
 |IO Type Qualifier 	|Type 	|Description|
 |:-:|-|-|
-|__IM 	|Struct member 	|Defines 'read only' permissions
-|__OM 	|Struct member 	|Defines 'write only' permissions
-|__IOM 	|Struct member 	|Defines 'read / write' permissions
-|__I 	|Scalar variable| 	Defines 'read only' permissions
-|__O 	|Scalar variable| 	Defines 'write only' permissions
-|__IO 	|Scalar variable| 	Defines 'read / write' permissions
+|`__IM` 	|Struct member 	|Defines 'read only' permissions
+|`__OM` 	|Struct member 	|Defines 'write only' permissions
+|`__IOM` 	|Struct member 	|Defines 'read / write' permissions
+|`__I` 	|Scalar variable| 	Defines 'read only' permissions
+|`__O` 	|Scalar variable| 	Defines 'write only' permissions
+|`__IO` 	|Scalar variable| 	Defines 'read / write' permissions
 
-2. The **base address** for each peripheral (in case of multiple peripherals that use the same register layout typedef multiple base addresses are defined).
+- The **base address** for each peripheral (in case of multiple peripherals that use the same register layout typedef
+  multiple base addresses are defined).
 
 **Code example**
+
 ```c
 #define SCS_BASE (0xE000E000UL) // System Control Space Base Address
 ```
 
-3. **Access definitions** for each peripheral. In case of multiple peripherals that are using the same register layout typedef, multiple access definitions exist (UART0, UART2).
+- **Access definitions** for each peripheral. In case of multiple peripherals that are using the same register layout
+  typedef, multiple access definitions exist (UART0, UART2).
 
 **Code example**
+
 ```c
 #define SCB  ((SCB_Type *) SCB_BASE) // SCB configuration struct
 ```
@@ -71,13 +79,16 @@ typedef struct
 These definitions allow accessing peripheral registers with simple assignments.
 
 **Code example**
+
 ```c
 SCB->SCR = 0;
 ```
 
-4. For core registers, macros define the position and the mask value for a bit field. Such definitions are often also created for other peripheral registers.
+- For core registers, macros define the position and the mask value for a bit field. Such definitions are often also
+  created for other peripheral registers.
 
 **Code example**
+
 ```c
 /* SCB Interrupt Control State Register Definitions */
 #define SCB_ICSR_NMIPENDSET_Pos  31U // SCB ICSR: NMIPENDSET Position 
@@ -107,6 +118,7 @@ SCB->SCR = 0;
 - How do we find the current value of the ICSR ISRPREEMPT bit? We read the  register SCB, AND it (using &) with the mask, and then shift it right (using >>) by the shift value:
 
 **Code example**
+
 ```c
 id = (SCB->ICSR & SCB_ICSR_ISRPREEMPT_Msk) >> SCB_ICSR_ISRPREEMPT_Pos;
 ```
@@ -114,6 +126,7 @@ id = (SCB->ICSR & SCB_ICSR_ISRPREEMPT_Msk) >> SCB_ICSR_ISRPREEMPT_Pos;
 - How do we set fields NMIPENDSET and PENDSVSET in that register, leaving everything else as zero? We use the = assignment operator:
 
 **Code example**
+
 ```c
 SCB->ICSR = SCB_ICSR_NMIPENDSET_Msk | SCB_ICSR_PENDSVSET_Msk;
 ```
@@ -121,13 +134,18 @@ SCB->ICSR = SCB_ICSR_NMIPENDSET_Msk | SCB_ICSR_PENDSVSET_Msk;
 - How do we set fields NMIPENDSET and PENDSVSET in that register without modifying anything else? We need to perform a read/modify/write operation with the OR read/modify/write operator |=:
 
 **Code example**
+
 ```c
 SCB->ICSR |= SCB_ICSR_NMIPENDSET_Msk | SCB_ICSR_PENDSVSET_Msk;
 ```
 
-- How do we clear field NMIPENDSET in that register without modifying anything else? We need to perform a read/modify/write operation, while zeroing out the bit for NMIPENDSET. We do this by first complementing the mask for NMIPENDSET using the ~ operator. This flips all of its ones to zeros and zeros to ones. Using the AND read/modify/write operator &= will zero out the control register’s bits for NMIPENDSET’s field:
+- How do we clear field NMIPENDSET in that register without modifying anything else? We need to perform a
+  read/modify/write operation, while zeroing out the bit for NMIPENDSET. We do this by first complementing the mask for
+  NMIPENDSET using the ~ operator. This flips all of its ones to zeros and zeros to ones. Using the AND
+  read/modify/write operator &= will zero out the control register’s bits for NMIPENDSET’s field:
 
 **Code example**
+
 ```c
 SCB->ICSR &= SCB_ICSR_NMIPENDSET_Msk;
 ```
@@ -137,6 +155,7 @@ SCB->ICSR &= SCB_ICSR_NMIPENDSET_Msk;
 Using the CMSIS macros `_VAL2FLD(field, value)` and `_FLD2VAL(field, value)` you can access bit fields more easily.
 
 **Code example**
+
 ```c
 id = _FLD2VAL(SCB_CPUID_REVISION, SCB->CPUID); // uses the #define's _Pos and _Msk of the related bit field to extract the value of a bit field from a register.
 

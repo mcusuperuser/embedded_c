@@ -2,16 +2,18 @@
 
 What are bit fields?
 
-> Bit Fields are `unsigned int` members of structures that occupy a specified number of adjacent bits from one to `sizeof (int)`. They may be used as an ordinary `int` variable in arithmetic and logical operations.
+!!! Important
+    Bit Fields are `unsigned int` members of structures that occupy a specified number of adjacent bits from one to
+    `sizeof (int)`. They may be used as an ordinary `int` variable in arithmetic and logical operations.
 
-*Note*
-
-Bit fields:
-- are ordinary members of a structure.
-- have a specified bit width.
-- are often used in conjunction with unions to provide bit access to a variable without masking operations.
+!!! Note
+    Bit fields:  
+    - are ordinary members of a structure.  
+    - have a specified bit width.  
+    - are often used in conjunction with unions to provide bit access to a variable without masking operations.
 
 **Syntax**
+
 ```c
 struct structName {
     unsigned int memberName1: bitWidth;
@@ -21,6 +23,7 @@ struct structName {
 ```
 
 **Code example**
+
 ```c
 // bit field struct may be celared normally or as a typedef
 typedef struct {
@@ -32,6 +35,7 @@ typedef struct {
 ## Using bit fields
 
 **Code example**
+
 ```c
 struct myByteBits {
     unsigned int volts: 1;

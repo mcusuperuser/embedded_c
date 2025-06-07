@@ -2,9 +2,12 @@
 
 What are structures?
 
-> Arrays are named collections of identical objects. Structures are named collections of different objects. Variables within a structure are referred to as *members*, and may be accessed individually as needed.
+!!! Important
+    Arrays are named collections of identical objects. Structures are named collections of different objects. Variables
+    within a structure are referred to as *members*, and may be accessed individually as needed.
 
 Structures:
+
 - may contain any number of members. These members may be of any data type.
 - allow a group of related variables to be treated as a single unit, even if different types are contained.
 - organize complicated data more easily.
@@ -12,6 +15,7 @@ Structures:
 ## Structure definition
 
 **Syntax**
+
 ```c
 struct structName {
     type1 memberName1;  // Members are declared just
@@ -27,6 +31,7 @@ There are two ways to declare a structure variable:
 1. At structure definition:
 
 **Syntax**
+
 ```c
 struct structName {
     type1 memberName1;  // Members are declared just
@@ -36,6 +41,7 @@ struct structName {
 ```
 
 **Code example**
+
 ```c
 // structure to handle color values
 struct rgb {
@@ -48,6 +54,7 @@ struct rgb {
 2. If the structure has already been defined:
 
 **Syntax**
+
 ```c
 struct structName variableName1, ..., variableNamen;
 ```
@@ -67,11 +74,13 @@ struct rgb color; // declare color of type rgb
 ## Using structure variables
 
 **Syntax**
+
 ```c
 structVariableName.memberName;
 ```
 
 **Code example**
+
 ```c
 // structure to handle color values
 struct rgb {
@@ -92,6 +101,7 @@ int main (void){
 Structure types can be created using a `typedef`.
 
 **Syntax**
+
 ```c
 typedef struct structTag {
     type1 memberName1;
@@ -100,11 +110,11 @@ typedef struct structTag {
 } typeName;
 ```
 
-*Note*
-
-- The `structTag` is optional
+!!! Note
+    The `structTag` is optional
 
 **Code example**
+
 ```c
 // structure type to handle color values
 typedef struct {
@@ -119,11 +129,13 @@ typedef struct {
 If the `typeName` has already been defined, you can declare a variable of that type without the `struct` keyword:
 
 **Syntax**
+
 ```c
 typeName variableName1, ..., variableNamen;
 ```
 
 **Code example**
+
 ```c
 // structure type to handle color values
 typedef struct {
@@ -140,6 +152,7 @@ rgb color;
 If `typeName` or `structName` have already been defined:
 
 **Syntax**
+
 ```c
 typeName variableName = {const1, ..., constn};
 // or
@@ -147,6 +160,7 @@ struct structName variableName = {const1, ...,constn};
 ```
 
 **Code example**
+
 ```c
 // structure type to handle color values
 typedef struct {
@@ -162,8 +176,8 @@ rgb color = {0, 145, 189};
 
 Using the `typedef` structure declaration, you can nest one structure within another structure.
 
-
 **Code example**
+
 ```c
 // declare struct type for a single point
 typedef struct {
@@ -190,9 +204,11 @@ int main(void) {
 
 ## Pointers to structures
 
-There are two ways to declare a pointer to a structure. If the `typeName` or the `structName` have already been defined:
+There are two ways to declare a pointer to a structure. If the `typeName` or the `structName` have already been
+defined:
 
 **Syntax**
+
 ```c
 typeName *pointerName;
 // or
@@ -200,6 +216,7 @@ struct structName *pointerName;
 ```
 
 **Code example**
+
 ```c
 // structure type to handle color values
 typedef struct {
@@ -212,6 +229,7 @@ rgb *pColor;
 ```
 
 **Code example**
+
 ```c
 // structure type to handle color values
 struct rgb {
@@ -228,15 +246,17 @@ struct rgb *pColor;
 If a `pointerName` has already been defined:
 
 **Syntax**
+
 ```c
 pointerName -> memberName;
 ```
 
-*Note*
-
-- First, the pointer must be initialized to point to the address of the structure itself: `pointerName = &structVariable;`
+!!! Note
+    First, the pointer must be initialized to point to the address of the structure itself:
+    `pointerName = &structVariable;`
 
 **Code example**
+
 ```c
 // structure type to handle color values
 typedef struct {
@@ -256,15 +276,15 @@ int  main (void) {
 }
 ```
 
-*Note*
-
-- We will later see in an example how CMSIS uses this to access core peripherals of a Cortex-M based device.
+!!! Note
+    We will later see in an example how CMSIS uses this to access core peripherals of a Cortex-M based device.
 
 ## Creating arrays of structures
 
 There are two ways to create arrays of structures. If the `typeName` or the `structName` have already been defined:
 
 **Syntax**
+
 ```c
 typeName arrayName[n];
 // or
@@ -272,6 +292,7 @@ struct structName arrayName[n];
 ```
 
 **Code example**
+
 ```c
 // structure type to handle color values
 typedef struct {
@@ -288,6 +309,7 @@ rgb aColor[2];
 If the `typeName` or the `structName` have already been defined:
 
 **Syntax**
+
 ```c
 typeName arrayName[n] = {{list1}, ..., {listn}};
 // or
@@ -295,6 +317,7 @@ struct structName arrayName[n] = {{list1}, ..., {listn}};
 ```
 
 **Code example**
+
 ```c
 // structure type to handle color values
 typedef struct {
@@ -311,11 +334,13 @@ rgb aColor[2] = {{0, 0, 0}, {255, 255, 255}};
 If the `arrayName` has already been defined:
 
 **Syntax**
+
 ```c
 arrayName[n].memberName
 ```
 
 **Code example**
+
 ```c
 // structure type to handle color values
 typedef struct {
@@ -337,6 +362,7 @@ int main (void) {
 ### Passing structures to functions
 
 **Code example**
+
 ```c
 // structure type to handle color values
 typedef struct {

@@ -2,11 +2,15 @@
 
 ## Boolean expressions
 
-C (unlike C++) does not have a boolean data type. As shown in the table in chapter [Data types](#data-types), you can use `_Bool` for that. But the usual convention is that any boolean expression returns integer values:
+C (unlike C++) does not have a boolean data type. As shown in the table in chapter
+[Data types](./variables.md#data-types), you can use `_Bool` for that. But the usual convention is that any boolean
+expression returns integer values:
+
 - `0` if an expression evaluates as `FALSE`
 - non-zero if it evaluates as `TRUE` (usually `1`, but this is not guaranteed)
 
 **Code example**
+
 ```c
 int main (void) {
     int a = 3, b, c;
@@ -17,9 +21,11 @@ int main (void) {
 
 ### Express it differently
 
-Expressions can be written in different ways which all lead to the same result (are evaluated similarly). Laziness drives programmers to usually use the first method of the following example:
+Expressions can be written in different ways which all lead to the same result (are evaluated similarly). Laziness
+drives programmers to usually use the first method of the following example:
 
 **Code example**
+
 ```c
 #define BUTTONPRESSED 1
 
@@ -34,17 +40,18 @@ int main (void) {
 ## `if` statement
 
 **Syntax**
+
 ```c
 if (expression) statement
 ```
 
 The expression is evaluated in a boolean fashion. If it is true, the statement is executed.
 
-*Note*
-
-- The `statement` can also be a compound/block statement.
+!!! Note
+    The `statement` can also be a compound/block statement.
 
 **Code example**
+
 ```c
 #define BUTTONPRESSED 1
 
@@ -57,9 +64,10 @@ int main (void) {
 
 ### `if (a)` vs. `if (a == 1)`
 
-Not only laziness commands the usage of `if (a)`. This C code will also lead to reduced assembly code size, as it only has to test for not being equal to `0`:
+Not only laziness commands the usage of `if (a)`. This C code will also lead to reduced assembly code size, as it only
+has to test for not being equal to `0`:
 
-```
+```txt
 0x00001170 4807      LDR      r0,[pc,#28]  ; @0x00001190
 0x00001172 6800      LDR      r0,[r0,#0x00]
 0x00001174 B110      CBZ      r0,0x0000117C
@@ -67,23 +75,24 @@ Not only laziness commands the usage of `if (a)`. This C code will also lead to 
 
 `if (a == 1)` creates more assembly code, as it has to explicitly check the equality with `1`:
 
-```
+```txt
 0x0000117C 4808      LDR      r0,[pc,#32]  ; @0x000011A0
 0x0000117E 6800      LDR      r0,[r0,#0x00]
 0x00001180 2801      CMP      r0,#0x01
 0x00001182 D102      BNE      0x0000118A
 ```
 
-*Note*
-
-- `CBZ` is the "compare and branch on zero" instruction that will only branch if the comparison with `0` is TRUE.
-- There is no "compare and branch on one" instruction, so you have to compare first (`CMP`) and then branch (`BNE`) if the result is not equal one.
+!!! Note
+    - `CBZ` is the "compare and branch on zero" instruction that will only branch if the comparison with `0` is `TRUE`.
+    - There is no "compare and branch on one" instruction, so you have to compare first (`CMP`) and then branch (`BNE`)
+    if the result is not equal one.
 
 ### Nesting `if` statements
 
 You can nest `if` statements easily.
 
 **Code example**
+
 ```c
 #define BUTTONPRESSED 1
 float adc_input;
@@ -100,6 +109,7 @@ int main (void) {
 ### `if else` statement
 
 **Syntax**
+
 ```c
 if (expression) statement1
 else statement2
@@ -108,6 +118,7 @@ else statement2
 The expression is evaluated in a boolean fashion. If it is true, statement1 is executed, if false, statement2 is executed.
 
 **Code example**
+
 ```c
 #define BUTTONPRESSED 1
 
@@ -123,6 +134,7 @@ int main (void) {
 ### `if else if` statement
 
 **Syntax**
+
 ```c
 if (expression1) statement1
 else if (expression2) statement2
@@ -132,6 +144,7 @@ else statement3
 The expression1 is evaluated in a boolean fashion. If it is true, statement1 is executed, if false, expression2 is evaluated. If it is true, statement2 is executed, if false, statement3 is executed.
 
 **Code example**
+
 ```c
 float adc_input;
 
@@ -151,6 +164,7 @@ int main (void) {
 ## `switch` statement
 
 **Syntax**
+
 ```c
 switch (expression) {
     case const-expr1: statements1
@@ -162,13 +176,13 @@ switch (expression) {
 
 The expression is evaluated and tested for a match with the const-expr in each case clause. The statement(s) in the matching case clause is/are executed.
 
-
-*Note*
-
-- Each statement falls through to the next statement. This is the default behavior of the switch statement.
-- Adding a `break` statement to each statement block will eliminate fall through, allowing only one case clause's statement block to be executed.
+!!! Note
+    - Each statement falls through to the next statement. This is the default behavior of the switch statement.
+    - Adding a `break` statement to each statement block will eliminate fall through, allowing only one case clause's
+    statement block to be executed.
 
 **Code example**
+
 ```c
 switch (number) {
     case 0:  printf("Zero selected\n");  break;
@@ -184,5 +198,3 @@ switch (number) {
     default: printf("No number selected\n");
 }
 ```
-
-
